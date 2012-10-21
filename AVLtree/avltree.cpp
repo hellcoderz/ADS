@@ -7,10 +7,11 @@
 using namespace std;
 
 struct node{
-	int key;
+	long key;
 	node *left;
 	node *right;
 	int height;
+	long value;
 };
 
 typedef struct node avlNode;
@@ -18,8 +19,6 @@ typedef struct node avlNode;
 class avlTree{
 public:
 	
-
-
 	int abs(int n){
 		if(n < 0)
 			return -n;
@@ -102,7 +101,7 @@ public:
 
 
 
-	avlNode *insert(avlNode *node,int data){
+	avlNode *insert(avlNode *node,long data){
 		avlNode *temp;
 		if(node == NULL){
 			//cout << "Insert: " << data << endl;
@@ -157,7 +156,7 @@ public:
 
 
 	// search function
-	bool search(avlNode *root,int data){
+	bool search(avlNode *root,long data){
 		avlNode *temp = root;
 		
 		if(temp->key == data){
