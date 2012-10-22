@@ -181,14 +181,22 @@ public:
 	int inorder(avlNode *root){
 		if(root == NULL){
 			return -1;
-
 		}
-
 		//cout << "else" << endl;
 		inorder(root->left);
-		cout << root->key << ":" << root->height << " ";
+		cout << root->key << " ";
 		inorder(root->right);
-		
+		return 0;
+	}
+	
+	int preorder(avlNode *root){
+		if(root == NULL){
+			return -1;
+		}
+		//cout << "else" << endl;
+		cout << root->key << " ";
+		inorder(root->left);
+		inorder(root->right);
 		return 0;
 	}
 };
@@ -197,11 +205,16 @@ public:
 int main(){
 	avlTree tree;
 	node *root = NULL;
+	root = tree.insert(root,56);
+	root = tree.insert(root,34);
+	root = tree.insert(root,45);
+	root = tree.insert(root,1);
+	root = tree.insert(root,2);
+	root = tree.insert(root,3);
 	root = tree.insert(root,4);
-
-	root = tree.insert(root,6);
-	root = tree.insert(root,9);
 	root = tree.insert(root,5);
+	root = tree.insert(root,6);
+	root = tree.insert(root,7);
 	
 
 	//cout << root->key << endl;
@@ -209,6 +222,8 @@ int main(){
 	//search
 	cout << tree.search(root,5) << endl;
 	tree.inorder(root);
+	cout << endl ;
+	tree.preorder(root);
 	//cout << endl << "tree height = " << root->height(root)  << endl;
 	//cout << "left subtree height = " << root->height(root->left)  << endl;
 	//cout << "right subtree height = " << root->height(root->right)  << endl;
