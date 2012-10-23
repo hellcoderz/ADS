@@ -6,7 +6,7 @@ avltree:
 	$(CC) $@.cpp -o $@$(EXE)
 run:
 	@echo "Running AVLtree"
-	avltree
+	./avltree
 	@echo ""
 clean:
 	rm avltree
