@@ -1,9 +1,8 @@
-RM = del
 CC = g++
 all: avltree
 
 avltree:
-	$(CC) $@.cpp -o $@$(EXE)
+	$(CC) $@.cpp -o $@
 run:
 	@echo "Running AVLtree"
 	./avltree

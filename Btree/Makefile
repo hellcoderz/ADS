@@ -3,10 +3,10 @@ CC = g++
 all: btree
 
 btree:
-	$(CC) $@.cpp -o $@$(EXE)
+	$(CC) $@.cpp -o $@
 run:
 	@echo "Running Btree"
-	btree
+	./btree
 	@echo ""
 clean:
 	rm btree
