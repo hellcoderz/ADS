@@ -4,5 +4,11 @@ all: avltree
 
 avltree:
 	$(CC) $@.cpp -o $@$(EXE)
+run:
+	@echo "Running AVLtree"
+	avltree
+	@echo ""
+clean:
+	rm *.exe
 
-.PHONY: avltree
+.PHONY: avltree clean

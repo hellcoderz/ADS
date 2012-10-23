@@ -6,11 +6,10 @@ AVLtree:
 Btree:
 	$(MAKE) -C $@
 run:
-	@echo "running AVLtree"
-	AVLtree/avltree
-	@echo ""
-	@echo "running Btree"
-	Btree/btree
-	@echo ""
+	$(MAKE) -C AVLtree run
+	$(MAKE) -C Btree run
+clean:
+	$(MAKE) -C AVLtree clean
+	$(MAKE) -C Btree clean
 
 .PHONY: AVLtree Btree clean run
