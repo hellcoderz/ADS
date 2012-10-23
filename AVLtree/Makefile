@@ -9,6 +9,6 @@ run:
 	avltree
 	@echo ""
 clean:
-	rm *.exe
+	rm avltree
 
 .PHONY: avltree clean

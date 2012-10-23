@@ -9,6 +9,6 @@ run:
 	btree
 	@echo ""
 clean:
-	rm *.exe
+	rm btree
 
 .PHONY: btree clean
