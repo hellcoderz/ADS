@@ -1,13 +1,18 @@
 Some Data Structure coded in C++; more to come
 
-Implemted so far:
+<h3>Implemted so far: </h3>
+<ul>
   AVL Tree:
-    1. insert
-    2. search
-    3. inorder traversal
-    4. preorder traversal
+    <ol>
+      <li>insert</li>
+      <li>search</li>
+      <li>inorder traversal</li>
+      <li>preorder traversal</li>
+    </ol>
 
   B-Tree:
-    1. insert
-    2. inorder traversal
-    3. preorder traversal
+    <ol>
+      <li>insert</li>
+      <li>inorder traversal</li>
+      <li>preorder traversal</li>
+    </ol>
