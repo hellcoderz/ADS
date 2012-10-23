@@ -1,4 +1,5 @@
-Some Data Structure coded in C++; more to come
+Some Data Structure to insert and search key/values coded in C++; more to come <br>
+Tags: B-Tree in C++ , AVL Tree in C++
 
 <h3>Implemted so far: </h3>
   AVL Tree:
