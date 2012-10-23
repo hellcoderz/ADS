@@ -1,7 +1,6 @@
 Some Data Structure coded in C++; more to come
 
 <h3>Implemted so far: </h3>
-<ul>
   AVL Tree:
     <ol>
       <li>insert</li>
