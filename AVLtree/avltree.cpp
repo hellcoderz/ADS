@@ -101,7 +101,7 @@ public:
 
 
 
-	avlNode *insert(avlNode *node,long data){
+	avlNode *insert(avlNode *node,long data, long value){
 		avlNode *temp;
 		if(node == NULL){
 			//cout << "Insert: " << data << endl;
@@ -109,11 +109,12 @@ public:
 			node->left = NULL;
 			node->right = NULL;
 			node->key = data;
+			node->value = value;
 			node->height = 0;
 			
 		}else{
 			if(node->key > data){
-				node->left = insert(node->left,data);
+				node->left = insert(node->left,data,value);
 				temp = node;
 				temp->height = height(temp->left) - height(temp->right);
 				#ifdef CHECK_BALANCE
@@ -130,7 +131,7 @@ public:
 				}
 				#endif
 			}else{
-				node->right = insert(node->right,data);
+				node->right = insert(node->right,data,value);
 				temp = node;
 				temp->height = height(temp->left) - height(temp->right);
 				#ifdef CHECK_BALANCE
@@ -205,16 +206,16 @@ public:
 int main(){
 	avlTree tree;
 	node *root = NULL;
-	root = tree.insert(root,56);
-	root = tree.insert(root,34);
-	root = tree.insert(root,45);
-	root = tree.insert(root,1);
-	root = tree.insert(root,2);
-	root = tree.insert(root,3);
-	root = tree.insert(root,4);
-	root = tree.insert(root,5);
-	root = tree.insert(root,6);
-	root = tree.insert(root,7);
+	root = tree.insert(root,56,34);
+	root = tree.insert(root,34,57);
+	root = tree.insert(root,45,67);
+	root = tree.insert(root,1,56);
+	root = tree.insert(root,2,89);
+	root = tree.insert(root,3,80);
+	root = tree.insert(root,4,23);
+	root = tree.insert(root,5,12);
+	root = tree.insert(root,6,2334);
+	root = tree.insert(root,7,456);
 	
 
 	//cout << root->key << endl;

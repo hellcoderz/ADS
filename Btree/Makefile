@@ -1,4 +1,3 @@
-RM = del
 CC = g++
 all: btree
 
