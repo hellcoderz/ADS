@@ -8,6 +8,6 @@ run:
 	./avlhash
 	@echo ""
 clean:
-	rm avltree
+	rm avlhash
 
 .PHONY: avlhash clean
