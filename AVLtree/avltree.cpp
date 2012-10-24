@@ -157,22 +157,24 @@ public:
 
 
 	// search function
-	bool search(avlNode *root,long data){
+	bool search(avlNode *root,long key){
 		avlNode *temp = root;
 		
-		if(temp->key == data){
-			return 1;
+		if(temp == NULL)
+			return -1;
+		if(temp->key == key){
+			return temp->value;
 		}else{
-			if(temp->key > data){
+			if(temp->key > key){
 				if(temp->left == NULL)
-					return 0;
+					return -1;
 				else
-					return search(temp->left,data);
+					return search(temp->left,key);
 			}else{
 				if(temp->right == NULL)
-					return 0;
+					return -1;
 				else
-					return search(temp->right,data);
+					return search(temp->right,key);
 			}
 		}
 
@@ -196,8 +198,8 @@ public:
 		}
 		//cout << "else" << endl;
 		cout << root->key << " ";
-		inorder(root->left);
-		inorder(root->right);
+		preorder(root->left);
+		preorder(root->right);
 		return 0;
 	}
 };
@@ -206,15 +208,15 @@ public:
 int main(){
 	avlTree tree;
 	node *root = NULL;
-	root = tree.insert(root,56,34);
+	//root = tree.insert(root,56,34);
 	root = tree.insert(root,34,57);
-	root = tree.insert(root,45,67);
+	//root = tree.insert(root,45,67);
 	root = tree.insert(root,1,56);
-	root = tree.insert(root,2,89);
-	root = tree.insert(root,3,80);
+	//root = tree.insert(root,2,89);
+	//root = tree.insert(root,3,80);
 	root = tree.insert(root,4,23);
-	root = tree.insert(root,5,12);
-	root = tree.insert(root,6,2334);
+	//root = tree.insert(root,5,12);
+	//root = tree.insert(root,6,2334);
 	root = tree.insert(root,7,456);
 	
 

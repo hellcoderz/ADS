@@ -21,16 +21,20 @@ typedef struct node avlNode;
 
 class avlTree{
 public:
-	map<long,node*> *table;
-	pair<const long,node*> *hashmap;
+	struct hash{
+		avlNode **node;
+	};
+
+
 	int s;
+	struct hash *hashTable; 
 
 	avlTree(int s){
 		this->s = s;
-		
+		hashTable = new hash;
+		hashTable->node = new node *[s];
 		for(int i=0;i<s;i++){
-			table->insert(PAIR((long)i,new avlNode));
-			table->find(i)->second = NULL;
+			hashTable->node[i] = NULL;
 		}
 	}
 
@@ -129,20 +133,20 @@ public:
 			node->height = 0;
 			
 		}else{
-			if(node->key > data){
+			if(node->key > key){
 				node->left = insert_data(node->left, key, data);
 				temp = node;
 				temp->height = height(temp->left) - height(temp->right);
 				#ifdef CHECK_BALANCE
 				if(temp->height == -2 || temp->height == 2){
 					//cout << "left balancing" << endl;
-					if(temp->key < data && temp->right->key > data)
+					if(temp->key < key && temp->right->key > key)
 						node = rotateRightTwice(temp);
-					else if(temp->key < data && temp->right->key < data)
+					else if(temp->key < key && temp->right->key < key)
 						node = rotateRightOnce(temp);
-					else if(temp->key > data && temp->left->key < data)
+					else if(temp->key > key && temp->left->key < key)
 						node = rotateLeftTwice(temp);
-					else if(temp->key > data && temp->left->key > data)
+					else if(temp->key > key && temp->left->key > key)
 						node = rotateLeftOnce(temp);
 				}
 				#endif
@@ -153,13 +157,13 @@ public:
 				#ifdef CHECK_BALANCE
 				if(temp->height == -2 || temp->height == 2){
 					//cout << "right balancing" << endl;
-					if(temp->key < data && temp->right->key > data)
+					if(temp->key < key && temp->right->key > key)
 						node = rotateRightTwice(temp);
-					else if(temp->key < data && temp->right->key < data)
+					else if(temp->key < key && temp->right->key < key)
 						node = rotateRightOnce(temp);
-					else if(temp->key > data && temp->left->key < data)
+					else if(temp->key > key && temp->left->key < key)
 						node = rotateLeftTwice(temp);
-					else if(temp->key > data && temp->left->key > data)
+					else if(temp->key > key && temp->left->key > key)
 						node = rotateLeftOnce(temp);
 				}
 				#endif
@@ -170,14 +174,16 @@ public:
 	}
 
 	void insert(const long key, long value){
-		table->find(key%s)->second = insert_data(table->find(key%s)->second, key, value);
+		hashTable->node[key % s] = insert_data(hashTable->node[key % s], key, value);
 	}
 
 
 	// search function
 	long search_key(avlNode *root,long key){
 		avlNode *temp = root;
-		
+		//cout << "search term = " << temp->key << endl;
+		if(temp == NULL)
+			return -1;
 		if(temp->key == key){
 			return temp->value;
 		}else{
@@ -198,29 +204,41 @@ public:
 
 	long search(long key){
 
-		return search_key(table->find(key%s)->second,key);
+		return search_key(hashTable->node[(int)key % s], key);
 	}
 
-	int inorder(avlNode *root){
+	int inorder_key(avlNode *root){
+
 		if(root == NULL){
 			return -1;
 		}
-		//cout << "else" << endl;
-		inorder(root->left);
+		//cout << "going left" << endl;
+		inorder_key(root->left);
+		//cout << "printing" << endl;
 		cout << root->key << " ";
-		inorder(root->right);
+		//cout << "going right" << endl;
+		inorder_key(root->right);
 		return 0;
 	}
+
+	void inorder(){
+		inorder_key(hashTable->node[1]);
+	}
 	
-	int preorder(avlNode *root){
+	int preorder_key(avlNode *root){
 		if(root == NULL){
 			return -1;
 		}
 		//cout << "else" << endl;
 		cout << root->key << " ";
-		inorder(root->left);
-		inorder(root->right);
+		preorder_key(root->left);
+		preorder_key(root->right);
 		return 0;
+	}
+
+	void show(){
+		avlNode *temp = hashTable->node[1];
+		cout << temp->key << " " << temp->left->key << " " << temp->right->key << " " << temp->right->left->key << endl;
 	}
 
 
@@ -233,22 +251,32 @@ int main(){
 	avlTree tree(s);
 
 	tree.insert(56,34);
+	//tree.inorder();cout << endl;
 	tree.insert(34,57);
+	//tree.inorder();cout << endl;
 	tree.insert(45,67);
+	//tree.inorder();cout << endl;
 	tree.insert(1,56);
+	//tree.inorder();cout << endl;
 	tree.insert(2,89);
+	//tree.inorder();cout << endl;
 	tree.insert(3,80);
+	//tree.inorder();cout << endl;
 	tree.insert(4,23);
+	//tree.inorder();cout << endl;
 	tree.insert(5,12);
+	//tree.inorder();cout << endl;
 	tree.insert(6,234);
+	//tree.inorder();cout << endl;
 	tree.insert(7,456);
-	
+	//tree.inorder();cout << endl;
 
 	//cout << root->key << endl;
 	
 	//search
-	cout << tree.search(5) << endl;
-	//tree.inorder(root);	cout << endl; tree.preorder(root); cout << endl;
+	//tree.show();
+	cout << tree.search(7) << endl;
+	tree.inorder();	cout << endl; //tree.preorder(); cout << endl;
 
 	//cout << endl << "tree height = " << root->height(root)  << endl;
 	//cout << "left subtree height = " << root->height(root->left)  << endl;
