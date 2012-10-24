@@ -236,10 +236,11 @@ public:
 		return 0;
 	}
 
-	void show(){
-		avlNode *temp = hashTable->node[1];
-		cout << temp->key << " " << temp->left->key << " " << temp->right->key << " " << temp->right->left->key << endl;
+	void inorder(){
+		preorder_key(hashTable->node[1]);
 	}
+
+
 
 
 };
@@ -251,36 +252,17 @@ int main(){
 	avlTree tree(s);
 
 	tree.insert(56,34);
-	//tree.inorder();cout << endl;
 	tree.insert(34,57);
-	//tree.inorder();cout << endl;
 	tree.insert(45,67);
-	//tree.inorder();cout << endl;
 	tree.insert(1,56);
-	//tree.inorder();cout << endl;
 	tree.insert(2,89);
-	//tree.inorder();cout << endl;
 	tree.insert(3,80);
-	//tree.inorder();cout << endl;
 	tree.insert(4,23);
-	//tree.inorder();cout << endl;
 	tree.insert(5,12);
-	//tree.inorder();cout << endl;
 	tree.insert(6,234);
-	//tree.inorder();cout << endl;
 	tree.insert(7,456);
-	//tree.inorder();cout << endl;
-
-	//cout << root->key << endl;
-	
-	//search
-	//tree.show();
 	cout << tree.search(7) << endl;
-	tree.inorder();	cout << endl; //tree.preorder(); cout << endl;
-
-	//cout << endl << "tree height = " << root->height(root)  << endl;
-	//cout << "left subtree height = " << root->height(root->left)  << endl;
-	//cout << "right subtree height = " << root->height(root->right)  << endl;
+	tree.inorder();	cout << endl; tree.preorder(); cout << endl;
 	return 0;
 }
 
