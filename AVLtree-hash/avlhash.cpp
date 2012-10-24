@@ -8,12 +8,6 @@
 
 using namespace std;
 
-struct Comparer {
-    bool operator() (const long &b1, const long &b2) const {
-        return b1.to_long() < b2.to_long();
-    }
-};
-
 class node{
 public:
 	long key;
@@ -27,7 +21,7 @@ typedef struct node avlNode;
 
 class avlTree{
 public:
-	map<long,node*,Comparer> *table;
+	map<long,node*> *table;
 	pair<const long,node*> *hashmap;
 	int s;
 
