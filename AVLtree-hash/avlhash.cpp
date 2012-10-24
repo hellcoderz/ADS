@@ -236,7 +236,7 @@ public:
 		return 0;
 	}
 
-	void inorder(){
+	void preorder(){
 		preorder_key(hashTable->node[1]);
 	}
 
