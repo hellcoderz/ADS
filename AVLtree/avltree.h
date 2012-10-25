@@ -355,12 +355,4 @@ public:
 
 }
 
-//driver function
-int main(){
-	
-	long int n;
-	AVLtree::utility *util = new AVLtree::utility(1000000);
-	util->random_runner();	
-	return 0;
-}
 

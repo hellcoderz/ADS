@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace Btree{
+namespace Btreehash{
 
 class node{
 	public:
@@ -339,23 +339,36 @@ class btree{
 		search(root->nodes[i],key);
 	}
 
-
-
 };
 
 
 class utility{
 public:
+
+	struct hash{
+		btnode *node;
+	};
+
 	long n;
 	btnode root;
 	btree *tree;
 	long *data;
+	int s;
+	struct hash *hashTable;
 
-	utility(long n, int order){
+	
+
+	utility(long n, int order, int s){
 		this->n = n;
+		this->s = s;
 		root = NULL;
 		data = new long[n];
 		tree = new btree(order);
+		hashTable = new hash;
+		hashTable->node = new node *[s];
+		for(int i=0;i<s;i++){
+			hashTable->node[i] = NULL;
+		}
 	}
 
 	 void generate_random(){
@@ -385,26 +398,15 @@ public:
 		long i = 0;
 		while(i < n){
 			//cout << "Inserting = " << data[i] <<  endl;
-			tree->insert(root,root,data[i],2*data[i]);
+			tree->insert(hashTable->node[data[i] % s],hashTable->node[data[i] % s],data[i],2*data[i]);
 			i++;
 		}
-	}
-
-	void generate_increasing(){
-		long int i=0;
-		while(i < n){
-			data[i] = i+1;
-			//cout << data[n-i] << " ";
-			i++;
-		}
-		//cout << endl;
-		
 	}
 
 	void search_random(){
 		long i=0;
 		while(i < n){
-			tree->search(root,data[i]);
+			tree->search(hashTable->node[data[i] % s],data[i]);
 			i++;
 		}
 	}
@@ -432,10 +434,6 @@ public:
 		return sum/10;
 	}
 
-	void print_root(){
-		cout << root->key[0] << endl;
-	}
-
 	void random_runner(){
 		clock_t start, end;
 		long insert_array[10], search_array[10];
@@ -460,13 +458,3 @@ public:
 
 }
 
-//driver function
-int main(){
-	
-	long n = 1000000;
-	int order = 7;
-	Btree::utility *util = new Btree::utility(n,order-1);
-	
-	util->random_runner();
-	return 0;
-}

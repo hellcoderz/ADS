@@ -2,7 +2,7 @@ CC = g++
 all: btree
 
 btree:
-	$(CC) $@.cpp -o $@
+	$(CC) -O3 $@.cpp -o $@
 run:
 	@echo "Running Btree"
 	./btree

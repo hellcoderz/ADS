@@ -460,13 +460,3 @@ public:
 
 }
 
-//driver function
-int main(){
-	
-	long n = 1000000;
-	int order = 7;
-	Btree::utility *util = new Btree::utility(n,order-1);
-	
-	util->random_runner();
-	return 0;
-}

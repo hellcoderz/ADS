@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace Btree{
+namespace Btreehash{
 
 class node{
 	public:
@@ -25,6 +25,12 @@ class node{
 			for(int i=0;i<=order+1;i++){
 				this->nodes[i] = NULL;
 			}
+		}
+		
+		~node(){
+			delete[] key;
+			delete[] nodes;
+			delete[] value;
 		}
 	
 };
@@ -88,7 +94,7 @@ class btree{
 
 		}
 
-		void add_middle_to_parent(btnode &rootNode, btnode &parent, btnode left, btnode right, long middle, long value){
+		void add_middle_to_parent(btnode &rootNode, btnode parent, btnode left, btnode right, long middle, long value){
 			
 			//cout << "In add middle to parent" << endl;
 			//cout << "middle element = " << middle << endl;
@@ -129,7 +135,7 @@ class btree{
 			}	
 		}
 
-		void split_into_children(btnode &rootNode, btnode &root){
+		void split_into_children(btnode &rootNode, btnode root){
 			//btnode *root = rootx;
 			//cout << "In split into  children" << endl;
 			long *key = &(root->key[0]);
@@ -218,7 +224,7 @@ class btree{
 
 
 
-		void insert(btnode &rootNode, btnode &root,long key, long value){
+		void insert(btnode &rootNode, btnode root,long key, long value){
 			//cout << "++++++++++++++++++++inserting+++++++++++++++++++++++ " << key << endl;
 			//btnode *root = rootx;
 			//cout << "Order = " << order << endl;
@@ -339,23 +345,41 @@ class btree{
 		search(root->nodes[i],key);
 	}
 
-
-
 };
 
 
 class utility{
 public:
+
+	struct hash{
+		btnode *node;
+	};
+
 	long n;
 	btnode root;
 	btree *tree;
 	long *data;
+	int s;
+	struct hash *hashTable;
 
-	utility(long n, int order){
+	
+
+	utility(long n, int order, int s){
 		this->n = n;
+		this->s = s;
 		root = NULL;
 		data = new long[n];
 		tree = new btree(order);
+		hashTable = new hash;
+		hashTable->node = new node *[s];
+		for(int i=0;i<s;i++){
+			hashTable->node[i] = NULL;
+		}
+	}
+	
+	~utility(){
+		delete[] data;
+		delete[] hashTable;
 	}
 
 	 void generate_random(){
@@ -385,26 +409,15 @@ public:
 		long i = 0;
 		while(i < n){
 			//cout << "Inserting = " << data[i] <<  endl;
-			tree->insert(root,root,data[i],2*data[i]);
+			tree->insert(hashTable->node[data[i] % s],hashTable->node[data[i] % s],data[i],2*data[i]);
 			i++;
 		}
-	}
-
-	void generate_increasing(){
-		long int i=0;
-		while(i < n){
-			data[i] = i+1;
-			//cout << data[n-i] << " ";
-			i++;
-		}
-		//cout << endl;
-		
 	}
 
 	void search_random(){
 		long i=0;
 		while(i < n){
-			tree->search(root,data[i]);
+			tree->search(hashTable->node[data[i] % s],data[i]);
 			i++;
 		}
 	}
@@ -432,14 +445,10 @@ public:
 		return sum/10;
 	}
 
-	void print_root(){
-		cout << root->key[0] << endl;
-	}
-
 	void random_runner(){
 		clock_t start, end;
 		long insert_array[10], search_array[10];
-		cout << "Experiment Running....." << endl;
+		cout << "Btreehash Experiment Running....." << endl;
 		for(int i=0; i<10; i++){
 		
 			generate_random();
@@ -454,19 +463,10 @@ public:
 			make_root_null();
 		
 		}
+		
 		cout << "Insert Avg. Time : " << avg(insert_array) << "   " << "Search Avg. Time : " << avg(search_array) << endl;
 	}
 };
 
 }
 
-//driver function
-int main(){
-	
-	long n = 1000000;
-	int order = 7;
-	Btree::utility *util = new Btree::utility(n,order-1);
-	
-	util->random_runner();
-	return 0;
-}

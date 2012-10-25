@@ -334,7 +334,7 @@ public:
 	void random_runner(){
 		clock_t start, end;
 		long insert_array[10], search_array[10];
-		cout << "Experiment Running....." << endl;
+		cout << "AVLtree Experiment Running....." << endl;
 		for(int i=0; i<10; i++){
 		
 			generate_random();
@@ -355,12 +355,4 @@ public:
 
 }
 
-//driver function
-int main(){
-	
-	long int n;
-	AVLtree::utility *util = new AVLtree::utility(1000000);
-	util->random_runner();	
-	return 0;
-}
 

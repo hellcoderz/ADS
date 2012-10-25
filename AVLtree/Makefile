@@ -2,7 +2,7 @@ CC = g++
 all: avltree
 
 avltree:
-	$(CC) $@.cpp -o $@
+	$(CC) -O3 $@.cpp -o $@
 run:
 	@echo "Running AVLtree"
 	./avltree

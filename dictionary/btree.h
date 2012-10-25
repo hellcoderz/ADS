@@ -439,7 +439,7 @@ public:
 	void random_runner(){
 		clock_t start, end;
 		long insert_array[10], search_array[10];
-		cout << "Experiment Running....." << endl;
+		cout << "Btree Experiment Running....." << endl;
 		for(int i=0; i<10; i++){
 		
 			generate_random();
@@ -460,13 +460,3 @@ public:
 
 }
 
-//driver function
-int main(){
-	
-	long n = 1000000;
-	int order = 7;
-	Btree::utility *util = new Btree::utility(n,order-1);
-	
-	util->random_runner();
-	return 0;
-}

@@ -2,7 +2,7 @@ CC = g++
 all: avlhash
 
 avlhash:
-	$(CC) $@.cpp -o $@
+	$(CC) -O3 $@.cpp -o $@
 run:
 	@echo "Running AVLtree-hash"
 	./avlhash

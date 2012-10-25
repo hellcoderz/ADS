@@ -5,13 +5,14 @@
 #include <cstdlib>
 #include <malloc.h>
 #include <queue>
+using namespace std;
 
-
+namespace AVLhash{
 
 #define CHECK_BALANCE
 #define PAIR(x,y) pair<long,node*>(x,y)
 
-using namespace std;
+
 
 class node{
 public:
@@ -296,33 +297,38 @@ public:
 		}
 		return sum/10;
 	}
+
+	void random_runner(){
+		clock_t start, end;
+		long insert_array[10], search_array[10];
+		cout << "Experiment Running....." << endl;
+		for(int i=0; i<10; i++){
+		
+			generate_random();
+				start = clock();
+			insert_random();
+				end = clock();
+				insert_array[i] = end - start;
+				start = clock();
+			search_random();
+				end = clock();
+				search_array[i] = end - start;
+			make_root_null();
+		
+		}
+		cout << "Insert Avg. Time : " << avg(insert_array) << "   " << "Search Avg. Time : " << avg(search_array) << endl;
+	}
 };
+
+}
 
 //driver function
 int main(){
 	long n = 1000000;
 	int s = 10;
-	utility *util = new utility(n,s);
+	AVLhash::utility *util = new AVLhash::utility(n,s);
 
-	clock_t start, end;
-	long insert_array[10], search_array[10];
-	cout << "Experiment Running....." << endl;
-	for(int i=0; i<10; i++){
-		
-		util->generate_random();
-		start = clock();
-			util->insert_random();
-		end = clock();
-			insert_array[i] = end - start;
-		start = clock();
-			util->search_random();
-		end = clock();
-			search_array[i] = end - start;
-		util->make_root_null();
-		
-	}
-	cout << "Insert Avg. Time : " << util->avg(insert_array) << "   " << "Search Avg. Time : " << util->avg(search_array) << endl;
-	
+	util->random_runner();
 	return 0;
 }
 
