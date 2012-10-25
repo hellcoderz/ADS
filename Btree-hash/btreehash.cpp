@@ -349,7 +349,7 @@ int main()
 {
     long n = 1000000;
     int order = 50;
-    int s = 11;
+    int s = 101;
     Btreehash::utility* util = new Btreehash::utility ( n, order - 1, s );
     util->random_runner();
     return 0;

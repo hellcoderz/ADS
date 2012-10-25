@@ -419,7 +419,7 @@ public:
 int main()
 {
     long n = 1000000;
-    int order = 7;
+    int order = 50;
     Btree::utility* util = new Btree::utility ( n, order - 1 );
     util->random_runner();
     return 0;

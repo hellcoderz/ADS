@@ -304,7 +304,7 @@ public:
 int main()
 {
     long n = 1000000;
-    int s = 10;
+    int s = 101;
     AVLhash::utility* util = new AVLhash::utility ( n, s );
     util->random_runner();
     return 0;

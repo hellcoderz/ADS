@@ -111,7 +111,7 @@ public:
 int main()
 {
     long n = 1000000;
-    int s = 10;
+    int s = 101;
     RBhash::utility* util = new RBhash::utility ( n, s );
     util->random_runner();
     return 0;
