@@ -4,6 +4,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <malloc.h>
+#include <queue>
 
 #define CHECK_BALANCE
 
@@ -44,13 +45,11 @@ public:
 	}
 
 	avlNode *rotateRight(avlNode *root){
-		//cout << "Rotate Right" << endl;
+		cout << "Rotate Right" << endl;
 		avlNode *temp = root->left;
-     	avlNode *temp2 = NULL;
      	root->left = NULL;
 		if(temp->right != NULL){
- 			temp2 = temp->right;
- 			root->left = temp2;
+ 			root->left = temp->right;
  		}
  
     	// Perform rotation
@@ -67,14 +66,12 @@ public:
 	}
 
 	avlNode *rotateLeft(avlNode *root){
-		//cout << "Rotate Left" << endl;
+		cout << "Rotate Left" << endl;
 		avlNode *temp = root->right;
-		avlNode *temp2;
 		root->right = NULL;
 		//cout << "temp->key = " << root->key << endl;
 		if(temp->left != NULL){
- 			temp2 = temp->left;
- 			root->right = temp2;
+ 			root->right = temp->right;
  		}
     	// Perform rotation
     	temp->left = root;
@@ -92,8 +89,8 @@ public:
 	avlNode *insert(avlNode *node,long int key, long int value){
 		avlNode *temp;
 		if(node == NULL){
-			//cout << "Insert: " << data << endl;
-			node = (avlNode *)new avlNode;
+			//cout << "Insert: " << key << endl;
+			node = new avlNode;
 			node->left = NULL;
 			node->right = NULL;
 			node->key = key;
@@ -117,7 +114,7 @@ public:
 		int balance = height(temp->left) - height(temp->right);
 
 	    // If this node becomes unbalanced, then there are 4 cases
- 		//cout << "Current root = " << temp->key <<  " " << "balance = " << balance << endl;
+ 		cout << "Current root = " << temp->key <<  " " << "balance = " << balance << endl;
     	// Left Left Case
     	if (balance > 1 && temp->left != NULL && key < temp->left->key)
         	temp = rotateRight(temp);
@@ -128,14 +125,14 @@ public:
  
     	// Left Right Case
     	else if (balance > 1 && temp->left != NULL && key > temp->left->key){
-    	    temp->left =  rotateLeft(temp->left);
+    	  	temp->left = rotateLeft(temp->left);
     	    temp = rotateRight(temp);
     	}
  
     	// Right Left Case
     	else if (balance < -1 && temp->right != NULL && key < temp->right->key){
     	    temp->right = rotateRight(temp->right);
-    	    temp =  rotateLeft(temp);
+    	    temp = rotateLeft(temp);
     	}
 		
 		return temp;
@@ -183,6 +180,28 @@ public:
 		preorder(root->right);
 		return 0;
 	}
+
+	int level_order(avlNode *root){
+		cout << "LEVEL OREDER TRAVERSAL STARTED" << endl;
+		//cout << endl;
+		queue<avlNode*> que;
+		avlNode *temp;
+		que.push(root);
+		
+		while(!que.empty()){
+			temp = que.front();
+			que.pop();
+			if(root == NULL)
+				return 0;
+			cout << temp->key  << ":" << temp->height << " ";
+			que.push(temp->left);
+			que.push(temp->right);
+			//cout << endl;
+		}
+		cout << "LEVEL OREDER TRAVERSAL ENDED" << endl;
+		return 0;
+	}
+	
 };
 
 class utility{
@@ -250,7 +269,7 @@ public:
 		cout << "Insert Started" << endl;
 		long int i = 0;
 		while(i < n){
-			//cout << "Inserting = " << data[i] <<  endl;
+			cout << "Inserting = " << data[i] <<  endl;
 			root = tree.insert(root,data[i],2*data[i]);
 			//cout << "tree height = " << tree.height(root) <<  endl;
 			i++;
@@ -259,10 +278,11 @@ public:
 	}
 
 	void insert_defined(){
-		int d[] = {1,139,138,137,5,6,134,133,9};
+		int d[] = {20,19,18,4,16,6,7,13,9,11,10,12,8,14};
 		for(int i=0;i<sizeof(d)/sizeof(int);i++){
-			//cout << "Inserting = " << d[i] <<  endl;
+			cout << "Inserting = " << d[i] <<  endl;
 			root = tree.insert(root,d[i],2*d[i]);
+			//tree.level_order(root);
 		}
 	}
 
@@ -295,15 +315,15 @@ int main(){
 	
 	long int n;
 	clock_t start, end;
-	for(int i=0; i<10; i++){
-		utility *util = new utility(1000000);
+	//for(int i=0; i<10; i++){
+		utility *util = new utility(20);
 		
 		start = clock();
 		util->generate_random();
 		//util->generate_decreasing();
 		//util->generate_increasing();
-		//util->insert_defined();
-		util->insert_random();
+		util->insert_defined();
+		//util->insert_random();
 		util->height();
 		util->search_random();
 		//util->inorder_random();
@@ -311,7 +331,7 @@ int main(){
 		util->make_root_null();
 		util->height();
 		cout << "Time: " << end - start << endl;
-	}
+	//}
 	
 	return 0;
 }

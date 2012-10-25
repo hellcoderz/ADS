@@ -32,10 +32,14 @@ typedef struct node *btnode;
 
 class btree{
 	public:
+
+
+
 		int order;
 
 		btree(int order){
 			this->order = order;
+			
 		}
 
 
@@ -325,38 +329,37 @@ class btree{
 		//cout << "LEVEL OREDER TRAVERSAL ENDED" << endl;
 	}
 
-	long search(btnode &root,long key){
-		int i;
-		for(i=0;i<root->capacity;i++){
-			if(root->key[i] == key)
-				return root->key[i];
-			else if(root->key[i] > key){
-				break;
-			}
-		}
-		search(root->nodes[i],key);
-	}
-
 };
 
 
 class utility{
 public:
+
+	struct hash{
+		btnode node;
+	};
+
 	long n;
-	btnode root;
 	btree *tree;
 	long *data;
+	hash **hashTable;
+	int s;
 
-	utility(long n, int order){
+	utility(long n, int order,int s){
 		this->n = n;
-		root = NULL;
+		this->s = s;
 		data = new long[n];
 		tree = new btree(order);
+		hashTable = new hash *[s];
+		for(int i=0;i<s;i++){
+			hashTable[i]->node = NULL;
+		}
 	}
 
 	 void generate_random(){
 	 	//cout << n << endl;
 		long r, temp;
+		n = 100;
 		long i = 0;
 		data = new long[n];
 		srand(time(0));
@@ -379,56 +382,50 @@ public:
 
 	void insert_random(){
 		long i = 0;
+		btnode root;
+
 		while(i < n){
 			//cout << "Inserting = " << data[i] <<  endl;
+			root = hashTable[data[i] % s]->node;
 			tree->insert(root,root,data[i],2*data[i]);
 			i++;
 		}
 	}
 
-	void search_random(){
-		long i=0;
-		while(i < n){
-			tree->search(root,data[i]);
-			i++;
-		}
-	}
+	//long search(long key){
+	//	return tree.search(root,key);
+	//}
 
 	void inorder(){
+		btnode root = hashTable[data[0] % s]->node;
+		if(root == NULL)
+			cout << "NULL";
 		tree->inorder(root);
 	}
 
 	void preorder(){
+		btnode root = hashTable[data[0] % s]->node;
 		tree->preorder(root);
 	}
 
 	void level_order(){
-		tree->level_order(root);
-	}
-	void make_root_null(){
-		root = NULL;
+		btnode root = hashTable[data[0] % s]->node;
 	}
 };
 
 //driver function
 int main(){
 	
-	long n = 1000000;
-	int order = 100;
-	clock_t start, end;
-	utility *util = new utility(n,order-1);
-	for(int i=0; i<10; i++){
-		start = clock();
-		
-		util->generate_random();
-		util->insert_random();
-		util->search_random();
-		end = clock();
-		//util->inorder();
-		//util->level_order();
-		util->make_root_null();
-		cout << "Time: " << end - start << endl;
-	}
+	long n = 100;
+	int order = 3;
+	int s =3;
+	utility *util = new utility(n,order-1,s);
+	util->generate_random();
+	util->insert_random();
+	//cout << util->search(78);
+	util->inorder();
+	//util->level_order();
+	
 	/*
 	btnode root = NULL;
 	btree tree(2);

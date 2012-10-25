@@ -2,6 +2,9 @@
 #include <time.h>
 #include <stdio.h>
 #include <map>
+#include <ctime>
+#include <cstdlib>
+
 
 #define CHECK_BALANCE
 #define PAIR(x,y) pair<long,node*>(x,y)
@@ -245,24 +248,67 @@ public:
 
 };
 
+//util class
+class utility{
+public:
+	long n;
+	avlTree *tree;
+	long *data;
+
+	utility(long n, int s){
+		this->n = n;
+		data = new long[n];
+		tree = new avlTree(s);
+	}
+
+	 void generate_random(){
+	 	//cout << n << endl;
+		long r, temp;
+		n = 100;
+		long i = 0;
+		data = new long[n];
+		srand(time(0));
+		while(i < n){
+			data[i] = i+1;
+			i++;
+		}
+		i=0;
+
+		while(i < n/2){
+			
+			r = rand() % n;
+			//cout << r << "->" << i << endl;
+			temp = data[r];
+			data[r] = data[n-r-1];
+			data[n-r-1] = temp;
+			i++;
+		}
+	}
+
+	void insert_random(){
+		long i = 0;
+		while(i < n){
+			//cout << "Inserting = " << data[i] <<  endl;
+			tree->insert(data[i],2*data[i]);
+			i++;
+		}
+	}
+
+	long search(long key){
+		return tree->search(key);
+	}
+};
+
 //driver function
 int main(){
+	long n = 100;
+	int s = 3;
+	avlNode *root = NULL;
+	utility *util = new utility(n,s);
+	util->generate_random();
+	util->insert_random();
+	cout << util->search(56);
 	
-	int s=3;
-	avlTree tree(s);
-
-	tree.insert(56,34);
-	tree.insert(34,57);
-	tree.insert(45,67);
-	tree.insert(1,56);
-	tree.insert(2,89);
-	tree.insert(3,80);
-	tree.insert(4,23);
-	tree.insert(5,12);
-	tree.insert(6,234);
-	tree.insert(7,456);
-	cout << tree.search(7) << endl;
-	tree.inorder();	cout << endl; tree.preorder(); cout << endl;
 	return 0;
 }
 
