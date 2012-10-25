@@ -8,19 +8,33 @@ Tags: B-Tree in C++ , AVL Tree in C++
       <li>search</li>
       <li>inorder traversal</li>
       <li>preorder traversal</li>
+      <li>level oreder traversal<li>
     </ol>
-
+  AVL Hash Tree:
+    <ol>
+      <li>insert</li>
+      <li>search</li>
+      <li>inorder traversal</li>
+      <li>preorder traversal</li>
+      <li>level oreder traversal<li>
+    </ol>
   B-Tree:
     <ol>
       <li>insert</li>
+      <li>search</li>
       <li>inorder traversal</li>
       <li>preorder traversal</li>
+      <li>level oreder traversal<li>
+    </ol>
+  B-Tree Hash:
+    <ol>
+      <li>insert</li>
+      <li>search</li>
+      <li>inorder traversal</li>
+      <li>preorder traversal</li>
+      <li>level oreder traversal<li>
     </ol>
 <h3>TO DO</h3>
   <ol>
-    <li>AVL Tree postorder traversal</li>
-    <li>B-Tree search and postorder traversal</li>
-    <li>AVLhash Tree</li>
-    <li>B-Tree hash </li>
     <li>RedBlack hash tree</li>
   </ol>
