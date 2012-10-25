@@ -337,6 +337,8 @@ class btree{
 		search(root->nodes[i],key);
 	}
 
+
+
 };
 
 
@@ -386,6 +388,17 @@ public:
 		}
 	}
 
+	void generate_increasing(){
+		long int i=0;
+		while(i < n){
+			data[i] = i+1;
+			//cout << data[n-i] << " ";
+			i++;
+		}
+		//cout << endl;
+		
+	}
+
 	void search_random(){
 		long i=0;
 		while(i < n){
@@ -408,71 +421,49 @@ public:
 	void make_root_null(){
 		root = NULL;
 	}
+
+	long avg(long array[]){
+		long sum=0;
+		for(int i=0;i<10;i++){
+			sum += array[i];
+		}
+		return sum/10;
+	}
+
+	void print_root(){
+		cout << root->key[0] << endl;
+	}
 };
 
 //driver function
 int main(){
 	
 	long n = 1000000;
-	int order = 100;
-	clock_t start, end;
+	int order = 7;
 	utility *util = new utility(n,order-1);
+	
+	clock_t start, end;
+	long insert_array[10], search_array[10];
+	cout << "Experiment Running....." << endl;
 	for(int i=0; i<10; i++){
-		start = clock();
 		
 		util->generate_random();
-		util->insert_random();
-		util->search_random();
+		//util->generate_increasing();
+		start = clock();
+			util->insert_random();
 		end = clock();
-		//util->inorder();
-		//util->level_order();
-		util->make_root_null();
-		cout << "Time: " << end - start << endl;
-	}
-	/*
-	btnode root = NULL;
-	btree tree(2);
-	tree.insert(root,root,56,12);
-	tree.insert(root,root,34,45);
-	tree.insert(root,root,45,78);
-	tree.level_order(root);
+			insert_array[i] = end - start;
+		start = clock();
+			util->search_random();
+		end = clock();
+			search_array[i] = end - start;
 
-	tree.insert(root,root,1,89);
-	tree.level_order(root);
-	tree.insert(root,root,2,90);
-	tree.level_order(root);
-	tree.insert(root,root,3,87);
-	tree.level_order(root);
-	tree.insert(root,root,4,43);
-	tree.level_order(root);
-	tree.insert(root,root,5,543);
-	tree.level_order(root);
-	tree.insert(root,root,6,321);
-	tree.level_order(root);
-	tree.insert(root,root,7,456);
-	tree.inorder(root); cout << endl; tree.preorder(root); cout << endl;
-	
-	//4
-	cout << root->key[0] << endl;
-	//45
-	cout << root->nodes[1]->capacity << endl;
-	//5
-	cout << root->nodes[1]->nodes[0]->key[0] << endl;
-	//7
-	cout << root->nodes[1]->nodes[1]->key[0] << endl;
-	
-	tree.insert(root,root,8,456);
-	//tree.insert(root,root,9,456);
-	//tree.insert(root,root,10,456);
-	tree.inorder(root); cout << endl; tree.preorder(root); cout << endl;
-	//4
-	cout << root->key[0] << endl;
-	//8
-	cout << root->key[1] << endl;
-	//5
-	cout << root->nodes[1]->nodes[0]->key[0] << endl;
-	//7
-	cout << root->nodes[1]->nodes[1]->key[0] << endl;
-	*/
+		//util->print_root();
+		//util->inorder();
+		util->make_root_null();
+
+		
+	}
+	cout << "Insert Avg. Time : " << util->avg(insert_array) << "   " << "Search Avg. Time : " << util->avg(search_array) << endl;
 	return 0;
 }

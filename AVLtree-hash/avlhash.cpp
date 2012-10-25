@@ -1,9 +1,11 @@
 #include <iostream>
 #include <time.h>
 #include <stdio.h>
-#include <map>
 #include <ctime>
 #include <cstdlib>
+#include <malloc.h>
+#include <queue>
+
 
 
 #define CHECK_BALANCE
@@ -49,131 +51,112 @@ public:
 			return n;
 	}
 
-	avlNode *rotateLeftOnce(avlNode *node){
-	 //cout << "rotateLeftOnce" << endl;
-     avlNode *otherNode;
-
-     otherNode = node->left;
-     node->left = otherNode->right;
-     otherNode->right = node;
-     node = otherNode;
-
-     node->height = 0;
-     node->right->height = 0;
-     return node;
-	}
-
-	avlNode *rotateRightOnce(avlNode *node){
-	 //cout << "rotateRightOnce" << endl;
-     avlNode *otherNode;
-
-     otherNode = node->right;
-     node->right = otherNode->left;
-     otherNode->left = node;
-     node = otherNode;
-
-     node->height = 0;
-     node->left->height = 0;
-     return node;
-	}
-
-	avlNode *rotateLeftTwice(avlNode *node){
-	 avlNode *temp = node->left;
-	 //cout << "rotateLeftTwice" << endl;
-     avlNode *otherNode = temp;
-
-     otherNode = temp->right;
-     temp->right = otherNode->left;
-     otherNode->left = temp;
-     temp = otherNode;
-
-     temp->height = 0;
-     temp->left->height = 0;
-     node->left = temp;
-     return rotateLeftOnce(node);
-	}
-
-	avlNode *rotateRightTwice(avlNode *node){
-	 avlNode *temp = node->right;
-	 //cout << "rotateRightTwice" << endl;
-     avlNode *otherNode;
-
-     otherNode = temp->left;
-     temp->left = otherNode->right;
-     otherNode->right = temp;
-     temp = otherNode;
-
-     temp->height = 0;
-     temp->right->height = 0;
-     node->right = temp;
-     return rotateRightOnce(node);
+	int max(int a, int b){
+		if(a > b)
+			return a;
+		else
+			return b;
 	}
 
 	int height(avlNode *root){
 		if(root == NULL)
-				return -1;
-
-		int lh = height(root->left);
-		int rh = height(root->right);
-		if(lh > rh)
-			return 1 + lh;
-		else
-			return 1 + rh;
+				return 0;
+		return root->height;
 
 	}
 
+	avlNode *rotateRight(avlNode *root){
+		//cout << "Rotate Right" << endl;
+		avlNode *temp = root->left;
+     	root->left = NULL;
+		if(temp->right != NULL){
+ 			root->left = temp->right;
+ 		}
+ 
+    	// Perform rotation
+    	temp->right = root;
+    	
+ 
+   		 // Update heights
+    	root->height = max(height(root->left), height(root->right))+1;
+    	temp->height = max(height(temp->left), height(temp->right))+1;
+ 
+    	// Return new root
+    	return temp;
 
+	}
 
-	avlNode *insert_data(avlNode *node, const long key, long data){
+	avlNode *rotateLeft(avlNode *root){
+		//cout << "Rotate Left: " << root->key << endl;
+		avlNode *temp = root->right;
+		root->right = NULL;
+		//cout << "temp->key = " << root->key << endl;
+		if(temp->left != NULL){
+ 			root->right = temp->left;
+ 		}
+    	// Perform rotation
+    	temp->left = root;
+    	
+ 
+    	// Update heights
+    	root->height = max(height(root->left), height(root->right))+1;
+    	temp->height = max(height(temp->left), height(temp->right))+1;
+ 
+    	// Return new root
+    	return temp;
+
+	}
+
+	avlNode *insert_data(avlNode *node,long int key, long int value){
 		avlNode *temp;
 		if(node == NULL){
-			//cout << "Insert: " << data << endl;
-			node = (avlNode *)new avlNode;
+			//cout << "Insert: " << key << endl;
+			node = new avlNode;
 			node->left = NULL;
 			node->right = NULL;
 			node->key = key;
-			node->value = data;
-			node->height = 0;
+			node->value = value;
+			node->height = 1;
+
+			temp = node;
 			
 		}else{
 			if(node->key > key){
-				node->left = insert_data(node->left, key, data);
+				node->left = insert_data(node->left,key,value);
 				temp = node;
-				temp->height = height(temp->left) - height(temp->right);
-				#ifdef CHECK_BALANCE
-				if(temp->height == -2 || temp->height == 2){
-					//cout << "left balancing" << endl;
-					if(temp->key < key && temp->right->key > key)
-						node = rotateRightTwice(temp);
-					else if(temp->key < key && temp->right->key < key)
-						node = rotateRightOnce(temp);
-					else if(temp->key > key && temp->left->key < key)
-						node = rotateLeftTwice(temp);
-					else if(temp->key > key && temp->left->key > key)
-						node = rotateLeftOnce(temp);
-				}
-				#endif
+				
 			}else{
-				node->right = insert_data(node->right, key, data);
-				temp = node;
-				temp->height = height(temp->left) - height(temp->right);
-				#ifdef CHECK_BALANCE
-				if(temp->height == -2 || temp->height == 2){
-					//cout << "right balancing" << endl;
-					if(temp->key < key && temp->right->key > key)
-						node = rotateRightTwice(temp);
-					else if(temp->key < key && temp->right->key < key)
-						node = rotateRightOnce(temp);
-					else if(temp->key > key && temp->left->key < key)
-						node = rotateLeftTwice(temp);
-					else if(temp->key > key && temp->left->key > key)
-						node = rotateLeftOnce(temp);
-				}
-				#endif
+				node->right = insert_data(node->right,key,value);
+				temp = node;				
 			}
 		}
+
+		temp->height = max(height(temp->left),height(temp->right)) + 1;
+		int balance = height(temp->left) - height(temp->right);
+
+	    // If this node becomes unbalanced, then there are 4 cases
+ 		//cout << "Current root = " << temp->key <<  " " << "balance = " << balance << endl;
+    	// Left Left Case
+    	if (balance > 1 && temp->left != NULL && key < temp->left->key)
+        	temp = rotateRight(temp);
+ 
+    	// Right Right Case
+    	else if (balance < -1 && temp->right != NULL && key > temp->right->key )
+    	    temp = rotateLeft(temp);
+ 
+    	// Left Right Case
+    	else if (balance > 1 && temp->left != NULL && key > temp->left->key){
+    	  	temp->left = rotateLeft(temp->left);
+    	    temp = rotateRight(temp);
+    	}
+ 
+    	// Right Left Case
+    	else if (balance < -1 && temp->right != NULL && key < temp->right->key){
+    	    temp->right = rotateRight(temp->right);
+    	    temp = rotateLeft(temp);
+    	}
 		
-		return node;
+		return temp;
 	}
 
 	void insert(const long key, long value){
@@ -182,27 +165,19 @@ public:
 
 
 	// search function
-	long search_key(avlNode *root,long key){
-		avlNode *temp = root;
-		//cout << "search term = " << temp->key << endl;
-		if(temp == NULL)
-			return -1;
-		if(temp->key == key){
-			return temp->value;
-		}else{
-			if(temp->key > key){
-				if(temp->left == NULL)
-					return -1;
-				else
-					return search_key(temp->left,key);
+	long int search_key(avlNode *root,long int key){
+		//cout << "Searching " << key << endl;
+		while(root != NULL){
+			if(root->key == key){
+				return root->value;
+			}else if(root->key > key){
+				root = root->left;
 			}else{
-				if(temp->right == NULL)
-					return -1;
-				else
-					return search_key(temp->right,key);
+				root = root->right;
 			}
+
 		}
-	
+		return -1;	
 	}
 
 	long search(long key){
@@ -243,6 +218,12 @@ public:
 		preorder_key(hashTable->node[1]);
 	}
 
+	void make_root_null(){
+		for(int i=0;i<s;i++){
+			hashTable->node[i] = NULL;
+		}
+	}
+
 
 
 
@@ -264,7 +245,6 @@ public:
 	 void generate_random(){
 	 	//cout << n << endl;
 		long r, temp;
-		n = 100;
 		long i = 0;
 		data = new long[n];
 		srand(time(0));
@@ -294,20 +274,54 @@ public:
 		}
 	}
 
-	long search(long key){
-		return tree->search(key);
+	void search_random(){
+		long int i = 0;
+		long ret;
+		while(i < n){
+			//cout << "Searching " << data[i] << endl;
+			ret = tree->search(data[i]);
+			i++;
+		}
+		//
+	}
+
+	void make_root_null(){
+		tree->make_root_null();
+	}
+
+	long avg(long array[]){
+		long sum=0;
+		for(int i=0;i<10;i++){
+			sum += array[i];
+		}
+		return sum/10;
 	}
 };
 
 //driver function
 int main(){
-	long n = 100;
-	int s = 3;
-	avlNode *root = NULL;
+	long n = 1000000;
+	int s = 10;
 	utility *util = new utility(n,s);
-	util->generate_random();
-	util->insert_random();
-	cout << util->search(56);
+
+	clock_t start, end;
+	long insert_array[10], search_array[10];
+	cout << "Experiment Running....." << endl;
+	for(int i=0; i<10; i++){
+		
+		util->generate_random();
+		start = clock();
+			util->insert_random();
+		end = clock();
+			insert_array[i] = end - start;
+		start = clock();
+			util->search_random();
+		end = clock();
+			search_array[i] = end - start;
+		util->make_root_null();
+		
+	}
+	cout << "Insert Avg. Time : " << util->avg(insert_array) << "   " << "Search Avg. Time : " << util->avg(search_array) << endl;
 	
 	return 0;
 }

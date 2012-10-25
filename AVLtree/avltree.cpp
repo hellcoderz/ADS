@@ -45,7 +45,7 @@ public:
 	}
 
 	avlNode *rotateRight(avlNode *root){
-		cout << "Rotate Right" << endl;
+		//cout << "Rotate Right" << endl;
 		avlNode *temp = root->left;
      	root->left = NULL;
 		if(temp->right != NULL){
@@ -66,12 +66,12 @@ public:
 	}
 
 	avlNode *rotateLeft(avlNode *root){
-		cout << "Rotate Left" << endl;
+		//cout << "Rotate Left: " << root->key << endl;
 		avlNode *temp = root->right;
 		root->right = NULL;
 		//cout << "temp->key = " << root->key << endl;
 		if(temp->left != NULL){
- 			root->right = temp->right;
+ 			root->right = temp->left;
  		}
     	// Perform rotation
     	temp->left = root;
@@ -114,7 +114,7 @@ public:
 		int balance = height(temp->left) - height(temp->right);
 
 	    // If this node becomes unbalanced, then there are 4 cases
- 		cout << "Current root = " << temp->key <<  " " << "balance = " << balance << endl;
+ 		//cout << "Current root = " << temp->key <<  " " << "balance = " << balance << endl;
     	// Left Left Case
     	if (balance > 1 && temp->left != NULL && key < temp->left->key)
         	temp = rotateRight(temp);
@@ -165,7 +165,8 @@ public:
 		}
 		//cout << "else" << endl;
 		inorder(root->left);
-		cout << root->key << " ";
+		int balance = height(root->left) - height(root->right);
+		cout << root->key << ":" << balance <<" ";
 		inorder(root->right);
 		return 0;
 	}
@@ -257,7 +258,7 @@ public:
 	void generate_increasing(){
 		long int i=0;
 		while(i < n){
-			data[i] = i;
+			data[i] = i+1;
 			//cout << data[n-i] << " ";
 			i++;
 		}
@@ -266,10 +267,10 @@ public:
 	}
 
 	void insert_random(){
-		cout << "Insert Started" << endl;
+		//cout << "Insert Started" << endl;
 		long int i = 0;
 		while(i < n){
-			cout << "Inserting = " << data[i] <<  endl;
+			//cout << "Inserting = " << data[i] <<  endl;
 			root = tree.insert(root,data[i],2*data[i]);
 			//cout << "tree height = " << tree.height(root) <<  endl;
 			i++;
@@ -282,12 +283,14 @@ public:
 		for(int i=0;i<sizeof(d)/sizeof(int);i++){
 			cout << "Inserting = " << d[i] <<  endl;
 			root = tree.insert(root,d[i],2*d[i]);
+			inorder_random();
+			preorder_random();
 			//tree.level_order(root);
 		}
 	}
 
 	void search_random(){
-		cout << "Search Started" << endl;
+		//cout << "Search Started" << endl;
 		long int i = 0;
 		long ret;
 		while(i < n){
@@ -299,8 +302,16 @@ public:
 	}
 
 	void inorder_random(){
+		cout << "generating inorder traversal" << endl;
 		tree.inorder(root);
+		cout << endl << "inorder traversal ended" << endl;
 	}
+	void preorder_random(){
+		cout << "generating preorder traversal" << endl;
+		tree.preorder(root);
+		cout << endl << "preorder traversal ended" << endl;
+	}
+
 	void make_root_null(){
 		root = NULL;
 	}
@@ -308,30 +319,40 @@ public:
 	void height(){
 		cout << "tree height = " << tree.height(root) << endl;
 	}
+
+	long avg(long array[]){
+		long sum=0;
+		for(int i=0;i<10;i++){
+			sum += array[i];
+		}
+		return sum/10;
+	}
 };
 
 //driver function
 int main(){
 	
 	long int n;
+	utility *util = new utility(1000000);
+
 	clock_t start, end;
-	//for(int i=0; i<10; i++){
-		utility *util = new utility(20);
+	long insert_array[10], search_array[10];
+	cout << "Experiment Running....." << endl;
+	for(int i=0; i<10; i++){
 		
-		start = clock();
 		util->generate_random();
-		//util->generate_decreasing();
-		//util->generate_increasing();
-		util->insert_defined();
-		//util->insert_random();
-		util->height();
-		util->search_random();
-		//util->inorder_random();
+		start = clock();
+			util->insert_random();
 		end = clock();
+			insert_array[i] = end - start;
+		start = clock();
+			util->search_random();
+		end = clock();
+			search_array[i] = end - start;
 		util->make_root_null();
-		util->height();
-		cout << "Time: " << end - start << endl;
-	//}
+		
+	}
+	cout << "Insert Avg. Time : " << util->avg(insert_array) << "   " << "Search Avg. Time : " << util->avg(search_array) << endl;
 	
 	return 0;
 }
