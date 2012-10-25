@@ -22,7 +22,7 @@ Hash data structure just contain hashmap with each node pointing to a B+tree, AV
       <li>search</li>
       <li>inorder traversal</li>
       <li>preorder traversal</li>
-      <li>level oreder traversal<li>
+      <li>level oreder traversal</li>
     </ol>
   AVL Hash Tree:
     <ol>
@@ -30,7 +30,7 @@ Hash data structure just contain hashmap with each node pointing to a B+tree, AV
       <li>search</li>
       <li>inorder traversal</li>
       <li>preorder traversal</li>
-      <li>level oreder traversal<li>
+      <li>level oreder traversal</li>
     </ol>
   B+-Tree:
     <ol>
@@ -38,7 +38,7 @@ Hash data structure just contain hashmap with each node pointing to a B+tree, AV
       <li>search</li>
       <li>inorder traversal</li>
       <li>preorder traversal</li>
-      <li>level oreder traversal<li>
+      <li>level oreder traversal</li>
     </ol>
   B+-Tree Hash:
     <ol>
@@ -46,9 +46,9 @@ Hash data structure just contain hashmap with each node pointing to a B+tree, AV
       <li>search</li>
       <li>inorder traversal</li>
       <li>preorder traversal</li>
-      <li>level oreder traversal<li>
+      <li>level oreder traversal</li>
     </ol>
 <h3>TO DO</h3>
   <ol>
-    <li>RedBlack hash tree</li>
+    <li>Optimize Code for minimum space requirement for all data structure: convert deep copy to shallow copy</li>
   </ol>
