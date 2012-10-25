@@ -9,6 +9,8 @@ AVLtree-hash:
 	$(MAKE) -C $@
 RBtree-hash:
 	$(MAKE) -C $@
+Btree-hash:
+	$(MAKE) -C $@
 RBtree:
 	$(MAKE) -C $@
 run:
