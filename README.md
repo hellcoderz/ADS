@@ -9,7 +9,7 @@ Tags: B+-Tree in C++ , AVL Tree in C++
 <h3>Default parameters: </h3>
 no. of nodes = 1000000<br>
 order of B+-tree = 50<br>
-size of hash = 11
+size of hash = 101
 <br><br>
 Converted all data structures .cpp to header files located in ./dictionary directory and also a driver .cpp file.<br>
 Compiling and running instructions are same.<br><br>
