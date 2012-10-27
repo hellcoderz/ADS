@@ -20,7 +20,7 @@ using namespace std;
 int main()
 {
     long n = 1000000;
-    int s = 11;
+    int s = 101;
     int order = 50;
     AVLtree::utility* avltree = new AVLtree::utility ( n );
     AVLhash::utility* avlhash = new AVLhash::utility ( n, s );
@@ -31,7 +31,7 @@ int main()
     btree->random_runner();
     delete btree;
     btreehash->random_runner();
-    delete btreehash;
+    //delete btreehash;
     avltree->random_runner();
     delete avltree;
     avlhash->random_runner();

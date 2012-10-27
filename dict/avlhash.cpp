@@ -5,21 +5,24 @@
 #include <cstdlib>
 #include <malloc.h>
 #include <queue>
+using namespace std;
 
-
-namespace AVLtree
+namespace AVLhash
 {
 
 #define CHECK_BALANCE
+#define PAIR(x,y) pair<long,node*>(x,y)
 
-using namespace std;
 
-struct node {
-    long int key;
+
+class node
+{
+public:
+    long key;
+    long value;
     node* left;
     node* right;
     int height;
-    long int value;
 };
 
 typedef struct node avlNode;
@@ -27,6 +30,23 @@ typedef struct node avlNode;
 class avlTree
 {
 public:
+    struct hash {
+        avlNode** node;
+    };
+
+
+    int s;
+    struct hash* hashTable;
+
+    avlTree ( int s ) {
+        this->s = s;
+        hashTable = new hash;
+        hashTable->node = new node *[s];
+        for ( int i = 0; i < s; i++ ) {
+            hashTable->node[i] = NULL;
+        }
+    }
+
 
     int abs ( int n ) {
         if ( n < 0 )
@@ -81,7 +101,7 @@ public:
         return temp;
     }
 
-    avlNode* insert ( avlNode* node, long int key, long int value ) {
+    avlNode* insert_data ( avlNode* node, long int key, long int value ) {
         avlNode* temp;
         if ( node == NULL ) {
             //cout << "Insert: " << key << endl;
@@ -94,10 +114,10 @@ public:
             temp = node;
         } else {
             if ( node->key > key ) {
-                node->left = insert ( node->left, key, value );
+                node->left = insert_data ( node->left, key, value );
                 temp = node;
             } else {
-                node->right = insert ( node->right, key, value );
+                node->right = insert_data ( node->right, key, value );
                 temp = node;
             }
         }
@@ -124,11 +144,13 @@ public:
         return temp;
     }
 
-
+    void insert ( const long key, long value ) {
+        hashTable->node[key % s] = insert_data ( hashTable->node[key % s], key, value );
+    }
 
 
     // search function
-    long int search ( avlNode* root, long int key ) {
+    long int search_key ( avlNode* root, long int key ) {
         //cout << "Searching " << key << endl;
         while ( root != NULL ) {
             if ( root->key == key ) {
@@ -142,82 +164,77 @@ public:
         return -1;
     }
 
-    int inorder ( avlNode* root ) {
+    long search ( long key ) {
+        return search_key ( hashTable->node[ ( int ) key % s], key );
+    }
+
+    int inorder_key ( avlNode* root ) {
         if ( root == NULL ) {
             return -1;
         }
-        //cout << "else" << endl;
-        inorder ( root->left );
-        int balance = height ( root->left ) - height ( root->right );
-        cout << root->key << ":" << balance << " ";
-        inorder ( root->right );
+        //cout << "going left" << endl;
+        inorder_key ( root->left );
+        //cout << "printing" << endl;
+        cout << root->key << " ";
+        //cout << "going right" << endl;
+        inorder_key ( root->right );
         return 0;
     }
 
-    int preorder ( avlNode* root ) {
+    void inorder() {
+        inorder_key ( hashTable->node[1] );
+    }
+
+    int preorder_key ( avlNode* root ) {
         if ( root == NULL ) {
             return -1;
         }
         //cout << "else" << endl;
         cout << root->key << " ";
-        preorder ( root->left );
-        preorder ( root->right );
+        preorder_key ( root->left );
+        preorder_key ( root->right );
         return 0;
     }
 
-    int level_order ( avlNode* root ) {
-        cout << "LEVEL OREDER TRAVERSAL STARTED" << endl;
-        //cout << endl;
-        queue<avlNode*> que;
-        avlNode* temp;
-        que.push ( root );
-        while ( !que.empty() ) {
-            temp = que.front();
-            que.pop();
-            if ( root == NULL )
-                return 0;
-            cout << temp->key  << ":" << temp->height << " ";
-            que.push ( temp->left );
-            que.push ( temp->right );
-            //cout << endl;
-        }
-        cout << "LEVEL OREDER TRAVERSAL ENDED" << endl;
-        return 0;
+    void preorder() {
+        preorder_key ( hashTable->node[1] );
     }
+
+    void make_root_null() {
+        for ( int i = 0; i < s; i++ ) {
+            hashTable->node[i] = NULL;
+        }
+    }
+
+
+
 
 };
 
+//util class
 class utility
 {
 public:
-    long int n;
-    avlNode* root;
-    avlTree *tree;
-    long int* data;
+    long n;
+    avlTree* tree;
+    long* data;
 
-    utility ( const long int n ) {
-        //cout << n << endl;
+    utility ( long n, int s ) {
         this->n = n;
-        root = NULL;
-        data = ( long int* ) malloc ( sizeof ( long ) * n );
-    }
-    ~utility (){
-        delete[] data;
-        delete tree;
+        data = new long[n];
+        tree = new avlTree ( s );
     }
 
     void generate_random() {
         //cout << n << endl;
-        long int r, temp;
-        long int i = 0;
-        data = new long int[n];
+        long r, temp;
+        long i = 0;
+        data = new long[n];
         srand ( time ( 0 ) );
         while ( i < n ) {
             data[i] = i + 1;
-            //cout << data[i] << " ";
             i++;
         }
-        //cout << endl;
         i = 0;
         while ( i < n / 2 ) {
             r = rand() % n;
@@ -228,77 +245,29 @@ public:
             i++;
         }
     }
-    void generate_decreasing() {
-        long int i = n;
-        while ( i > 0 ) {
-            data[n - i] = i;
-            //cout << data[n-i] << " ";
-            i--;
-        }
-        //cout << endl;
-    }
-    void generate_increasing() {
-        long int i = 0;
-        while ( i < n ) {
-            data[i] = i + 1;
-            //cout << data[n-i] << " ";
-            i++;
-        }
-        //cout << endl;
-    }
 
     void insert_random() {
-        //cout << "Insert Started" << endl;
-        long int i = 0;
+        long i = 0;
         while ( i < n ) {
             //cout << "Inserting = " << data[i] <<  endl;
-            root = tree->insert ( root, data[i], 2 * data[i] );
-            //cout << "tree height = " << tree.height(root) <<  endl;
+            tree->insert ( data[i], 2 * data[i] );
             i++;
-        }
-        //cout << data[4] << endl;
-    }
-
-    void insert_defined() {
-        int d[] = {20, 19, 18, 4, 16, 6, 7, 13, 9, 11, 10, 12, 8, 14};
-        for ( int i = 0; i < sizeof ( d ) / sizeof ( int ); i++ ) {
-            cout << "Inserting = " << d[i] <<  endl;
-            root = tree->insert ( root, d[i], 2 * d[i] );
-            inorder_random();
-            preorder_random();
-            //tree.level_order(root);
         }
     }
 
     void search_random() {
-        //cout << "Search Started" << endl;
         long int i = 0;
         long ret;
         while ( i < n ) {
             //cout << "Searching " << data[i] << endl;
-            ret = tree->search ( root, data[i] );
+            ret = tree->search ( data[i] );
             i++;
         }
-        //cout << endl;
-    }
-
-    void inorder_random() {
-        cout << "generating inorder traversal" << endl;
-        tree->inorder ( root );
-        cout << endl << "inorder traversal ended" << endl;
-    }
-    void preorder_random() {
-        cout << "generating preorder traversal" << endl;
-        tree->preorder ( root );
-        cout << endl << "preorder traversal ended" << endl;
+        //
     }
 
     void make_root_null() {
-        root = NULL;
-    }
-
-    void height() {
-        cout << "tree height = " << tree->height ( root ) << endl;
+        tree->make_root_null();
     }
 
     long avg ( long array[] ) {
@@ -312,7 +281,7 @@ public:
     void random_runner() {
         clock_t start, end;
         long insert_array[10], search_array[10];
-        cout << "AVLtree Experiment Running....." << endl;
+       // cout << "Experiment Running....." << endl;
         for ( int i = 0; i < 10; i++ ) {
             generate_random();
             start = clock();
@@ -325,10 +294,19 @@ public:
             search_array[i] = end - start;
             make_root_null();
         }
-        cout << "Insert Avg. Time : " << avg ( insert_array ) << "   " << "Search Avg. Time : " << avg ( search_array ) << endl;
+        cout << avg ( insert_array ) << " " <<  avg ( search_array ) << endl;
     }
 };
 
 }
 
+//driver function
+int main()
+{
+    long n = 1000000;
+    int s = 101;
+    AVLhash::utility* util = new AVLhash::utility ( n, s );
+    util->random_runner();
+    return 0;
+}
 

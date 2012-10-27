@@ -20,6 +20,7 @@ public:
     node** nodes;
     node* parent;
     long* value;
+	int order;
 
     node ( int order ) {
         key = new long[order + 1];
@@ -27,6 +28,7 @@ public:
         nodes = new node *[order + 2];
         capacity = 0;
         parent = NULL;
+		this->order = order;
         for ( int i = 0; i <= order + 1; i++ ) {
             this->nodes[i] = NULL;
         }
@@ -34,7 +36,9 @@ public:
     ~node() {
         delete[] key;
         delete[] value;
-        delete[] nodes;
+         for ( int i = 0; i <= order + 1; i++ ) {
+            delete[] nodes[i];
+        }
     }
 
 };
@@ -274,6 +278,9 @@ public:
         for ( int i = 0; i < s; i++ ) {
             delete[] hashTable->node;
         }
+        delete root;
+        delete[] data;
+        delete tree;
     }
 
     void generate_random() {

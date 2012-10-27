@@ -21,6 +21,11 @@ public:
     node* left;
     node* right;
     int height;
+
+    ~node(){
+        delete left;
+        delete right;
+    }
 };
 
 typedef struct node avlNode;
@@ -46,7 +51,9 @@ public:
     }
 
     ~avlTree() {
-        delete[] hashTable;
+        for ( int i = 0; i < s; i++ ) {
+            delete hashTable->node[i] ;
+        }
     }
 
 
@@ -225,6 +232,11 @@ public:
         this->n = n;
         data = new long[n];
         tree = new avlTree ( s );
+    }
+
+    ~utility(){
+        delete tree;
+        delete[] data;
     }
 
     void generate_random() {

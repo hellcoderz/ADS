@@ -9,5 +9,7 @@ run:
 	@echo ""
 clean:
 	rm btreehash
+debug:
+	$(CC) -g btreehash.cpp -o btreehash
 
-.PHONY: btreehash clean
+.PHONY: btreehash clean run debug

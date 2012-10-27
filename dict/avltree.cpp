@@ -330,15 +330,15 @@ public:
     }
 
     void inorder_random() {
-        cout << "generating inorder traversal" << endl;
+        //cout << "generating inorder traversal" << endl;
         tree.inorder ( root );
-        cout << endl << "inorder traversal ended" << endl;
+        //cout << endl << "inorder traversal ended" << endl;
     }
 
     void preorder_random() {
-        cout << "generating preorder traversal" << endl;
+       // cout << "generating preorder traversal" << endl;
         tree.preorder ( root );
-        cout << endl << "preorder traversal ended" << endl;
+        //cout << endl << "preorder traversal ended" << endl;
     }
 
 
@@ -368,7 +368,7 @@ public:
     void random_runner() {
         clock_t start, end;
         long insert_array[10], search_array[10];
-        cout << "Experiment Running....." << endl;
+       // cout << "Experiment Running....." << endl;
         for ( int i = 0; i < 10; i++ ) {
             generate_random();
             start = clock();
@@ -381,7 +381,7 @@ public:
             search_array[i] = end - start;
             make_root_null();
         }
-        cout << "Insert Avg. Time : " << avg ( insert_array ) << "   " << "Search Avg. Time : " << avg ( search_array ) << endl;
+        cout  << avg ( insert_array ) << " " <<  avg ( search_array ) << endl;    
     }
 
 };

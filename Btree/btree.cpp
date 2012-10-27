@@ -17,16 +17,28 @@ public:
     node** nodes;
     node* parent;
     long* value;
+    int order;
 
     node ( int order ) {
         key = new long[order + 1];
         value = new long[order + 1];
         nodes = new node *[order + 2];
         capacity = 0;
+        this->order = order;
         parent = NULL;
         for ( int i = 0; i <= order + 1; i++ ) {
             this->nodes[i] = NULL;
         }
+    }
+
+    ~node(){
+        delete[] key;
+        delete[] value;
+        for ( int i = 0; i <= order + 1; i++ ) {
+            if(nodes[i] != NULL)
+                delete nodes[i];
+        }
+        
     }
 
 };
@@ -38,13 +50,19 @@ class btree
 {
 public:
     int order;
-
+    btnode left, right, temp;
     btree ( int order ) {
         this->order = order;
+        left = NULL;
+        right = NULL;
+        temp = NULL;
     }
 
-
-
+    ~btree(){
+        delete left;
+        delete right;
+        delete temp;
+    }
 
     void sort_array ( btnode& root ) {
         int last = root->capacity - 1;
@@ -85,10 +103,12 @@ public:
         }
     }
 
-    void add_middle_to_parent ( btnode& rootNode, btnode& parent, btnode left, btnode right, long middle, long value ) {
-        //cout << "In add middle to parent" << endl;
+    void add_middle_to_parent ( btnode& rootNode, btnode parent, btnode left, btnode right, long middle, long value ) {
+       //cout << "In add middle to parent" << endl;
         //cout << "middle element = " << middle << endl;
         //cout << "In middle + Capacity = " << parent->capacity << endl;
+        if(parent == NULL)
+            cout << "parent null" << endl;
         int capacity = parent->capacity;
         int i;
         for ( i = 0; i < capacity; i++ ) {
@@ -117,11 +137,12 @@ public:
             //  cout << "done setting parent capacity" << endl;
             //  cout << "Capacity = " << parent->capacity << endl;
         } else {
+
             split_into_children ( rootNode, parent );
         }
     }
 
-    void split_into_children ( btnode& rootNode, btnode& root ) {
+    void split_into_children ( btnode& rootNode, btnode &root ) {
         //btnode *root = rootx;
         //cout << "In split into  children" << endl;
         long* key = & ( root->key[0] );
@@ -129,9 +150,27 @@ public:
         int middle = root->capacity / 2;
         int i;
         //cout << "middle element = " << root->key[middle] << endl;
-        btnode left = new node ( order );
-        btnode right = new node ( order );
-        btnode temp = new node ( order );
+       /*
+        if(right != NULL ){
+            delete right;
+             cout << "deleting right" << endl;
+        }
+        if(temp != NULL ){
+            left = NULL;
+             cout << "deleting temp" << endl;
+        }
+        if(left != NULL ){
+            delete left;
+            cout << "deleting left" << endl;
+        }
+        */
+
+        //cout << "deleted all" << endl;
+
+        left = new node ( order );
+        right = new node ( order );
+        temp = new node ( order );
+
         for ( int i = 0; i < middle; i++ ) {
             left->key[i] = root->key[i];
             left->value[i] = root->value[i];
@@ -183,7 +222,7 @@ public:
             //cout << "root key = " << root->key[0] << endl;
             //  cout << "Capacity = " << temp->capacity << endl;
         } else {
-            //  cout << "parent capacity = " << root->parent->capacity << endl;
+              //cout << "parent capacity = " << root->parent->capacity << endl;
             add_middle_to_parent ( rootNode, root->parent, left, right, root->key[middle], root->value[middle] );
         }
     }
@@ -342,8 +381,11 @@ public:
     void insert_random() {
         long i = 0;
         while ( i < n ) {
-            //cout << "Inserting = " << data[i] <<  endl;
+           // cout << "Inserting = " << data[i] <<  endl;
             tree->insert ( root, root, data[i], 2 * data[i] );
+           // cout << endl;
+           // inorder();
+            //cout << endl;
             i++;
         }
     }
