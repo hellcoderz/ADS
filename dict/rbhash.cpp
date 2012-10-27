@@ -15,10 +15,11 @@ namespace RBhash
 #define PAIR(x,y) pair<long, long>(x,y)
 #define MAP map<long,long>
 
+///utility class to hold all functions performed on rb hash tree
 class utility
 {
 public:
-    MAP* hashTable;
+    MAP* hashTable; ///hashtable variable
     int s;
     long n;
     long* data;
@@ -29,9 +30,9 @@ public:
         data = new long[n];
         hashTable = new MAP[s];
     }
-
+    ///function to generate shuffled values from 1 to n
     void generate_random() {
-        //cout << n << endl;
+        ///cout << n << endl;
         long r, temp;
         long i = 0;
         data = new long[n];
@@ -41,9 +42,9 @@ public:
             i++;
         }
         i = 0;
+        ///loop to shuffle the array
         while ( i < n / 2 ) {
             r = rand() % n;
-            //cout << r << "->" << i << endl;
             temp = data[r];
             data[r] = data[n - r - 1];
             data[n - r - 1] = temp;
@@ -51,32 +52,33 @@ public:
         }
     }
 
+    ///function to insert shuffled values one by one into the Map
     void insert_random() {
         long i = 0;
         while ( i < n ) {
-            //cout << "Inserting = " << data[i] <<  endl;
             hashTable[data[i] % s].insert ( PAIR ( data[i], 2 * data[i] ) );
             i++;
         }
     }
-
+    ///function to search all values of the array in rb hash tree
     void search_random() {
         long int i = 0;
         long ret;
         while ( i < n ) {
-            //cout << "Searching " << data[i] << endl;
             ret = hashTable[data[i] % s].find ( data[i] )->second;
             i++;
         }
-        //
+        ///
     }
 
+    ///making hashtable null to be used for next iteration
     void make_root_null() {
         for ( int i = 0; i < s; i++ ) {
             hashTable[i].clear();
         }
     }
 
+    ///function to calculate average of an array
     long avg ( long array[] ) {
         long sum = 0;
         for ( int i = 0; i < 10; i++ ) {
@@ -85,10 +87,10 @@ public:
         return sum / 10;
     }
 
+    ///driver function to generate, insert and search rb hash tree
     void random_runner() {
         clock_t start, end;
         long insert_array[10], search_array[10];
-        //cout << "Experiment Running....." << endl;
         for ( int i = 0; i < 10; i++ ) {
             generate_random();
             start = clock();
@@ -108,6 +110,7 @@ public:
 
 }
 
+///driver main function
 int main()
 {
     long n = 1000000;
