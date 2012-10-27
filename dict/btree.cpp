@@ -9,28 +9,29 @@ using namespace std;
 namespace Btree
 {
 
+//node structure for b+ tree node
 class node
 {
 public:
-    long* key;
-    int capacity;
-    node** nodes;
-    node* parent;
-    long* value;
-    int order;
-
+    long* key;  //array of keys
+    int capacity;   //to hold # of elements in that node
+    node** nodes;   //array of child pointers
+    node* parent;   //pointer to point to parent node
+    long* value;    //array of values
+    int order;  //to store order of b+ tree
+    //constructor
     node ( int order ) {
-        key = new long[order + 1];
-        value = new long[order + 1];
-        nodes = new node *[order + 2];
-        capacity = 0;
-        this->order = order;
+        key = new long[order + 1];  //allocating memory for keys
+        value = new long[order + 1];    //allocating memory for values
+        nodes = new node *[order + 2];  //allocating memory for child pointers
+        capacity = 0;   // setting initial # of elements
+        this->order = order;    //
         parent = NULL;
         for ( int i = 0; i <= order + 1; i++ ) {
             this->nodes[i] = NULL;
         }
     }
-
+    //destructor to deallocate memory
     ~node(){
         delete[] key;
         delete[] value;
@@ -43,9 +44,9 @@ public:
 
 };
 
-typedef struct node* btnode;
+typedef struct node* btnode;    //alias for node*
 
-
+//b+ tree class containing all functions that can be performed on b+ tree
 class btree
 {
 public:
@@ -64,14 +65,15 @@ public:
         delete temp;
     }
 
+    //sorting the elements when there is no qverflow of elements
     void sort_array ( btnode& root ) {
         int last = root->capacity - 1;
         long tempKey, tempValue;
-        for ( int i = 0; i < last; i++ ) {
+        for ( int i = 0; i < last; i++ ) {  //loop to find position where we have to insert the last element
             if ( root->key[last] < root->key[i] ) {
                 tempKey = root->key[last];
                 tempValue = root->value[last];
-                for ( int j = last; j > i; j-- ) {
+                for ( int j = last; j > i; j-- ) {  //loop to shift keys and value 
                     root->key[j] = root->key[j - 1];
                     //root->nodes[j+1] = root->nodes[j];
                     root->value[j] = root->value[j - 1];
@@ -82,16 +84,16 @@ public:
             }
         }
     }
-
+    //sorting the elements when there is an overflow element
     void sort_array_with_overflow ( btnode& root ) {
         int last = root->capacity;
         root->nodes[last + 1] = root->nodes[last];
         long tempKey, tempValue;
-        for ( int i = 0; i < last; i++ ) {
+        for ( int i = 0; i < last; i++ ) {  //loop to find position where we have to insert the overflow element
             if ( root->key[last] < root->key[i] ) {
                 tempKey = root->key[last];
                 tempValue = root->value[last];
-                for ( int j = last; j > i; j-- ) {
+                for ( int j = last; j > i; j-- ) {  //loop to shift keys and value 
                     root->key[j] = root->key[j - 1];
                     //root->nodes[j+1] = root->nodes[j];
                     root->value[j] = root->value[j - 1];
@@ -102,20 +104,24 @@ public:
             }
         }
     }
-
+    //function to add the new tree created when node is overflowed in the parent node
     void add_middle_to_parent ( btnode& rootNode, btnode parent, btnode left, btnode right, long middle, long value ) {
        //cout << "In add middle to parent" << endl;
         //cout << "middle element = " << middle << endl;
         //cout << "In middle + Capacity = " << parent->capacity << endl;
+        
+        //check if parent is null
         if(parent == NULL)
             cout << "parent null" << endl;
         int capacity = parent->capacity;
         int i;
+        //find the position where we have to insert the new tree
         for ( i = 0; i < capacity; i++ ) {
             if ( parent->key[i] > middle )
                 break;
         }
         //cout << "outside first for" << endl;
+        //shift all the elements to make space for the new tree
         for ( int j = capacity; j > i; j-- ) {
             parent->key[j] = parent->key[j - 1];
             parent->nodes[j + 1] = parent->nodes[j];
@@ -124,6 +130,7 @@ public:
         }
         //cout << endl;
         //cout << "done finding index" << endl;
+        //add the element int the parent node
         parent->key[i] = middle;
         parent->value[i] = value;
         parent->nodes[i] = left;
@@ -131,17 +138,18 @@ public:
         parent->nodes[i + 1] = right;
         right->parent = parent;
         //cout << "done setting parent" << endl;
+        //check if parent can hold the new tree
         if ( parent->capacity < order ) {
             //cout << "setting parent capacity" << endl;
             parent->capacity += 1;
             //  cout << "done setting parent capacity" << endl;
             //  cout << "Capacity = " << parent->capacity << endl;
         } else {
-
+            //if the parent node cant hod the new tree so split this node also
             split_into_children ( rootNode, parent );
         }
     }
-
+    //split node beacuse it has reached its amximum capacity
     void split_into_children ( btnode& rootNode, btnode &root ) {
         //btnode *root = rootx;
         //cout << "In split into  children" << endl;
@@ -149,28 +157,11 @@ public:
         //cout << "key = " << root->key[1] << endl;
         int middle = root->capacity / 2;
         int i;
-        //cout << "middle element = " << root->key[middle] << endl;
-       /*
-        if(right != NULL ){
-            delete right;
-             cout << "deleting right" << endl;
-        }
-        if(temp != NULL ){
-            left = NULL;
-             cout << "deleting temp" << endl;
-        }
-        if(left != NULL ){
-            delete left;
-            cout << "deleting left" << endl;
-        }
-        */
-
-        //cout << "deleted all" << endl;
-
+        //allocate space for 3 node tree
         left = new node ( order );
         right = new node ( order );
         temp = new node ( order );
-
+        // copy all the information of the elements present on the left side of the middle element
         for ( int i = 0; i < middle; i++ ) {
             left->key[i] = root->key[i];
             left->value[i] = root->value[i];
@@ -180,6 +171,8 @@ public:
             //cout << "Capacity = " << left->capacity << endl;
         }
         left->nodes[middle] = root->nodes[middle];
+
+        // copy all the information of the elements present on the right side of the middle element
         for ( i = 0; i < root->capacity - middle; i++ ) {
             right->key[i] = root->key[middle + 1 + i];
             right->value[i] = root->value[middle + 1 + i];
@@ -194,16 +187,21 @@ public:
         //cout << "Right Element = " << right->key[0] << endl;
         //cout << "leftest element = " << (root->key[0]) << endl;
         //cout << "rightest element = " << (root->key[root->capacity]) << endl;
+
+        //copy the information of the middle element in the root of this small tree
         temp->key[0] = root->key[middle];
         temp->value[0] = root->value[middle];
         temp->nodes[0] = left;
         temp->nodes[1] = right;
         temp->capacity = 1;
+
+        //set parent node for left node children
         for ( int i = 0; i <= left->capacity; i++ ) {
             if ( left->nodes[i] != NULL )
                 left->nodes[i]->parent = left;
         }
         //cout << "Right Capacity = " << right->capacity << " " << right->key[0] << endl;
+        //set parent node for left node children
         for ( int i = 0; i <= right->capacity; i++ ) {
             if ( right->nodes[i] != NULL )
                 right->nodes[i]->parent = right;
@@ -212,6 +210,7 @@ public:
         //cout << "right key = " << temp->nodes[1]->key[0] << endl;
         //cout << "In split to children -- Capacity = " << root->parent->capacity << endl;
         //error - root pointer is not modified correctly
+        //check if this is the root node of the btree
         if ( root->parent == root ) {
             right->parent = temp;
             left->parent = temp;
@@ -223,17 +222,19 @@ public:
             //  cout << "Capacity = " << temp->capacity << endl;
         } else {
               //cout << "parent capacity = " << root->parent->capacity << endl;
+            //if its not root node then add the new tree to the parent node
             add_middle_to_parent ( rootNode, root->parent, left, right, root->key[middle], root->value[middle] );
         }
     }
 
 
-
+    //function to perform insertion of key and value in b+ tree through recursion
     void insert ( btnode& rootNode, btnode& root, long key, long value ) {
         //cout << "++++++++++++++++++++inserting+++++++++++++++++++++++ " << key << endl;
         //btnode *root = rootx;
         //cout << "Order = " << order << endl;
         //cout << "parent Capacity = " << root->parent->capacity << endl;
+        //check if node can hold the new element
         if ( root != NULL && root->capacity < order && root->nodes[0] == NULL ) {
             //cout << "Capacity = " << root->capacity << endl;
             //cout << "insert in same node" << endl;
@@ -241,16 +242,20 @@ public:
             root->value[root->capacity] = value;
             root->capacity += 1;
             //  cout << "Capacity = " << root->capacity << endl;
-            sort_array ( root );
+            sort_array ( root ); //sort the node after adding the new element
+
+            //check if node cannot hold the new element and split the node
         } else if ( root != NULL && root->capacity == order && root->nodes[0] == NULL ) {
             //cout << "Capacity = " << root->capacity << endl;
             //cout << "In split" << endl;
             //cout << "parent Capacity = " << root->parent->capacity  << " " << root->parent->key[0] << " " << root->key[0] << endl;
-            root->key[root->capacity] = key;
-            root->value[root->capacity] = value;
-            sort_array_with_overflow ( root );
+            root->key[root->capacity] = key;    //add element key at the exatr space in the the last
+            root->value[root->capacity] = value;    //add element key at the exatr space in the the last
+            sort_array_with_overflow ( root );      //sort the node with this new extra node
             //cout << endl;
-            split_into_children ( rootNode, root );
+            split_into_children ( rootNode, root ); //split the node
+
+            //check which subtree will hold the new element
         } else if ( root != NULL ) {
             //cout << "insert in child node" << endl;
             //cout << "Capacity = " << root->capacity << endl;
@@ -259,7 +264,9 @@ public:
                 if ( key < root->key[i] )
                     break;
             }
-            insert ( rootNode, root->nodes[i], key, value );
+            insert ( rootNode, root->nodes[i], key, value );    // insert the new element in this subtree
+
+            //check if this is the first element in the b+ tree and add a new node;
         } else if ( root == NULL ) {
             //cout << "new node" << endl;
             root = new node ( order );
@@ -270,7 +277,7 @@ public:
         }
     }
 
-
+    //print inorder traversal of the tree
     int inorder ( node* root ) {
         if ( root == NULL ) {
             return 0;
@@ -287,7 +294,7 @@ public:
         //inorder(root->nodes[root->capacity]);
         return 0;
     }
-
+    //print preorder traversal of the tree
     int preorder ( btnode& root ) {
         //btnode *root = rootx;
         //cout << "In inorder" << endl;
@@ -302,7 +309,7 @@ public:
         }
         return 0;
     }
-
+    //print level order traversal of the tree
     void level_order ( btnode& root ) {
         //  cout << "LEVEL OREDER TRAVERSAL STARTED" << endl;
         cout << endl;
@@ -324,7 +331,7 @@ public:
         }
         //cout << "LEVEL OREDER TRAVERSAL ENDED" << endl;
     }
-
+    //function to search key in the b+ tree
     long search ( btnode& root, long key ) {
         int i;
         for ( i = 0; i < root->capacity; i++ ) {
@@ -341,7 +348,7 @@ public:
 
 };
 
-
+//utility class which holds all the driver functions
 class utility
 {
 public:
@@ -356,7 +363,7 @@ public:
         data = new long[n];
         tree = new btree ( order );
     }
-
+    //function to generate shuffled values from 1 to n
     void generate_random() {
         //cout << n << endl;
         long r, temp;
@@ -368,6 +375,7 @@ public:
             i++;
         }
         i = 0;
+        //loop to generate shuffled array
         while ( i < n / 2 ) {
             r = rand() % n;
             //cout << r << "->" << i << endl;
@@ -378,6 +386,7 @@ public:
         }
     }
 
+    //inserting all values of the array in the tree
     void insert_random() {
         long i = 0;
         while ( i < n ) {
@@ -389,7 +398,7 @@ public:
             i++;
         }
     }
-
+    //function to generate values in increasing order
     void generate_increasing() {
         long int i = 0;
         while ( i < n ) {
@@ -399,7 +408,7 @@ public:
         }
         //cout << endl;
     }
-
+    //function to search all values of the array in the b+ tree
     void search_random() {
         long i = 0;
         while ( i < n ) {
@@ -407,22 +416,23 @@ public:
             i++;
         }
     }
-
+    //print inorder traversal of the tree
     void inorder() {
         tree->inorder ( root );
     }
-
+    //print preorder traversal
     void preorder() {
         tree->preorder ( root );
     }
-
+    //print level order traversal
     void level_order() {
         tree->level_order ( root );
     }
+    //making root null to execute next iteration
     void make_root_null() {
         root = NULL;
     }
-
+    //function to calculate avg. of an array
     long avg ( long array[] ) {
         long sum = 0;
         for ( int i = 0; i < 10; i++ ) {
@@ -431,10 +441,7 @@ public:
         return sum / 10;
     }
 
-    void print_root() {
-        cout << root->key[0] << endl;
-    }
-
+    //driver function to generate, insert and search values
     void random_runner() {
         clock_t start, end;
         long insert_array[10], search_array[10];

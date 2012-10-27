@@ -31,40 +31,65 @@ typedef struct node avlNode;
 
 
 
+// node structure of avltree
+class node
+{
+public:
+    long key;   //node key
+    long value; //node value
+    node* left; //left child
+    node* right;    //right child
+    int height; //height of the tree i.e. max height from left or right subtree
+};
+
+typedef struct node avlNode;    //just an alias
+
+// avlhash tree class containing all functions of the tree
 class avlTree
 {
-
 public:
+    // hashmap to store s no. of of trees
+    struct hash {
+        avlNode** node;
+    };
 
+
+    int s;
+    struct hash* hashTable;
+    // constructor
+    avlTree ( int s ) {
+        this->s = s;
+        hashTable = new hash; // allocating space for hash table
+        hashTable->node = new node *[s]; // allocating space for s avl trees
+        for ( int i = 0; i < s; i++ ) {
+            hashTable->node[i] = NULL;  // making all roots NULL of each avltree
+        }
+    }
+
+    //absoulute value function
     int abs ( int n ) {
         if ( n < 0 )
             return -n;
         else
             return n;
     }
-
-
-
+    // function to find max of the two numbers
     int max ( int a, int b ) {
         if ( a > b )
             return a;
         else
             return b;
     }
-
-
-
+    //function to the height of that node in the avltree
     int height ( avlNode* root ) {
         if ( root == NULL )
             return 0;
         return root->height;
     }
-
-
-
+    // function to perform right rotation
     avlNode* rotateRight ( avlNode* root ) {
         //cout << "Rotate Right" << endl;
-        avlNode *temp = root->left;
+        avlNode* temp = root->left;
         root->left = NULL;
         if ( temp->right != NULL ) {
             root->left = temp->right;
@@ -77,12 +102,10 @@ public:
         // Return new root
         return temp;
     }
-
-
-
+    //function to perform left rotation
     avlNode* rotateLeft ( avlNode* root ) {
         //cout << "Rotate Left: " << root->key << endl;
-        avlNode *temp = root->right;
+        avlNode* temp = root->right;
         root->right = NULL;
         //cout << "temp->key = " << root->key << endl;
         if ( temp->left != NULL ) {
@@ -99,8 +122,11 @@ public:
 
 
 
-    avlNode* insert ( avlNode* node, long int key, long int value ) {
-       
+ // function to insert key and values in the avl tree
+    avlNode* insert( avlNode* node, long int key, long int value ) {
+        avlNode* temp;
+
+        //condition when tree is subtree is empty and new node can be inserted here
         if ( node == NULL ) {
             //cout << "Insert: " << key << endl;
             node = new avlNode;
@@ -109,37 +135,46 @@ public:
             node->key = key;
             node->value = value;
             node->height = 1;
-            
+            temp = node;
+
+            //condition to check if key should be added in the left subtree
         } else {
             if ( node->key > key ) {
                 node->left = insert ( node->left, key, value );
-                
+                temp = node;
+
+                //condition to check if key should be added in the right subtree
             } else {
                 node->right = insert ( node->right, key, value );
-                
+                temp = node;
             }
         }
-        node->height = max ( height ( node->left ), height ( node->right ) ) + 1;
-        int balance = height ( node->left ) - height ( node->right );
+
+        // update height of the parent node
+        temp->height = max ( height ( temp->left ), height ( temp->right ) ) + 1;
+        //calculate the balance height of the parent node
+        int balance = height ( temp->left ) - height ( temp->right );
         // If this node becomes unbalanced, then there are 4 cases
-        //cout << "Current root = " << node->key <<  " " << "balance = " << balance << endl;
+        //cout << "Current root = " << temp->key <<  " " << "balance = " << balance << endl;
         // Left Left Case
-        if ( balance > 1 && node->left != NULL && key < node->left->key )
-            node = rotateRight ( node );
+        if ( balance > 1 && temp->left != NULL && key < temp->left->key )
+            temp = rotateRight ( temp );
         // Right Right Case
-        else if ( balance < -1 && node->right != NULL && key > node->right->key )
-            node = rotateLeft ( node );
+        else if ( balance < -1 && temp->right != NULL && key > temp->right->key )
+            temp = rotateLeft ( temp );
         // Left Right Case
-        else if ( balance > 1 && node->left != NULL && key > node->left->key ) {
-            node->left = rotateLeft ( node->left );
-            node = rotateRight ( node );
+        else if ( balance > 1 && temp->left != NULL && key > temp->left->key ) {
+            temp->left = rotateLeft ( temp->left );
+            temp = rotateRight ( temp );
         }
         // Right Left Case
-        else if ( balance < -1 && node->right != NULL && key < node->right->key ) {
-            node->right = rotateRight ( node->right );
-            node = rotateLeft ( node );
+        else if ( balance < -1 && temp->right != NULL && key < temp->right->key ) {
+            temp->right = rotateRight ( temp->right );
+            temp = rotateLeft ( temp );
         }
-        return node;
+
+        //return the modified root node
+        return temp;
     }
 
 
@@ -167,7 +202,7 @@ public:
     }
 
 
-
+    //function to print inorder traversal
     int inorder ( avlNode* root ) {
         if ( root == NULL ) {
             return -1;
@@ -181,7 +216,7 @@ public:
     }
 
 
-
+    //function to print preorder traversal
     int preorder ( avlNode* root ) {
         if ( root == NULL ) {
             return -1;
@@ -194,11 +229,11 @@ public:
     }
 
 
-
+    //function to print level order traversal using queues
     int level_order ( avlNode* root ) {
-        cout << "LEVEL OREDER TRAVERSAL STARTED" << endl;
+        //cout << "LEVEL OREDER TRAVERSAL STARTED" << endl;
         //cout << endl;
-        queue<avlNode*> que;
+        queue<avlNode*> que;    //creating queue to hold all children 
         avlNode* temp;
         que.push ( root );
         while ( !que.empty() ) {
@@ -206,12 +241,13 @@ public:
             que.pop();
             if ( root == NULL )
                 return 0;
-            cout << temp->key  << ":" << temp->height << " ";
+            cout << temp->key  << " ";
             que.push ( temp->left );
             que.push ( temp->right );
             //cout << endl;
         }
-        cout << "LEVEL OREDER TRAVERSAL ENDED" << endl;
+        cout << endl;
+        //cout << "LEVEL OREDER TRAVERSAL ENDED" << endl;
         return 0;
     }
 
@@ -220,31 +256,24 @@ public:
 };
 
 
-
+//utility class to hold all functions used to generate and insert random and user define key values
 class utility
 {
 
 public:
 
     long int n;
-
     avlNode* root;
-
     avlTree tree;
-
     long int* data;
-
-
-
+    //constructor
     utility ( const long int n ) {
         //cout << n << endl;
         this->n = n;
         root = NULL;
-        data = ( long int* ) malloc ( sizeof ( long ) * n );
+        data = new long[n];
     }
-
-
-
+    //function to generate shuffled values from 1 to n
     void generate_random() {
         //cout << n << endl;
         long int r, temp;
@@ -258,6 +287,7 @@ public:
         }
         //cout << endl;
         i = 0;
+        //shuffing the array
         while ( i < n / 2 ) {
             r = rand() % n;
             //cout << r << "->" << i << endl;
@@ -267,7 +297,7 @@ public:
             i++;
         }
     }
-
+    //function to generate values in decreasing order
     void generate_decreasing() {
         long int i = n;
         while ( i > 0 ) {
@@ -277,7 +307,7 @@ public:
         }
         //cout << endl;
     }
-
+    //function to generate values in increasing order
     void generate_increasing() {
         long int i = 0;
         while ( i < n ) {
@@ -289,7 +319,7 @@ public:
     }
 
 
-
+    //function to insert random values in avltree
     void insert_random() {
         //cout << "Insert Started" << endl;
         long int i = 0;
@@ -303,7 +333,7 @@ public:
     }
 
 
-
+    //function to insert predefined values for testing
     void insert_defined() {
         int d[] = {20, 19, 18, 4, 16, 6, 7, 13, 9, 11, 10, 12, 8, 14};
         for ( int i = 0; i < sizeof ( d ) / sizeof ( int ); i++ ) {
@@ -316,7 +346,7 @@ public:
     }
 
 
-
+    //searching all values in shuffled order in avl tree
     void search_random() {
         //cout << "Search Started" << endl;
         long int i = 0;
@@ -328,33 +358,27 @@ public:
         }
         //cout << endl;
     }
-
+    //printing inordertraversal
     void inorder_random() {
         //cout << "generating inorder traversal" << endl;
         tree.inorder ( root );
         //cout << endl << "inorder traversal ended" << endl;
     }
-
+    //printing preorder traversal
     void preorder_random() {
        // cout << "generating preorder traversal" << endl;
         tree.preorder ( root );
         //cout << endl << "preorder traversal ended" << endl;
     }
-
-
-
+    //making root null
     void make_root_null() {
         root = NULL;
     }
-
-
-
+    //print root height
     void height() {
         cout << "tree height = " << tree.height ( root ) << endl;
     }
-
-
-
+    //function to calculate average of the array
     long avg ( long array[] ) {
         long sum = 0;
         for ( int i = 0; i < 10; i++ ) {
@@ -362,9 +386,7 @@ public:
         }
         return sum / 10;
     }
-
-
-
+    //function to run the experiment including generating, inserting and searching;
     void random_runner() {
         clock_t start, end;
         long insert_array[10], search_array[10];

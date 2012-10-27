@@ -7,6 +7,7 @@
 #include <queue>
 using namespace std;
 
+
 namespace AVLhash
 {
 
@@ -14,22 +15,24 @@ namespace AVLhash
 #define PAIR(x,y) pair<long,node*>(x,y)
 
 
-
+// node structure of avltree
 class node
 {
 public:
-    long key;
-    long value;
-    node* left;
-    node* right;
-    int height;
+    long key;   //node key
+    long value; //node value
+    node* left; //left child
+    node* right;    //right child
+    int height; //height of the tree i.e. max height from left or right subtree
 };
 
-typedef struct node avlNode;
+typedef struct node avlNode;    //just an alias
 
+// avlhash tree class containing all functions of the tree
 class avlTree
 {
 public:
+    // hashmap to store s no. of of trees
     struct hash {
         avlNode** node;
     };
@@ -37,37 +40,37 @@ public:
 
     int s;
     struct hash* hashTable;
-
+    // constructor
     avlTree ( int s ) {
         this->s = s;
-        hashTable = new hash;
-        hashTable->node = new node *[s];
+        hashTable = new hash; // allocating space for hash table
+        hashTable->node = new node *[s]; // allocating space for s avl trees
         for ( int i = 0; i < s; i++ ) {
-            hashTable->node[i] = NULL;
+            hashTable->node[i] = NULL;  // making all roots NULL of each avltree
         }
     }
 
-
+    //absoulute value function
     int abs ( int n ) {
         if ( n < 0 )
             return -n;
         else
             return n;
     }
-
+    // function to find max of the two numbers
     int max ( int a, int b ) {
         if ( a > b )
             return a;
         else
             return b;
     }
-
+    //function to the height of that node in the avltree
     int height ( avlNode* root ) {
         if ( root == NULL )
             return 0;
         return root->height;
     }
-
+    // function to perform right rotation
     avlNode* rotateRight ( avlNode* root ) {
         //cout << "Rotate Right" << endl;
         avlNode* temp = root->left;
@@ -83,7 +86,7 @@ public:
         // Return new root
         return temp;
     }
-
+    //function to perform left rotation
     avlNode* rotateLeft ( avlNode* root ) {
         //cout << "Rotate Left: " << root->key << endl;
         avlNode* temp = root->right;
@@ -101,8 +104,11 @@ public:
         return temp;
     }
 
+    // function to insert key and values in the avl tree
     avlNode* insert_data ( avlNode* node, long int key, long int value ) {
         avlNode* temp;
+
+        //condition when tree is subtree is empty and new node can be inserted here
         if ( node == NULL ) {
             //cout << "Insert: " << key << endl;
             node = new avlNode;
@@ -112,16 +118,23 @@ public:
             node->value = value;
             node->height = 1;
             temp = node;
+
+            //condition to check if key should be added in the left subtree
         } else {
             if ( node->key > key ) {
                 node->left = insert_data ( node->left, key, value );
                 temp = node;
+
+                //condition to check if key should be added in the right subtree
             } else {
                 node->right = insert_data ( node->right, key, value );
                 temp = node;
             }
         }
+
+        // update height of the parent node
         temp->height = max ( height ( temp->left ), height ( temp->right ) ) + 1;
+        //calculate the balance height of the parent node
         int balance = height ( temp->left ) - height ( temp->right );
         // If this node becomes unbalanced, then there are 4 cases
         //cout << "Current root = " << temp->key <<  " " << "balance = " << balance << endl;
@@ -141,15 +154,18 @@ public:
             temp->right = rotateRight ( temp->right );
             temp = rotateLeft ( temp );
         }
+
+        //return the modified root node
         return temp;
     }
 
+    //extra function to value in the specified tree calculated using key mod s
     void insert ( const long key, long value ) {
         hashTable->node[key % s] = insert_data ( hashTable->node[key % s], key, value );
     }
 
 
-    // search function
+    //iterator search function
     long int search_key ( avlNode* root, long int key ) {
         //cout << "Searching " << key << endl;
         while ( root != NULL ) {
@@ -163,11 +179,11 @@ public:
         }
         return -1;
     }
-
+    //search function
     long search ( long key ) {
         return search_key ( hashTable->node[ ( int ) key % s], key );
     }
-
+    //sunction to print inorder traversal
     int inorder_key ( avlNode* root ) {
         if ( root == NULL ) {
             return -1;
@@ -180,11 +196,11 @@ public:
         inorder_key ( root->right );
         return 0;
     }
-
+    //inorder traversal
     void inorder() {
         inorder_key ( hashTable->node[1] );
     }
-
+    //sunction to print preorder traversal
     int preorder_key ( avlNode* root ) {
         if ( root == NULL ) {
             return -1;
@@ -195,11 +211,11 @@ public:
         preorder_key ( root->right );
         return 0;
     }
-
+    //preorder traversal
     void preorder() {
         preorder_key ( hashTable->node[1] );
     }
-
+    //making root null for using the root for next iteration
     void make_root_null() {
         for ( int i = 0; i < s; i++ ) {
             hashTable->node[i] = NULL;
@@ -211,7 +227,7 @@ public:
 
 };
 
-//util class
+//util class which hold all the utility functions
 class utility
 {
 public:
@@ -224,7 +240,7 @@ public:
         data = new long[n];
         tree = new avlTree ( s );
     }
-
+    //function to generate shuffled array of 1000000 elements
     void generate_random() {
         //cout << n << endl;
         long r, temp;
@@ -236,6 +252,8 @@ public:
             i++;
         }
         i = 0;
+
+        //doing shuffling
         while ( i < n / 2 ) {
             r = rand() % n;
             //cout << r << "->" << i << endl;
@@ -245,7 +263,7 @@ public:
             i++;
         }
     }
-
+    //inserting all values in avltree
     void insert_random() {
         long i = 0;
         while ( i < n ) {
@@ -254,7 +272,7 @@ public:
             i++;
         }
     }
-
+    //searching all values present in the avltree
     void search_random() {
         long int i = 0;
         long ret;
@@ -265,11 +283,11 @@ public:
         }
         //
     }
-
+    //making root null to use in next iteration
     void make_root_null() {
         tree->make_root_null();
     }
-
+    //function to calculate average of an array
     long avg ( long array[] ) {
         long sum = 0;
         for ( int i = 0; i < 10; i++ ) {
@@ -277,7 +295,7 @@ public:
         }
         return sum / 10;
     }
-
+    //driver function to run the AVL hash insertion and seaching 10 times and calculate avg. insert and search time.
     void random_runner() {
         clock_t start, end;
         long insert_array[10], search_array[10];
@@ -300,7 +318,7 @@ public:
 
 }
 
-//driver function
+//main function
 int main()
 {
     long n = 1000000;

@@ -8,7 +8,7 @@ $(SOURCES):
 	g++ -O3 $@.$(EXT) -o $@
 
 run:
-	./dictionary*
+	./dictionary
 clean:
 	rm $(SOURCES)
 
