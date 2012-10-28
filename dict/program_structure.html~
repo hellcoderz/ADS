@@ -5,6 +5,6 @@ function loading(){}
 }
 </script>
 
-<body onload=loading()>
+<body onload="loading()">
 </body>
 </html>
