@@ -1,8 +1,13 @@
 #include <iostream>
 #include <time.h>
+#include <stdio.h>
 #include <ctime>
 #include <cstdlib>
+#include <malloc.h>
 #include <queue>
+#include <fstream>
+#include <string.h>
+#include <sstream>
 
 using namespace std;
 
@@ -314,18 +319,12 @@ public:
     long* data;
     int s;
     struct hash* hashTable;
-
-    utility ( long n, int order, int s ) {
-        this->n = n;
-        this->s = s;
+    FILE *file_level;   //output file pointers
+    utility (  ) {
         root = NULL;
-        data = new long[n];
-        tree = new btree ( order );
-        hashTable = new hash;
-        hashTable->node = new node *[s];    ///hash table allocation
-        for ( int i = 0; i < s; i++ ) {
-            hashTable->node[i] = NULL;      ///allocation space for eash b+ tree in eash hashmap
-        }
+        file_level = fopen("BTreeHash_level.out","wt");
+        
+        
     }
 
      ///function to generate shuffled values from 1 to n
@@ -383,30 +382,92 @@ public:
         root = NULL;
     }
     ///function to calculate average of the array
-    long avg ( long array[] ) {
-        long sum = 0;
+    double avg ( double array[] ) {
+        double sum = 0;
         for ( int i = 0; i < 10; i++ ) {
             sum += array[i];
         }
         return sum / 10;
     }
     ///function to run the experiment including generating, inserting and searching;
-    void random_runner() {
+    void random_runner(int num,int s_new, int order) {
+        n = num;
+        s = s_new;
+        tree = new btree ( order - 1 );
+        hashTable = new hash;
+        hashTable->node = new node *[s];    ///hash table allocation
+        for ( int i = 0; i < s; i++ ) {
+            hashTable->node[i] = NULL;      ///allocation space for eash b+ tree in eash hashmap
+        }
         clock_t start, end;
-        long insert_array[10], search_array[10];
+        double insert_array[10], search_array[10];
         for ( int i = 0; i < 10; i++ ) {
             generate_random();
-            start = clock();
+            start = ((double)clock()*1000)/CLOCKS_PER_SEC;
             insert_random();
-            end = clock();
+            end = ((double)clock()*1000)/CLOCKS_PER_SEC;
             insert_array[i] = end - start;
-            start = clock();
+            start = ((double)clock()*1000)/CLOCKS_PER_SEC;
             search_random();
-            end = clock();
+            end = ((double)clock()*1000)/CLOCKS_PER_SEC;
             search_array[i] = end - start;
             make_root_null();
         }
         cout << avg ( insert_array ) << " " <<  avg ( search_array ) << endl;    
+    }
+
+    void level_order_file ( btnode& root ) {
+        //cout << endl;
+        queue<btnode> que;
+        btnode temp;
+        que.push ( root );
+        while ( !que.empty() ) {
+            temp = que.front();
+            que.pop();
+            for ( int i = 0; i < temp->capacity; i++ ) {
+                fprintf(file_level,"%ld ",temp->value[i]);
+            }
+            for ( int i = 0; i <= temp->capacity; i++ ) {
+                if ( temp->nodes[i] != NULL ) {
+                    que.push ( temp->nodes[i] );
+                }
+            }
+        }
+    }
+
+    void level_order_file_hash(){
+        for(int i=0;i<s;i++){
+            level_order_file(hashTable->node[i]);
+            fprintf(file_level,"\n");
+        }
+    }
+
+    ///function to input data from user and output traversal in file
+    void user_runner(char file[], int s_new, int order){
+        s = s_new;
+        tree = new btree ( order - 1 );
+        hashTable = new hash;
+        hashTable->node = new node *[s];    ///hash table allocation
+        for ( int i = 0; i < s; i++ ) {
+            hashTable->node[i] = NULL;      ///allocation space for eash b+ tree in eash hashmap
+        }
+
+        ifstream infile;
+        tree = new btree ( order - 1 );
+        infile.open(file,ifstream::in);
+        infile >> n;
+        long i=0;
+        long key, value;
+        while(i<n){
+            infile >> key >> value ;
+            //cout << "inserting = " << key << endl;
+            tree->insert ( hashTable->node[key % s], hashTable->node[key % s], key, value );
+            i++;
+        }
+
+        
+        level_order_file_hash();
+
     }
 
 };
@@ -416,12 +477,33 @@ public:
 
 ///driver function
 
-int main()
+int main(int argc,char *argv[])
 {
-    long n = 1000000;
-    int order = 50;
-    int s = 101;
-    Btreehash::utility* util = new Btreehash::utility ( n, order - 1, s );
-    util->random_runner();
+    Btreehash::utility* util = new Btreehash::utility (  );
+    if(argc == 4){
+        //cout << argv[1] << " " << argv[2] << " " << argv[3] << endl;
+        if(string(argv[1]) == "-r"){
+            //cout << "random mode" << endl;
+            util->random_runner(1000000,atoi(argv[2]),atoi(argv[3]));
+
+        }else{
+            cout << "wrong option" << endl;
+            return 0;
+        }
+    }else if(argc == 3){
+        if(string(argv[1]) == "-u"){
+           // cout << "user mode" << endl;
+            util->user_runner(argv[2],3,3);
+            //util->inorder();
+
+        }else{
+            cout << "wrong option" << endl;
+            return 0;
+        }
+
+    }else{
+        cout << "wrong # of arguments" << endl;
+        return 0;
+    }
     return 0;
 }

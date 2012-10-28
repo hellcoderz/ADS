@@ -1,0 +1,146 @@
+\hypertarget{class_btree_1_1node}{\section{Btree\-:\-:node Class Reference}
+\label{class_btree_1_1node}\index{Btree\-::node@{Btree\-::node}}
+}
+
+
+node structure for b+ tree node  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_btree_1_1node_aac7baea958f0b2c9f411e3ab83c8a51c}{node} (int \hyperlink{class_btree_1_1node_a8a5ff91fd8e251549f3e2c70c04765b7}{order})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{class_btree_1_1node_ae325c7681040fd73734b55d85ea982f4}{$\sim$node} ()
+\begin{DoxyCompactList}\small\item\em destructor to deallocate memory \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long $\ast$ \hyperlink{class_btree_1_1node_aa1da48fc5e2b8203ae262525c480befa}{key}
+\item 
+int \hyperlink{class_btree_1_1node_ac42856b830b60d8f60d6c726964b1ec3}{capacity}
+\begin{DoxyCompactList}\small\item\em array of keys \end{DoxyCompactList}\item 
+\hyperlink{class_btree_1_1node}{node} $\ast$$\ast$ \hyperlink{class_btree_1_1node_a289484989ca45bfb92c18040556b42f8}{nodes}
+\begin{DoxyCompactList}\small\item\em to hold \# of elements in that node \end{DoxyCompactList}\item 
+\hyperlink{class_btree_1_1node}{node} $\ast$ \hyperlink{class_btree_1_1node_a0e7ad88a4ae04f8750d3590783cda080}{parent}
+\begin{DoxyCompactList}\small\item\em array of child pointers \end{DoxyCompactList}\item 
+long $\ast$ \hyperlink{class_btree_1_1node_ac38e10b3743673fa9f8ff9b6551d64ba}{value}
+\begin{DoxyCompactList}\small\item\em pointer to point to parent node \end{DoxyCompactList}\item 
+int \hyperlink{class_btree_1_1node_a8a5ff91fd8e251549f3e2c70c04765b7}{order}
+\begin{DoxyCompactList}\small\item\em array of values \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+node structure for b+ tree node 
+
+Definition at line 18 of file btree.\-cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_btree_1_1node_aac7baea958f0b2c9f411e3ab83c8a51c}{\index{Btree\-::node@{Btree\-::node}!node@{node}}
+\index{node@{node}!Btree::node@{Btree\-::node}}
+\subsubsection[{node}]{\setlength{\rightskip}{0pt plus 5cm}Btree\-::node\-::node (
+\begin{DoxyParamCaption}
+\item[{int}]{order}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1node_aac7baea958f0b2c9f411e3ab83c8a51c}
+
+
+constructor 
+
+to store order of b+ tree allocating memory for keys
+
+allocating memory for values
+
+allocating memory for child pointers
+
+setting initial \# of elements 
+
+Definition at line 28 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1node_ae325c7681040fd73734b55d85ea982f4}{\index{Btree\-::node@{Btree\-::node}!$\sim$node@{$\sim$node}}
+\index{$\sim$node@{$\sim$node}!Btree::node@{Btree\-::node}}
+\subsubsection[{$\sim$node}]{\setlength{\rightskip}{0pt plus 5cm}Btree\-::node\-::$\sim$node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1node_ae325c7681040fd73734b55d85ea982f4}
+
+
+destructor to deallocate memory 
+
+
+
+Definition at line 40 of file btree.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_btree_1_1node_ac42856b830b60d8f60d6c726964b1ec3}{\index{Btree\-::node@{Btree\-::node}!capacity@{capacity}}
+\index{capacity@{capacity}!Btree::node@{Btree\-::node}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}int Btree\-::node\-::capacity}}\label{class_btree_1_1node_ac42856b830b60d8f60d6c726964b1ec3}
+
+
+array of keys 
+
+
+
+Definition at line 22 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1node_aa1da48fc5e2b8203ae262525c480befa}{\index{Btree\-::node@{Btree\-::node}!key@{key}}
+\index{key@{key}!Btree::node@{Btree\-::node}}
+\subsubsection[{key}]{\setlength{\rightskip}{0pt plus 5cm}long$\ast$ Btree\-::node\-::key}}\label{class_btree_1_1node_aa1da48fc5e2b8203ae262525c480befa}
+
+
+Definition at line 21 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1node_a289484989ca45bfb92c18040556b42f8}{\index{Btree\-::node@{Btree\-::node}!nodes@{nodes}}
+\index{nodes@{nodes}!Btree::node@{Btree\-::node}}
+\subsubsection[{nodes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf node}$\ast$$\ast$ Btree\-::node\-::nodes}}\label{class_btree_1_1node_a289484989ca45bfb92c18040556b42f8}
+
+
+to hold \# of elements in that node 
+
+
+
+Definition at line 23 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1node_a8a5ff91fd8e251549f3e2c70c04765b7}{\index{Btree\-::node@{Btree\-::node}!order@{order}}
+\index{order@{order}!Btree::node@{Btree\-::node}}
+\subsubsection[{order}]{\setlength{\rightskip}{0pt plus 5cm}int Btree\-::node\-::order}}\label{class_btree_1_1node_a8a5ff91fd8e251549f3e2c70c04765b7}
+
+
+array of values 
+
+
+
+Definition at line 26 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1node_a0e7ad88a4ae04f8750d3590783cda080}{\index{Btree\-::node@{Btree\-::node}!parent@{parent}}
+\index{parent@{parent}!Btree::node@{Btree\-::node}}
+\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf node}$\ast$ Btree\-::node\-::parent}}\label{class_btree_1_1node_a0e7ad88a4ae04f8750d3590783cda080}
+
+
+array of child pointers 
+
+
+
+Definition at line 24 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1node_ac38e10b3743673fa9f8ff9b6551d64ba}{\index{Btree\-::node@{Btree\-::node}!value@{value}}
+\index{value@{value}!Btree::node@{Btree\-::node}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}long$\ast$ Btree\-::node\-::value}}\label{class_btree_1_1node_ac38e10b3743673fa9f8ff9b6551d64ba}
+
+
+pointer to point to parent node 
+
+
+
+Definition at line 25 of file btree.\-cpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{btree_8cpp}{btree.\-cpp}\end{DoxyCompactItemize}

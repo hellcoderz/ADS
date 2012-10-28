@@ -1,0 +1,393 @@
+\hypertarget{class_a_v_lhash_1_1avl_tree}{\section{A\-V\-Lhash\-:\-:avl\-Tree Class Reference}
+\label{class_a_v_lhash_1_1avl_tree}\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}}
+}
+
+
+just an alias  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_a_v_lhash_1_1avl_tree_1_1hash}{hash}
+\begin{DoxyCompactList}\small\item\em hashmap to store s no. of of trees \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_v_lhash_1_1avl_tree_ac79205f64581690cb22123a895625450}{avl\-Tree} (int \hyperlink{class_a_v_lhash_1_1avl_tree_a98e40b4ee8d489d79db9e2a691bfedbb}{s})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+int \hyperlink{class_a_v_lhash_1_1avl_tree_a791d79a8cb9a49de4bfd44e3a421c295}{abs} (int n)
+\begin{DoxyCompactList}\small\item\em absoulute value function \end{DoxyCompactList}\item 
+int \hyperlink{class_a_v_lhash_1_1avl_tree_a4e4dc9bb8d3d10f2bc859d7e7541b9ae}{max} (int a, int b)
+\begin{DoxyCompactList}\small\item\em function to find max of the two numbers \end{DoxyCompactList}\item 
+int \hyperlink{class_a_v_lhash_1_1avl_tree_a0dfea22e6ae84e779906c7afc33e2bae}{height} (\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$root)
+\begin{DoxyCompactList}\small\item\em function to the height of that node in the avltree \end{DoxyCompactList}\item 
+\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$ \hyperlink{class_a_v_lhash_1_1avl_tree_a2a8fa7233ffd52637d4e0b27489dc34f}{rotate\-Right} (\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$root)
+\begin{DoxyCompactList}\small\item\em function to perform right rotation \end{DoxyCompactList}\item 
+\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$ \hyperlink{class_a_v_lhash_1_1avl_tree_a5597f3e9d8679b11f4403a95ec029d29}{rotate\-Left} (\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$root)
+\begin{DoxyCompactList}\small\item\em function to perform left rotation \end{DoxyCompactList}\item 
+\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$ \hyperlink{class_a_v_lhash_1_1avl_tree_a43e348f4e35f4ce321349419b806e805}{insert\-\_\-data} (\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$\hyperlink{class_a_v_lhash_1_1node}{node}, long int key, long int value)
+\begin{DoxyCompactList}\small\item\em function to insert key and values in the avl tree \end{DoxyCompactList}\item 
+void \hyperlink{class_a_v_lhash_1_1avl_tree_ae255a3a450a2e8eb07a40ea58ccc1fe1}{insert} (long key, long value)
+\begin{DoxyCompactList}\small\item\em extra function to value in the specified tree calculated using key mod s \end{DoxyCompactList}\item 
+long int \hyperlink{class_a_v_lhash_1_1avl_tree_a8a9ae94b47689118903c58e62781b38e}{search\-\_\-key} (\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$root, long int key)
+\begin{DoxyCompactList}\small\item\em iterator search function \end{DoxyCompactList}\item 
+long \hyperlink{class_a_v_lhash_1_1avl_tree_a2b072ac91fb50f9ef81643536dc251ff}{search} (long key)
+\begin{DoxyCompactList}\small\item\em search function \end{DoxyCompactList}\item 
+int \hyperlink{class_a_v_lhash_1_1avl_tree_a0e5ebd3217047e414ee61eef8c0c3dd3}{inorder\-\_\-key} (\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$root)
+\begin{DoxyCompactList}\small\item\em sunction to print inorder traversal \end{DoxyCompactList}\item 
+void \hyperlink{class_a_v_lhash_1_1avl_tree_a00c20dc87002457d4b753cc75deb08ab}{inorder} ()
+\begin{DoxyCompactList}\small\item\em inorder traversal \end{DoxyCompactList}\item 
+int \hyperlink{class_a_v_lhash_1_1avl_tree_a877399f773eaf8a92bf0ec26e010bea2}{inorder\-\_\-file} (\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$root)
+\begin{DoxyCompactList}\small\item\em inorder traversal and storin in file \end{DoxyCompactList}\item 
+void \hyperlink{class_a_v_lhash_1_1avl_tree_adb01a9521893b33956dd0c8df335a338}{inorder\-\_\-file\-\_\-hash} ()
+\begin{DoxyCompactList}\small\item\em abstract function to call inorder for each hash node \end{DoxyCompactList}\item 
+int \hyperlink{class_a_v_lhash_1_1avl_tree_aa08aa6743d88ba4653df3786077fc21e}{preorder\-\_\-key} (\hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{avl\-Node} $\ast$root)
+\begin{DoxyCompactList}\small\item\em sunction to print preorder traversal \end{DoxyCompactList}\item 
+void \hyperlink{class_a_v_lhash_1_1avl_tree_a27c2765693634056541b66d4e521485c}{preorder} ()
+\begin{DoxyCompactList}\small\item\em preorder traversal \end{DoxyCompactList}\item 
+void \hyperlink{class_a_v_lhash_1_1avl_tree_a7e04c5815725c08178cf6d22f1f37d2a}{make\-\_\-root\-\_\-null} ()
+\begin{DoxyCompactList}\small\item\em making root null for using the root for next iteration \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_a_v_lhash_1_1avl_tree_a98e40b4ee8d489d79db9e2a691bfedbb}{s}
+\item 
+struct \hyperlink{struct_a_v_lhash_1_1avl_tree_1_1hash}{hash} $\ast$ \hyperlink{class_a_v_lhash_1_1avl_tree_afceac1339c2bd32b781eb2b5fc85d8c6}{hash\-Table}
+\item 
+F\-I\-L\-E $\ast$ \hyperlink{class_a_v_lhash_1_1avl_tree_af03941d80a5faf3c44d27ce25a5282e9}{file\-\_\-in}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+just an alias 
+
+avlhash tree class containing all functions of the tree 
+
+Definition at line 33 of file avlhash.\-cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_v_lhash_1_1avl_tree_ac79205f64581690cb22123a895625450}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!avl\-Tree@{avl\-Tree}}
+\index{avl\-Tree@{avl\-Tree}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{avl\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}A\-V\-Lhash\-::avl\-Tree\-::avl\-Tree (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_ac79205f64581690cb22123a895625450}
+
+
+constructor 
+
+allocating space for hash table
+
+allocating space for s avl trees
+
+making all roots N\-U\-L\-L of each avltree 
+
+Definition at line 46 of file avlhash.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_v_lhash_1_1avl_tree_a791d79a8cb9a49de4bfd44e3a421c295}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!abs@{abs}}
+\index{abs@{abs}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}int A\-V\-Lhash\-::avl\-Tree\-::abs (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a791d79a8cb9a49de4bfd44e3a421c295}
+
+
+absoulute value function 
+
+
+
+Definition at line 57 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a0dfea22e6ae84e779906c7afc33e2bae}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!height@{height}}
+\index{height@{height}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}int A\-V\-Lhash\-::avl\-Tree\-::height (
+\begin{DoxyParamCaption}
+\item[{{\bf avl\-Node} $\ast$}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a0dfea22e6ae84e779906c7afc33e2bae}
+
+
+function to the height of that node in the avltree 
+
+
+
+Definition at line 71 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a00c20dc87002457d4b753cc75deb08ab}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!inorder@{inorder}}
+\index{inorder@{inorder}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{inorder}]{\setlength{\rightskip}{0pt plus 5cm}void A\-V\-Lhash\-::avl\-Tree\-::inorder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a00c20dc87002457d4b753cc75deb08ab}
+
+
+inorder traversal 
+
+
+
+Definition at line 194 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a877399f773eaf8a92bf0ec26e010bea2}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!inorder\-\_\-file@{inorder\-\_\-file}}
+\index{inorder\-\_\-file@{inorder\-\_\-file}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{inorder\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}int A\-V\-Lhash\-::avl\-Tree\-::inorder\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{{\bf avl\-Node} $\ast$}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a877399f773eaf8a92bf0ec26e010bea2}
+
+
+inorder traversal and storin in file 
+
+
+
+Definition at line 199 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_adb01a9521893b33956dd0c8df335a338}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!inorder\-\_\-file\-\_\-hash@{inorder\-\_\-file\-\_\-hash}}
+\index{inorder\-\_\-file\-\_\-hash@{inorder\-\_\-file\-\_\-hash}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{inorder\-\_\-file\-\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}void A\-V\-Lhash\-::avl\-Tree\-::inorder\-\_\-file\-\_\-hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_adb01a9521893b33956dd0c8df335a338}
+
+
+abstract function to call inorder for each hash node 
+
+
+
+Definition at line 209 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a0e5ebd3217047e414ee61eef8c0c3dd3}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!inorder\-\_\-key@{inorder\-\_\-key}}
+\index{inorder\-\_\-key@{inorder\-\_\-key}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{inorder\-\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}int A\-V\-Lhash\-::avl\-Tree\-::inorder\-\_\-key (
+\begin{DoxyParamCaption}
+\item[{{\bf avl\-Node} $\ast$}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a0e5ebd3217047e414ee61eef8c0c3dd3}
+
+
+sunction to print inorder traversal 
+
+
+
+Definition at line 184 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_ae255a3a450a2e8eb07a40ea58ccc1fe1}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!insert@{insert}}
+\index{insert@{insert}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void A\-V\-Lhash\-::avl\-Tree\-::insert (
+\begin{DoxyParamCaption}
+\item[{long}]{key, }
+\item[{long}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_ae255a3a450a2e8eb07a40ea58ccc1fe1}
+
+
+extra function to value in the specified tree calculated using key mod s 
+
+
+
+Definition at line 161 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a43e348f4e35f4ce321349419b806e805}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!insert\-\_\-data@{insert\-\_\-data}}
+\index{insert\-\_\-data@{insert\-\_\-data}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{insert\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf avl\-Node}$\ast$ A\-V\-Lhash\-::avl\-Tree\-::insert\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{{\bf avl\-Node} $\ast$}]{node, }
+\item[{long int}]{key, }
+\item[{long int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a43e348f4e35f4ce321349419b806e805}
+
+
+function to insert key and values in the avl tree 
+
+condition when tree is subtree is empty and new node can be inserted here
+
+condition to check if key should be added in the left subtree
+
+condition to check if key should be added in the right subtree
+
+update height of the parent node
+
+calculate the balance height of the parent node
+
+If this node becomes unbalanced, then there are 4 cases Left Left Case
+
+Right Right Case
+
+Left Right Case
+
+Right Left Case
+
+return the modified root node 
+
+Definition at line 108 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a7e04c5815725c08178cf6d22f1f37d2a}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!make\-\_\-root\-\_\-null@{make\-\_\-root\-\_\-null}}
+\index{make\-\_\-root\-\_\-null@{make\-\_\-root\-\_\-null}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{make\-\_\-root\-\_\-null}]{\setlength{\rightskip}{0pt plus 5cm}void A\-V\-Lhash\-::avl\-Tree\-::make\-\_\-root\-\_\-null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a7e04c5815725c08178cf6d22f1f37d2a}
+
+
+making root null for using the root for next iteration 
+
+
+
+Definition at line 231 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a4e4dc9bb8d3d10f2bc859d7e7541b9ae}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!max@{max}}
+\index{max@{max}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}int A\-V\-Lhash\-::avl\-Tree\-::max (
+\begin{DoxyParamCaption}
+\item[{int}]{a, }
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a4e4dc9bb8d3d10f2bc859d7e7541b9ae}
+
+
+function to find max of the two numbers 
+
+
+
+Definition at line 64 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a27c2765693634056541b66d4e521485c}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!preorder@{preorder}}
+\index{preorder@{preorder}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{preorder}]{\setlength{\rightskip}{0pt plus 5cm}void A\-V\-Lhash\-::avl\-Tree\-::preorder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a27c2765693634056541b66d4e521485c}
+
+
+preorder traversal 
+
+
+
+Definition at line 227 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_aa08aa6743d88ba4653df3786077fc21e}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!preorder\-\_\-key@{preorder\-\_\-key}}
+\index{preorder\-\_\-key@{preorder\-\_\-key}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{preorder\-\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}int A\-V\-Lhash\-::avl\-Tree\-::preorder\-\_\-key (
+\begin{DoxyParamCaption}
+\item[{{\bf avl\-Node} $\ast$}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_aa08aa6743d88ba4653df3786077fc21e}
+
+
+sunction to print preorder traversal 
+
+
+
+Definition at line 217 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a5597f3e9d8679b11f4403a95ec029d29}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!rotate\-Left@{rotate\-Left}}
+\index{rotate\-Left@{rotate\-Left}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{rotate\-Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf avl\-Node}$\ast$ A\-V\-Lhash\-::avl\-Tree\-::rotate\-Left (
+\begin{DoxyParamCaption}
+\item[{{\bf avl\-Node} $\ast$}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a5597f3e9d8679b11f4403a95ec029d29}
+
+
+function to perform left rotation 
+
+Perform rotation
+
+Update heights
+
+Return new root 
+
+Definition at line 92 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a2a8fa7233ffd52637d4e0b27489dc34f}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!rotate\-Right@{rotate\-Right}}
+\index{rotate\-Right@{rotate\-Right}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{rotate\-Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf avl\-Node}$\ast$ A\-V\-Lhash\-::avl\-Tree\-::rotate\-Right (
+\begin{DoxyParamCaption}
+\item[{{\bf avl\-Node} $\ast$}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a2a8fa7233ffd52637d4e0b27489dc34f}
+
+
+function to perform right rotation 
+
+Perform rotation
+
+Update heights
+
+Return new root 
+
+Definition at line 77 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a2b072ac91fb50f9ef81643536dc251ff}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!search@{search}}
+\index{search@{search}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{search}]{\setlength{\rightskip}{0pt plus 5cm}long A\-V\-Lhash\-::avl\-Tree\-::search (
+\begin{DoxyParamCaption}
+\item[{long}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a2b072ac91fb50f9ef81643536dc251ff}
+
+
+search function 
+
+
+
+Definition at line 180 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a8a9ae94b47689118903c58e62781b38e}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!search\-\_\-key@{search\-\_\-key}}
+\index{search\-\_\-key@{search\-\_\-key}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{search\-\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}long int A\-V\-Lhash\-::avl\-Tree\-::search\-\_\-key (
+\begin{DoxyParamCaption}
+\item[{{\bf avl\-Node} $\ast$}]{root, }
+\item[{long int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_a_v_lhash_1_1avl_tree_a8a9ae94b47689118903c58e62781b38e}
+
+
+iterator search function 
+
+
+
+Definition at line 167 of file avlhash.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_a_v_lhash_1_1avl_tree_af03941d80a5faf3c44d27ce25a5282e9}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!file\-\_\-in@{file\-\_\-in}}
+\index{file\-\_\-in@{file\-\_\-in}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{file\-\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}F\-I\-L\-E$\ast$ A\-V\-Lhash\-::avl\-Tree\-::file\-\_\-in}}\label{class_a_v_lhash_1_1avl_tree_af03941d80a5faf3c44d27ce25a5282e9}
+
+
+Definition at line 44 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_afceac1339c2bd32b781eb2b5fc85d8c6}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!hash\-Table@{hash\-Table}}
+\index{hash\-Table@{hash\-Table}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{hash\-Table}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf hash}$\ast$ A\-V\-Lhash\-::avl\-Tree\-::hash\-Table}}\label{class_a_v_lhash_1_1avl_tree_afceac1339c2bd32b781eb2b5fc85d8c6}
+
+
+Definition at line 43 of file avlhash.\-cpp.
+
+\hypertarget{class_a_v_lhash_1_1avl_tree_a98e40b4ee8d489d79db9e2a691bfedbb}{\index{A\-V\-Lhash\-::avl\-Tree@{A\-V\-Lhash\-::avl\-Tree}!s@{s}}
+\index{s@{s}!AVLhash::avlTree@{A\-V\-Lhash\-::avl\-Tree}}
+\subsubsection[{s}]{\setlength{\rightskip}{0pt plus 5cm}int A\-V\-Lhash\-::avl\-Tree\-::s}}\label{class_a_v_lhash_1_1avl_tree_a98e40b4ee8d489d79db9e2a691bfedbb}
+
+
+Definition at line 42 of file avlhash.\-cpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{avlhash_8cpp}{avlhash.\-cpp}\end{DoxyCompactItemize}

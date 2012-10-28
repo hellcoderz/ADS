@@ -1,0 +1,85 @@
+\hypertarget{avlhash_8cpp}{\section{avlhash.\-cpp File Reference}
+\label{avlhash_8cpp}\index{avlhash.\-cpp@{avlhash.\-cpp}}
+}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$ctime$>$}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include $<$malloc.\-h$>$}\\*
+{\ttfamily \#include $<$queue$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_a_v_lhash_1_1node}{A\-V\-Lhash\-::node}
+\begin{DoxyCompactList}\small\item\em node structure of avltree \end{DoxyCompactList}\item 
+class \hyperlink{class_a_v_lhash_1_1avl_tree}{A\-V\-Lhash\-::avl\-Tree}
+\begin{DoxyCompactList}\small\item\em just an alias \end{DoxyCompactList}\item 
+struct \hyperlink{struct_a_v_lhash_1_1avl_tree_1_1hash}{A\-V\-Lhash\-::avl\-Tree\-::hash}
+\begin{DoxyCompactList}\small\item\em hashmap to store s no. of of trees \end{DoxyCompactList}\item 
+class \hyperlink{class_a_v_lhash_1_1utility}{A\-V\-Lhash\-::utility}
+\begin{DoxyCompactList}\small\item\em util class which hold all the utility functions \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespace_a_v_lhash}{A\-V\-Lhash}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{avlhash_8cpp_ac5bd943ec3bec3f9eca0ebfe9a3fe001}{C\-H\-E\-C\-K\-\_\-\-B\-A\-L\-A\-N\-C\-E}
+\item 
+\#define \hyperlink{avlhash_8cpp_a7096f78a1a47854e823f04a4e90109c5}{P\-A\-I\-R}(x, y)~pair$<$long,node$\ast$$>$(x,y)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct node \hyperlink{namespace_a_v_lhash_a09cd9142193c004fe02c59c9dbc29732}{A\-V\-Lhash\-::avl\-Node}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{avlhash_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em main function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{avlhash_8cpp_ac5bd943ec3bec3f9eca0ebfe9a3fe001}{\index{avlhash.\-cpp@{avlhash.\-cpp}!C\-H\-E\-C\-K\-\_\-\-B\-A\-L\-A\-N\-C\-E@{C\-H\-E\-C\-K\-\_\-\-B\-A\-L\-A\-N\-C\-E}}
+\index{C\-H\-E\-C\-K\-\_\-\-B\-A\-L\-A\-N\-C\-E@{C\-H\-E\-C\-K\-\_\-\-B\-A\-L\-A\-N\-C\-E}!avlhash.cpp@{avlhash.\-cpp}}
+\subsubsection[{C\-H\-E\-C\-K\-\_\-\-B\-A\-L\-A\-N\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-H\-E\-C\-K\-\_\-\-B\-A\-L\-A\-N\-C\-E}}\label{avlhash_8cpp_ac5bd943ec3bec3f9eca0ebfe9a3fe001}
+
+
+Definition at line 15 of file avlhash.\-cpp.
+
+\hypertarget{avlhash_8cpp_a7096f78a1a47854e823f04a4e90109c5}{\index{avlhash.\-cpp@{avlhash.\-cpp}!P\-A\-I\-R@{P\-A\-I\-R}}
+\index{P\-A\-I\-R@{P\-A\-I\-R}!avlhash.cpp@{avlhash.\-cpp}}
+\subsubsection[{P\-A\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-I\-R(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~pair$<$long,node$\ast$$>$(x,y)}}\label{avlhash_8cpp_a7096f78a1a47854e823f04a4e90109c5}
+
+
+Definition at line 16 of file avlhash.\-cpp.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{avlhash_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{\index{avlhash.\-cpp@{avlhash.\-cpp}!main@{main}}
+\index{main@{main}!avlhash.cpp@{avlhash.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{avlhash_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+main function 
+
+
+
+Definition at line 357 of file avlhash.\-cpp.
+

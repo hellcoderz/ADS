@@ -1,0 +1,146 @@
+\hypertarget{class_btreehash_1_1node}{\section{Btreehash\-:\-:node Class Reference}
+\label{class_btreehash_1_1node}\index{Btreehash\-::node@{Btreehash\-::node}}
+}
+
+
+node structure for b+ tree node  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_btreehash_1_1node_a5ab060dfba599294dc217c17b7b2635f}{node} (int \hyperlink{class_btreehash_1_1node_a6222a2bd19f802090d25f8ce8e5ea413}{order})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{class_btreehash_1_1node_a992fe7e5e4d9acb4f5aea38ed786da8d}{$\sim$node} ()
+\begin{DoxyCompactList}\small\item\em destructor to deallocate memory \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long $\ast$ \hyperlink{class_btreehash_1_1node_a182c9bcbe6e1ff41356283ac57443a2d}{key}
+\item 
+int \hyperlink{class_btreehash_1_1node_ae63de61b2b8b73eb681cca40de41f7a9}{capacity}
+\begin{DoxyCompactList}\small\item\em array of keys \end{DoxyCompactList}\item 
+\hyperlink{class_btreehash_1_1node}{node} $\ast$$\ast$ \hyperlink{class_btreehash_1_1node_a0fe477a053d6f13eecbbf975cfca2707}{nodes}
+\begin{DoxyCompactList}\small\item\em to hold \# of elements in that node \end{DoxyCompactList}\item 
+\hyperlink{class_btreehash_1_1node}{node} $\ast$ \hyperlink{class_btreehash_1_1node_ae4f3ee150ef5664250371ef8c7287812}{parent}
+\begin{DoxyCompactList}\small\item\em array of child pointers \end{DoxyCompactList}\item 
+long $\ast$ \hyperlink{class_btreehash_1_1node_aa466b9c9e1315209f850a42d50115371}{value}
+\begin{DoxyCompactList}\small\item\em pointer to point to parent node \end{DoxyCompactList}\item 
+int \hyperlink{class_btreehash_1_1node_a6222a2bd19f802090d25f8ce8e5ea413}{order}
+\begin{DoxyCompactList}\small\item\em array of values \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+node structure for b+ tree node 
+
+Definition at line 19 of file btreehash.\-cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_btreehash_1_1node_a5ab060dfba599294dc217c17b7b2635f}{\index{Btreehash\-::node@{Btreehash\-::node}!node@{node}}
+\index{node@{node}!Btreehash::node@{Btreehash\-::node}}
+\subsubsection[{node}]{\setlength{\rightskip}{0pt plus 5cm}Btreehash\-::node\-::node (
+\begin{DoxyParamCaption}
+\item[{int}]{order}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1node_a5ab060dfba599294dc217c17b7b2635f}
+
+
+constructor 
+
+to store order of b+ tree allocating memory for keys
+
+allocating memory for values
+
+allocating memory for child pointers
+
+setting initial \# of elements 
+
+Definition at line 29 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1node_a992fe7e5e4d9acb4f5aea38ed786da8d}{\index{Btreehash\-::node@{Btreehash\-::node}!$\sim$node@{$\sim$node}}
+\index{$\sim$node@{$\sim$node}!Btreehash::node@{Btreehash\-::node}}
+\subsubsection[{$\sim$node}]{\setlength{\rightskip}{0pt plus 5cm}Btreehash\-::node\-::$\sim$node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1node_a992fe7e5e4d9acb4f5aea38ed786da8d}
+
+
+destructor to deallocate memory 
+
+
+
+Definition at line 41 of file btreehash.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_btreehash_1_1node_ae63de61b2b8b73eb681cca40de41f7a9}{\index{Btreehash\-::node@{Btreehash\-::node}!capacity@{capacity}}
+\index{capacity@{capacity}!Btreehash::node@{Btreehash\-::node}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}int Btreehash\-::node\-::capacity}}\label{class_btreehash_1_1node_ae63de61b2b8b73eb681cca40de41f7a9}
+
+
+array of keys 
+
+
+
+Definition at line 23 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1node_a182c9bcbe6e1ff41356283ac57443a2d}{\index{Btreehash\-::node@{Btreehash\-::node}!key@{key}}
+\index{key@{key}!Btreehash::node@{Btreehash\-::node}}
+\subsubsection[{key}]{\setlength{\rightskip}{0pt plus 5cm}long$\ast$ Btreehash\-::node\-::key}}\label{class_btreehash_1_1node_a182c9bcbe6e1ff41356283ac57443a2d}
+
+
+Definition at line 22 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1node_a0fe477a053d6f13eecbbf975cfca2707}{\index{Btreehash\-::node@{Btreehash\-::node}!nodes@{nodes}}
+\index{nodes@{nodes}!Btreehash::node@{Btreehash\-::node}}
+\subsubsection[{nodes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf node}$\ast$$\ast$ Btreehash\-::node\-::nodes}}\label{class_btreehash_1_1node_a0fe477a053d6f13eecbbf975cfca2707}
+
+
+to hold \# of elements in that node 
+
+
+
+Definition at line 24 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1node_a6222a2bd19f802090d25f8ce8e5ea413}{\index{Btreehash\-::node@{Btreehash\-::node}!order@{order}}
+\index{order@{order}!Btreehash::node@{Btreehash\-::node}}
+\subsubsection[{order}]{\setlength{\rightskip}{0pt plus 5cm}int Btreehash\-::node\-::order}}\label{class_btreehash_1_1node_a6222a2bd19f802090d25f8ce8e5ea413}
+
+
+array of values 
+
+
+
+Definition at line 27 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1node_ae4f3ee150ef5664250371ef8c7287812}{\index{Btreehash\-::node@{Btreehash\-::node}!parent@{parent}}
+\index{parent@{parent}!Btreehash::node@{Btreehash\-::node}}
+\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf node}$\ast$ Btreehash\-::node\-::parent}}\label{class_btreehash_1_1node_ae4f3ee150ef5664250371ef8c7287812}
+
+
+array of child pointers 
+
+
+
+Definition at line 25 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1node_aa466b9c9e1315209f850a42d50115371}{\index{Btreehash\-::node@{Btreehash\-::node}!value@{value}}
+\index{value@{value}!Btreehash::node@{Btreehash\-::node}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}long$\ast$ Btreehash\-::node\-::value}}\label{class_btreehash_1_1node_aa466b9c9e1315209f850a42d50115371}
+
+
+pointer to point to parent node 
+
+
+
+Definition at line 26 of file btreehash.\-cpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{btreehash_8cpp}{btreehash.\-cpp}\end{DoxyCompactItemize}

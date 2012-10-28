@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <malloc.h>
 #include <queue>
+#include <fstream>
 using namespace std;
 
 
@@ -40,9 +41,11 @@ public:
 
     int s;
     struct hash* hashTable;
+    FILE *file_in;
     /// constructor
     avlTree ( int s ) {
         this->s = s;
+        file_in = fopen("AVLHash_inorder.out","wt");
         hashTable = new hash; /// allocating space for hash table
         hashTable->node = new node *[s]; /// allocating space for s avl trees
         for ( int i = 0; i < s; i++ ) {
@@ -155,7 +158,7 @@ public:
     }
 
     ///extra function to value in the specified tree calculated using key mod s
-    void insert ( const long key, long value ) {
+    void insert (  long key, long value ) {
         hashTable->node[key % s] = insert_data ( hashTable->node[key % s], key, value );
     }
 
@@ -191,12 +194,31 @@ public:
     void inorder() {
         inorder_key ( hashTable->node[1] );
     }
+
+    ///inorder traversal and storin in file
+    int inorder_file ( avlNode* root ) {
+        if ( root == NULL ) {
+            return -1;
+        }
+        inorder_file ( root->left );
+        fprintf(file_in,"%ld ",root->value);
+        inorder_file ( root->right );
+        return 0;
+    }
+    ///abstract function to call inorder for each hash node
+    void inorder_file_hash(){
+        for(int i=0;i<s;i++){
+            inorder_file(hashTable->node[i]);   //selecting root corresponding to key mod s
+            fprintf(file_in, "\n");
+        }
+    }
+
     ///sunction to print preorder traversal
     int preorder_key ( avlNode* root ) {
         if ( root == NULL ) {
             return -1;
         }
-        cout << root->key << " ";
+        cout << root->value << " ";
         preorder_key ( root->left );
         preorder_key ( root->right );
         return 0;
@@ -224,11 +246,12 @@ public:
     long n;
     avlTree* tree;
     long* data;
+    
 
-    utility ( long n, int s ) {
-        this->n = n;
-        data = new long[n];
-        tree = new avlTree ( s );
+    utility ( ) {
+       
+        
+        
     }
     ///function to generate shuffled array of 1000000 elements
     void generate_random() {
@@ -255,6 +278,7 @@ public:
     void insert_random() {
         long i = 0;
         while ( i < n ) {
+           
             tree->insert ( data[i], 2 * data[i] );
             i++;
         }
@@ -274,42 +298,92 @@ public:
         tree->make_root_null();
     }
     ///function to calculate average of an array
-    long avg ( long array[] ) {
-        long sum = 0;
+    double avg ( double array[] ) {
+        double sum = 0;
         for ( int i = 0; i < 10; i++ ) {
             sum += array[i];
         }
         return sum / 10;
     }
     ///driver function to run the AVL hash insertion and seaching 10 times and calculate avg. insert and search time.
-    void random_runner() {
+    void random_runner(long num, int s) {
+        n = num;
+        data = new long[n];
+        tree = new avlTree ( s );
         clock_t start, end;
-        long insert_array[10], search_array[10];
+        double insert_array[10], search_array[10];
         for ( int i = 0; i < 10; i++ ) {
             generate_random();
-            start = clock();
+            start = ((double)clock()*1000)/CLOCKS_PER_SEC;
             insert_random();
-            end = clock();
+            end = ((double)clock()*1000)/CLOCKS_PER_SEC;
             insert_array[i] = end - start;
-            start = clock();
+            start = ((double)clock()*1000)/CLOCKS_PER_SEC;
             search_random();
-            end = clock();
+            end = ((double)clock()*1000)/CLOCKS_PER_SEC;
             search_array[i] = end - start;
             make_root_null();
         }
         cout << avg ( insert_array ) << " " <<  avg ( search_array ) << endl;
+    }
+
+    
+
+
+    ///function to input data from user and output traversal in file
+    void user_runner(char file[], int s){
+        ifstream infile;    /// create file for input
+        tree = new avlTree ( s );
+        infile.open(file,ifstream::in);
+        infile >> n;
+        long i=0;
+        long key, value;
+        while(i<n){     ///loop to insert values from file
+            infile >> key >> value ;
+            
+            tree->insert (key, value );
+            i++;
+        }
+
+        tree->inorder_file_hash();  ///inorder traversal and output is stored in file
+       
+
     }
 };
 
 }
 
 ///main function
-int main()
+int main(int argc,char *argv[])
 {
-    long n = 1000000;
-    int s = 101;
-    AVLhash::utility* util = new AVLhash::utility ( n, s );
-    util->random_runner();
+    
+    AVLhash::utility* util = new AVLhash::utility ();
+    if(argc == 4){  //checking for valid # of arguments
+        //cout << argv[1] << " " << argv[2] << " " << argv[3] << endl;
+        if(string(argv[1]) == "-r"){    //random mode
+            //cout << "random mode" << endl;
+            //printf("%d\n",atoi(argv[2]));
+            util->random_runner(1000000,atoi(argv[2]));
+
+        }else{
+            cout << "wrong option" << endl;
+            return 0;
+        }
+    }else if(argc == 3){
+        if(string(argv[1]) == "-u"){    //user mode
+            //cout << "user mode" << endl;
+            util->user_runner(argv[2],3);
+           // util->inorder();
+
+        }else{
+            cout << "wrong option" << endl;
+            return 0;
+        }
+
+    }else{
+        cout << "wrong # of arguments" << endl;
+        return 0;
+    }
     return 0;
 }
 

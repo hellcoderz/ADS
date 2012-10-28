@@ -79,8 +79,8 @@ public:
     }
 
     ///function to calculate average of an array
-    long avg ( long array[] ) {
-        long sum = 0;
+    double avg ( double array[] ) {
+        double sum = 0;
         for ( int i = 0; i < 10; i++ ) {
             sum += array[i];
         }
@@ -90,16 +90,16 @@ public:
     ///driver function to generate, insert and search rb hash tree
     void random_runner() {
         clock_t start, end;
-        long insert_array[10], search_array[10];
+        double insert_array[10], search_array[10];
         for ( int i = 0; i < 10; i++ ) {
             generate_random();
-            start = clock();
+            start = ((double)clock()*1000)/CLOCKS_PER_SEC;
             insert_random();
-            end = clock();
+            end = ((double)clock()*1000)/CLOCKS_PER_SEC;
             insert_array[i] = end - start;
-            start = clock();
+            start = ((double)clock()*1000)/CLOCKS_PER_SEC;
             search_random();
-            end = clock();
+            end = ((double)clock()*1000)/CLOCKS_PER_SEC;
             search_array[i] = end - start;
             make_root_null();
         }
@@ -110,11 +110,33 @@ public:
 
 }
 
-int main()
+///main function
+int main(int argc,char *argv[])
 {
-    ///main function
-    long n = 1000000;
-    RBtree::utility* util = new RBtree::utility ( n );
-    util->random_runner();
+    
+    
+    if(argc == 4){
+        //cout << argv[1] << " " << argv[2] << " " << argv[3] << endl;
+        if(string(argv[1]) == "-r"){
+            RBtree::utility* util = new RBtree::utility (1000000);
+            util->random_runner();
+
+        }else{
+            cout << "wrong option" << endl;
+            return 0;
+        }
+    }else if(argc == 3){
+        if(string(argv[1]) == "-u"){
+            return 0;
+
+        }else{
+            cout << "wrong option" << endl;
+            return 0;
+        }
+
+    }else{
+        cout << "wrong # of arguments" << endl;
+        return 0;
+    }
     return 0;
 }

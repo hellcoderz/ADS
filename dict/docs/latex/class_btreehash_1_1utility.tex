@@ -1,0 +1,324 @@
+\hypertarget{class_btreehash_1_1utility}{\section{Btreehash\-:\-:utility Class Reference}
+\label{class_btreehash_1_1utility}\index{Btreehash\-::utility@{Btreehash\-::utility}}
+}
+
+
+utility class to generate , insert and search values in b+ tree  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_btreehash_1_1utility_1_1hash}{hash}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_btreehash_1_1utility_a9b8af0d9c52b2ca0aa991851d1ff1ed2}{utility} ()
+\item 
+void \hyperlink{class_btreehash_1_1utility_acee49704cdc53cc825c099ac2fa42a0a}{generate\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em function to generate shuffled values from 1 to n \end{DoxyCompactList}\item 
+void \hyperlink{class_btreehash_1_1utility_ae303164ff37c0be48561b504a69826d2}{insert\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em function to insert shuffled values in avltree \end{DoxyCompactList}\item 
+void \hyperlink{class_btreehash_1_1utility_afbdedf1fc9e3c921a41023c0a630160e}{search\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em searching all values in shuffled order in avl tree \end{DoxyCompactList}\item 
+void \hyperlink{class_btreehash_1_1utility_a6b65ef83e80bb1a03cb5847f92bd206c}{inorder} ()
+\begin{DoxyCompactList}\small\item\em printing inorder traversal \end{DoxyCompactList}\item 
+void \hyperlink{class_btreehash_1_1utility_aa6a843c436832c60dd4b1638ea09c133}{preorder} ()
+\begin{DoxyCompactList}\small\item\em printing preorder traversal \end{DoxyCompactList}\item 
+void \hyperlink{class_btreehash_1_1utility_aa02c94146409284142a0be07c4c2f3b2}{level\-\_\-order} ()
+\begin{DoxyCompactList}\small\item\em printing level order traversal \end{DoxyCompactList}\item 
+void \hyperlink{class_btreehash_1_1utility_a64dcb2425033c0b70065fc11fe508d6d}{make\-\_\-root\-\_\-null} ()
+\begin{DoxyCompactList}\small\item\em making root null for next iteration \end{DoxyCompactList}\item 
+long \hyperlink{class_btreehash_1_1utility_ad4a3bda930b1f1e28cdd039cc2b6cd98}{avg} (long array\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em function to calculate average of the array \end{DoxyCompactList}\item 
+void \hyperlink{class_btreehash_1_1utility_abada7022304f62e821c604457a6f2d2e}{random\-\_\-runner} (int num, int s\-\_\-new, int order)
+\begin{DoxyCompactList}\small\item\em function to run the experiment including generating, inserting and searching; \end{DoxyCompactList}\item 
+void \hyperlink{class_btreehash_1_1utility_a536a94662cfb616df63fe9019c3a400d}{level\-\_\-order\-\_\-file} (\hyperlink{namespace_btreehash_ac7db8bb3c794c446de540bf6a03955bc}{btnode} \&\hyperlink{class_btreehash_1_1utility_ab36d736ef77e71394c00e2fa90865a69}{root})
+\item 
+void \hyperlink{class_btreehash_1_1utility_a0ba7dbd40de0dc7db6fff65f198066c5}{level\-\_\-order\-\_\-file\-\_\-hash} ()
+\item 
+void \hyperlink{class_btreehash_1_1utility_aaa36b0a18cea66805c8a19074eb628e2}{user\-\_\-runner} (char file\mbox{[}$\,$\mbox{]}, int s\-\_\-new, int order)
+\begin{DoxyCompactList}\small\item\em function to input data from user and output traversal in file \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{class_btreehash_1_1utility_a25d061d34055bf9388179dcb996d2dbd}{n}
+\item 
+\hyperlink{namespace_btreehash_ac7db8bb3c794c446de540bf6a03955bc}{btnode} \hyperlink{class_btreehash_1_1utility_ab36d736ef77e71394c00e2fa90865a69}{root}
+\item 
+\hyperlink{class_btreehash_1_1btree}{btree} $\ast$ \hyperlink{class_btreehash_1_1utility_a6ecabb5427a477c9406cc7c2825766fd}{tree}
+\begin{DoxyCompactList}\small\item\em btree node \end{DoxyCompactList}\item 
+long $\ast$ \hyperlink{class_btreehash_1_1utility_ae8c4a14a07ee39ef15a9abddff627ee7}{data}
+\item 
+int \hyperlink{class_btreehash_1_1utility_a382e16d30aee08648096cd0c8770a82e}{s}
+\item 
+struct \hyperlink{struct_btreehash_1_1utility_1_1hash}{hash} $\ast$ \hyperlink{class_btreehash_1_1utility_a71ec64837dc395e06029b8ac3b7a4e29}{hash\-Table}
+\item 
+F\-I\-L\-E $\ast$ \hyperlink{class_btreehash_1_1utility_aca1a8d42ff490d5d2330f249479fae1f}{file\-\_\-level}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+utility class to generate , insert and search values in b+ tree 
+
+Definition at line 309 of file btreehash.\-cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_btreehash_1_1utility_a9b8af0d9c52b2ca0aa991851d1ff1ed2}{\index{Btreehash\-::utility@{Btreehash\-::utility}!utility@{utility}}
+\index{utility@{utility}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{utility}]{\setlength{\rightskip}{0pt plus 5cm}Btreehash\-::utility\-::utility (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_a9b8af0d9c52b2ca0aa991851d1ff1ed2}
+
+
+Definition at line 323 of file btreehash.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_btreehash_1_1utility_ad4a3bda930b1f1e28cdd039cc2b6cd98}{\index{Btreehash\-::utility@{Btreehash\-::utility}!avg@{avg}}
+\index{avg@{avg}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{avg}]{\setlength{\rightskip}{0pt plus 5cm}long Btreehash\-::utility\-::avg (
+\begin{DoxyParamCaption}
+\item[{long}]{array\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_ad4a3bda930b1f1e28cdd039cc2b6cd98}
+
+
+function to calculate average of the array 
+
+
+
+Definition at line 385 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_acee49704cdc53cc825c099ac2fa42a0a}{\index{Btreehash\-::utility@{Btreehash\-::utility}!generate\-\_\-random@{generate\-\_\-random}}
+\index{generate\-\_\-random@{generate\-\_\-random}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{generate\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::generate\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_acee49704cdc53cc825c099ac2fa42a0a}
+
+
+function to generate shuffled values from 1 to n 
+
+shuffing the array using loop 
+
+Definition at line 331 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_a6b65ef83e80bb1a03cb5847f92bd206c}{\index{Btreehash\-::utility@{Btreehash\-::utility}!inorder@{inorder}}
+\index{inorder@{inorder}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{inorder}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::inorder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_a6b65ef83e80bb1a03cb5847f92bd206c}
+
+
+printing inorder traversal 
+
+
+
+Definition at line 369 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_ae303164ff37c0be48561b504a69826d2}{\index{Btreehash\-::utility@{Btreehash\-::utility}!insert\-\_\-random@{insert\-\_\-random}}
+\index{insert\-\_\-random@{insert\-\_\-random}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{insert\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::insert\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_ae303164ff37c0be48561b504a69826d2}
+
+
+function to insert shuffled values in avltree 
+
+
+
+Definition at line 352 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_aa02c94146409284142a0be07c4c2f3b2}{\index{Btreehash\-::utility@{Btreehash\-::utility}!level\-\_\-order@{level\-\_\-order}}
+\index{level\-\_\-order@{level\-\_\-order}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{level\-\_\-order}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::level\-\_\-order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_aa02c94146409284142a0be07c4c2f3b2}
+
+
+printing level order traversal 
+
+
+
+Definition at line 377 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_a536a94662cfb616df63fe9019c3a400d}{\index{Btreehash\-::utility@{Btreehash\-::utility}!level\-\_\-order\-\_\-file@{level\-\_\-order\-\_\-file}}
+\index{level\-\_\-order\-\_\-file@{level\-\_\-order\-\_\-file}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{level\-\_\-order\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::level\-\_\-order\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{{\bf btnode} \&}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_a536a94662cfb616df63fe9019c3a400d}
+
+
+Definition at line 419 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_a0ba7dbd40de0dc7db6fff65f198066c5}{\index{Btreehash\-::utility@{Btreehash\-::utility}!level\-\_\-order\-\_\-file\-\_\-hash@{level\-\_\-order\-\_\-file\-\_\-hash}}
+\index{level\-\_\-order\-\_\-file\-\_\-hash@{level\-\_\-order\-\_\-file\-\_\-hash}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{level\-\_\-order\-\_\-file\-\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::level\-\_\-order\-\_\-file\-\_\-hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_a0ba7dbd40de0dc7db6fff65f198066c5}
+
+
+Definition at line 438 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_a64dcb2425033c0b70065fc11fe508d6d}{\index{Btreehash\-::utility@{Btreehash\-::utility}!make\-\_\-root\-\_\-null@{make\-\_\-root\-\_\-null}}
+\index{make\-\_\-root\-\_\-null@{make\-\_\-root\-\_\-null}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{make\-\_\-root\-\_\-null}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::make\-\_\-root\-\_\-null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_a64dcb2425033c0b70065fc11fe508d6d}
+
+
+making root null for next iteration 
+
+
+
+Definition at line 381 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_aa6a843c436832c60dd4b1638ea09c133}{\index{Btreehash\-::utility@{Btreehash\-::utility}!preorder@{preorder}}
+\index{preorder@{preorder}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{preorder}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::preorder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_aa6a843c436832c60dd4b1638ea09c133}
+
+
+printing preorder traversal 
+
+
+
+Definition at line 373 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_abada7022304f62e821c604457a6f2d2e}{\index{Btreehash\-::utility@{Btreehash\-::utility}!random\-\_\-runner@{random\-\_\-runner}}
+\index{random\-\_\-runner@{random\-\_\-runner}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{random\-\_\-runner}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::random\-\_\-runner (
+\begin{DoxyParamCaption}
+\item[{int}]{num, }
+\item[{int}]{s\-\_\-new, }
+\item[{int}]{order}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_abada7022304f62e821c604457a6f2d2e}
+
+
+function to run the experiment including generating, inserting and searching; 
+
+hash table allocation
+
+allocation space for eash b+ tree in eash hashmap 
+
+Definition at line 393 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_afbdedf1fc9e3c921a41023c0a630160e}{\index{Btreehash\-::utility@{Btreehash\-::utility}!search\-\_\-random@{search\-\_\-random}}
+\index{search\-\_\-random@{search\-\_\-random}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{search\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::search\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_afbdedf1fc9e3c921a41023c0a630160e}
+
+
+searching all values in shuffled order in avl tree 
+
+
+
+Definition at line 361 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_aaa36b0a18cea66805c8a19074eb628e2}{\index{Btreehash\-::utility@{Btreehash\-::utility}!user\-\_\-runner@{user\-\_\-runner}}
+\index{user\-\_\-runner@{user\-\_\-runner}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{user\-\_\-runner}]{\setlength{\rightskip}{0pt plus 5cm}void Btreehash\-::utility\-::user\-\_\-runner (
+\begin{DoxyParamCaption}
+\item[{char}]{file\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{s\-\_\-new, }
+\item[{int}]{order}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btreehash_1_1utility_aaa36b0a18cea66805c8a19074eb628e2}
+
+
+function to input data from user and output traversal in file 
+
+hash table allocation
+
+allocation space for eash b+ tree in eash hashmap 
+
+Definition at line 446 of file btreehash.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_btreehash_1_1utility_ae8c4a14a07ee39ef15a9abddff627ee7}{\index{Btreehash\-::utility@{Btreehash\-::utility}!data@{data}}
+\index{data@{data}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}long$\ast$ Btreehash\-::utility\-::data}}\label{class_btreehash_1_1utility_ae8c4a14a07ee39ef15a9abddff627ee7}
+
+
+Definition at line 319 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_aca1a8d42ff490d5d2330f249479fae1f}{\index{Btreehash\-::utility@{Btreehash\-::utility}!file\-\_\-level@{file\-\_\-level}}
+\index{file\-\_\-level@{file\-\_\-level}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{file\-\_\-level}]{\setlength{\rightskip}{0pt plus 5cm}F\-I\-L\-E$\ast$ Btreehash\-::utility\-::file\-\_\-level}}\label{class_btreehash_1_1utility_aca1a8d42ff490d5d2330f249479fae1f}
+
+
+Definition at line 322 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_a71ec64837dc395e06029b8ac3b7a4e29}{\index{Btreehash\-::utility@{Btreehash\-::utility}!hash\-Table@{hash\-Table}}
+\index{hash\-Table@{hash\-Table}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{hash\-Table}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf hash}$\ast$ Btreehash\-::utility\-::hash\-Table}}\label{class_btreehash_1_1utility_a71ec64837dc395e06029b8ac3b7a4e29}
+
+
+Definition at line 321 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_a25d061d34055bf9388179dcb996d2dbd}{\index{Btreehash\-::utility@{Btreehash\-::utility}!n@{n}}
+\index{n@{n}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}long Btreehash\-::utility\-::n}}\label{class_btreehash_1_1utility_a25d061d34055bf9388179dcb996d2dbd}
+
+
+Definition at line 316 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_ab36d736ef77e71394c00e2fa90865a69}{\index{Btreehash\-::utility@{Btreehash\-::utility}!root@{root}}
+\index{root@{root}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}{\bf btnode} Btreehash\-::utility\-::root}}\label{class_btreehash_1_1utility_ab36d736ef77e71394c00e2fa90865a69}
+
+
+Definition at line 317 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_a382e16d30aee08648096cd0c8770a82e}{\index{Btreehash\-::utility@{Btreehash\-::utility}!s@{s}}
+\index{s@{s}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{s}]{\setlength{\rightskip}{0pt plus 5cm}int Btreehash\-::utility\-::s}}\label{class_btreehash_1_1utility_a382e16d30aee08648096cd0c8770a82e}
+
+
+Definition at line 320 of file btreehash.\-cpp.
+
+\hypertarget{class_btreehash_1_1utility_a6ecabb5427a477c9406cc7c2825766fd}{\index{Btreehash\-::utility@{Btreehash\-::utility}!tree@{tree}}
+\index{tree@{tree}!Btreehash::utility@{Btreehash\-::utility}}
+\subsubsection[{tree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf btree}$\ast$ Btreehash\-::utility\-::tree}}\label{class_btreehash_1_1utility_a6ecabb5427a477c9406cc7c2825766fd}
+
+
+btree node 
+
+
+
+Definition at line 318 of file btreehash.\-cpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{btreehash_8cpp}{btreehash.\-cpp}\end{DoxyCompactItemize}

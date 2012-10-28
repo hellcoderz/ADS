@@ -5,14 +5,19 @@
 #include <cstdlib>
 #include <malloc.h>
 #include <queue>
+#include <fstream>
+#include <string.h>
+#include <sstream>
 
+
+using namespace std;
 
 namespace AVLtree
 {
 
 #define CHECK_BALANCE
 
-using namespace std;
+
 
 
 class node
@@ -161,8 +166,8 @@ public:
             return -1;
         }
         inorder ( root->left );
-        int balance = height ( root->left ) - height ( root->right );
-        cout << root->key << ":" << balance << " ";
+       
+        cout << root->key << " ";
         inorder ( root->right );
         return 0;
     }
@@ -173,7 +178,7 @@ public:
         if ( root == NULL ) {
             return -1;
         }
-        cout << root->key << " ";
+        cout << root->value << " ";
         preorder ( root->left );
         preorder ( root->right );
         return 0;
@@ -190,14 +195,13 @@ public:
             que.pop();
             if ( root == NULL )
                 return 0;
-            cout << temp->key  << " ";
+            cout << temp->value  << " ";
             que.push ( temp->left );
             que.push ( temp->right );
         }
         cout << endl;
         return 0;
     }
-
 
 
 };
@@ -213,11 +217,16 @@ public:
     avlNode* root;
     avlTree tree;
     long int* data;
+    FILE *file_in,*file_post;
+    
+
     ///constructor
-    utility ( const long int n ) {
-        this->n = n;
+    utility (  ) {
+       
         root = NULL;
-        data = new long[n];
+        file_in = fopen("AVL_inorder.out","wt");
+        file_post = fopen("AVL_postorder.out","wt");
+        
     }
     ///function to generate shuffled values from 1 to n
     void generate_random() {
@@ -266,21 +275,9 @@ public:
         }
     }
 
-
-    ///function to insert predefined values for testing
-    void insert_defined() {
-        int d[] = {20, 19, 18, 4, 16, 6, 7, 13, 9, 11, 10, 12, 8, 14};
-        for ( int i = 0; i < sizeof ( d ) / sizeof ( int ); i++ ) {
-            cout << "Inserting = " << d[i] <<  endl;
-            root = tree.insert ( root, d[i], 2 * d[i] );
-            inorder_random();
-            preorder_random();
-        }
-    }
-
-
+    
     ///searching all values in shuffled order in avl tree
-    void search_random() {
+    void search() {
         long int i = 0;
         long ret;
         while ( i < n ) {
@@ -289,17 +286,19 @@ public:
         }
     }
     ///printing inorder traversal
-    void inorder_random() {
+    void inorder() {
         ///cout << "generating inorder traversal" << endl;
         tree.inorder ( root );
         ///cout << endl << "inorder traversal ended" << endl;
     }
     ///printing preorder traversal
-    void preorder_random() {
+    void preorder() {
        /// cout << "generating preorder traversal" << endl;
         tree.preorder ( root );
         ///cout << endl << "preorder traversal ended" << endl;
     }
+   
+
     ///making root null for next iteration
     void make_root_null() {
         root = NULL;
@@ -309,30 +308,75 @@ public:
         cout << "tree height = " << tree.height ( root ) << endl;
     }
     ///function to calculate average of the array
-    long avg ( long array[] ) {
-        long sum = 0;
+    double avg ( double array[] ) {
+        double sum = 0;
         for ( int i = 0; i < 10; i++ ) {
             sum += array[i];
         }
         return sum / 10;
     }
     ///function to run the experiment including generating, inserting and searching;
-    void random_runner() {
+    void random_runner(long num) {
+        n = num;
+        
         clock_t start, end;
-        long insert_array[10], search_array[10];
+        double insert_array[10], search_array[10];
         for ( int i = 0; i < 10; i++ ) {
             generate_random();
-            start = clock();
+            start = ((double)clock()*1000)/CLOCKS_PER_SEC;
             insert_random();
-            end = clock();
+            end = ((double)clock()*1000)/CLOCKS_PER_SEC;
             insert_array[i] = end - start;
-            start = clock();
-            search_random();
-            end = clock();
+            start = ((double)clock()*1000)/CLOCKS_PER_SEC;
+            search();
+            end = ((double)clock()*1000)/CLOCKS_PER_SEC;
             search_array[i] = end - start;
             make_root_null();
         }
         cout  << avg ( insert_array ) << " " <<  avg ( search_array ) << endl;    
+    }
+
+     ///inorder traversal and storin in file
+    int inorder_file ( avlNode* root ) {
+        if ( root == NULL ) {
+            return -1;
+        }
+        inorder_file ( root->left );
+        fprintf(file_in,"%ld ",root->value);
+        inorder_file ( root->right );
+        return 0;
+    }
+
+
+    ///function to print preorder traversal in file
+    int postorder_file ( avlNode* root) {
+        if ( root == NULL ) {
+            return -1;
+        }
+        
+        postorder_file ( root->left);
+        postorder_file ( root->right);
+        fprintf(file_post,"%ld ",root->value);
+        return 0;
+    }
+
+    ///function to input data from user and output traversal in file
+    void user_runner(char file[]){
+        ifstream infile;
+        
+        infile.open(file,ifstream::in);
+        infile >> n;
+        long i=0;
+        long key, value;
+        while(i<n){
+            infile >> key >> value ;
+            root = tree.insert ( root, key, value );
+            i++;
+        }
+
+        inorder_file(root);
+        postorder_file(root);
+
     }
 
 };
@@ -345,10 +389,35 @@ public:
 
 ///driver function
 
-int main()
+int main(int argc,char *argv[])
 {
-    long int n;
-    AVLtree::utility* util = new AVLtree::utility ( 1000000 );
-    util->random_runner();
+    AVLtree::utility* util = new AVLtree::utility ();
+    
+    if(argc == 4){
+        //cout << argv[1] << " " << argv[2] << " " << argv[3] << endl;
+        if(string(argv[1]) == "-r"){
+            //cout << "random mode" << endl;
+            util->random_runner(1000000);
+
+        }else{
+            cout << "wrong option" << endl;
+            return 0;
+        }
+    }else if(argc == 3){
+        if(string(argv[1]) == "-u"){
+            cout << "user mode" << endl;
+            util->user_runner(argv[2]);
+            //util->inorder();
+
+        }else{
+            cout << "wrong option" << endl;
+            return 0;
+        }
+
+    }else{
+        cout << "wrong # of arguments" << endl;
+        return 0;
+    }
+    
     return 0;
 }
