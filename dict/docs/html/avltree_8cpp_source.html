@@ -238,7 +238,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">if</span> ( root == NULL ) {</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        cout &lt;&lt; root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#af9249c77ccf64046f71f61ec7e9cf3f4">key</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        cout &lt;&lt; root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#ad193d6c64cf315f35c953f1e19830a6a" title="node key">value</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        preorder ( root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#a619a5dd3401226e2488ce3d4c757f2ba" title="node value">left</a> );</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        preorder ( root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#ae806bff5f1dbc868ee3a1f6bd5fdf59d" title="left child">right</a> );</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">return</span> 0;</div>
@@ -254,7 +254,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            que.pop();</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">if</span> ( root == NULL )</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            cout &lt;&lt; temp-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#af9249c77ccf64046f71f61ec7e9cf3f4">key</a>  &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            cout &lt;&lt; temp-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#ad193d6c64cf315f35c953f1e19830a6a" title="node key">value</a>  &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            que.push ( temp-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#a619a5dd3401226e2488ce3d4c757f2ba" title="node value">left</a> );</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            que.push ( temp-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#ae806bff5f1dbc868ee3a1f6bd5fdf59d" title="left child">right</a> );</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
@@ -350,8 +350,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00307"></a><span class="lineno"><a class="code" href="class_a_v_ltree_1_1utility.html#a052cc2f33fa3068d5cc5db3f91a7540d">  307</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_a_v_ltree_1_1utility.html#a052cc2f33fa3068d5cc5db3f91a7540d" title="print root height">height</a>() {</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;tree height = &quot;</span> &lt;&lt; tree.height ( root ) &lt;&lt; endl;</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    }</div>
-<div class="line"><a name="l00311"></a><span class="lineno"><a class="code" href="class_a_v_ltree_1_1utility.html#a10d7bc6a8978e25620e1b235e12bf61b">  311</a></span>&#160;    <span class="keywordtype">long</span> <a class="code" href="class_a_v_ltree_1_1utility.html#a10d7bc6a8978e25620e1b235e12bf61b" title="function to calculate average of the array">avg</a> ( <span class="keywordtype">long</span> array[] ) {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordtype">long</span> sum = 0;</div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="code" href="class_a_v_ltree_1_1utility.html#a00752977e7e3f80a84b50ec0b3440e3d">  311</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_a_v_ltree_1_1utility.html#a00752977e7e3f80a84b50ec0b3440e3d" title="function to calculate average of the array">avg</a> ( <span class="keywordtype">double</span> array[] ) {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordtype">double</span> sum = 0;</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 10; i++ ) {</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            sum += array[i];</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
@@ -361,16 +361,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        n = num;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        </div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        clock_t start, end;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keywordtype">long</span> insert_array[10], search_array[10];</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keywordtype">double</span> insert_array[10], search_array[10];</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 10; i++ ) {</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            generate_random();</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            start = clock();</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            start = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            insert_random();</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            end = clock();</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            end = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            insert_array[i] = end - start;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            start = clock();</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            start = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            search();</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            end = clock();</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            end = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            search_array[i] = end - start;</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            make_root_null();</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        }</div>
@@ -382,7 +382,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        }</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        inorder_file ( root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#a619a5dd3401226e2488ce3d4c757f2ba" title="node value">left</a> );</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        fprintf(file_in,<span class="stringliteral">&quot;%ld &quot;</span>,root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#af9249c77ccf64046f71f61ec7e9cf3f4">key</a>);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        fprintf(file_in,<span class="stringliteral">&quot;%ld &quot;</span>,root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#ad193d6c64cf315f35c953f1e19830a6a" title="node key">value</a>);</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        inorder_file ( root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#ae806bff5f1dbc868ee3a1f6bd5fdf59d" title="left child">right</a> );</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    }</div>
@@ -395,7 +395,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        </div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        postorder_file ( root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#a619a5dd3401226e2488ce3d4c757f2ba" title="node value">left</a>);</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        postorder_file ( root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#ae806bff5f1dbc868ee3a1f6bd5fdf59d" title="left child">right</a>);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        fprintf(file_post,<span class="stringliteral">&quot;%ld &quot;</span>,root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#af9249c77ccf64046f71f61ec7e9cf3f4">key</a>);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        fprintf(file_post,<span class="stringliteral">&quot;%ld &quot;</span>,root-&gt;<a class="code" href="class_a_v_ltree_1_1node.html#ad193d6c64cf315f35c953f1e19830a6a" title="node key">value</a>);</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    }</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
@@ -461,7 +461,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 27 2012 10:34:47 for ads by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 27 2012 22:26:20 for ads by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

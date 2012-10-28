@@ -255,7 +255,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        }</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        inorder_file ( root-&gt;<a class="code" href="class_a_v_lhash_1_1node.html#a55e3b2e9d0542812dfd00071b797ed99" title="node value">left</a> );</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        fprintf(file_in,<span class="stringliteral">&quot;%ld &quot;</span>,root-&gt;<a class="code" href="class_a_v_lhash_1_1node.html#a17bc7500e27536b9104f1a90c1667fbd">key</a>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        fprintf(file_in,<span class="stringliteral">&quot;%ld &quot;</span>,root-&gt;<a class="code" href="class_a_v_lhash_1_1node.html#ae9a61d69f8a794835900ec366b8e71fd" title="node key">value</a>);</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        inorder_file ( root-&gt;<a class="code" href="class_a_v_lhash_1_1node.html#a719f17a801bc3a229cda943611df8821" title="left child">right</a> );</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    }</div>
@@ -270,7 +270,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">if</span> ( root == NULL ) {</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        cout &lt;&lt; root-&gt;<a class="code" href="class_a_v_lhash_1_1node.html#a17bc7500e27536b9104f1a90c1667fbd">key</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        cout &lt;&lt; root-&gt;<a class="code" href="class_a_v_lhash_1_1node.html#ae9a61d69f8a794835900ec366b8e71fd" title="node key">value</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        preorder_key ( root-&gt;<a class="code" href="class_a_v_lhash_1_1node.html#a55e3b2e9d0542812dfd00071b797ed99" title="node value">left</a> );</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        preorder_key ( root-&gt;<a class="code" href="class_a_v_lhash_1_1node.html#a719f17a801bc3a229cda943611df8821" title="left child">right</a> );</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">return</span> 0;</div>
@@ -340,8 +340,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00297"></a><span class="lineno"><a class="code" href="class_a_v_lhash_1_1utility.html#a6fe051b87690e300eb5d5d2ab0280fad">  297</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_a_v_lhash_1_1utility.html#a6fe051b87690e300eb5d5d2ab0280fad" title="making root null to use in next iteration">make_root_null</a>() {</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        tree-&gt;make_root_null();</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
-<div class="line"><a name="l00301"></a><span class="lineno"><a class="code" href="class_a_v_lhash_1_1utility.html#ae412503aba3f53f45c4a418f509c19fe">  301</a></span>&#160;    <span class="keywordtype">long</span> <a class="code" href="class_a_v_lhash_1_1utility.html#ae412503aba3f53f45c4a418f509c19fe" title="function to calculate average of an array">avg</a> ( <span class="keywordtype">long</span> array[] ) {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordtype">long</span> sum = 0;</div>
+<div class="line"><a name="l00301"></a><span class="lineno"><a class="code" href="class_a_v_lhash_1_1utility.html#a0c72775c9a8106cf91ae92c423c1bd50">  301</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_a_v_lhash_1_1utility.html#a0c72775c9a8106cf91ae92c423c1bd50" title="function to calculate average of an array">avg</a> ( <span class="keywordtype">double</span> array[] ) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordtype">double</span> sum = 0;</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 10; i++ ) {</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            sum += array[i];</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
@@ -352,16 +352,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        data = <span class="keyword">new</span> <span class="keywordtype">long</span>[n];</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        tree = <span class="keyword">new</span> <a class="code" href="class_a_v_lhash_1_1avl_tree.html" title="just an alias">avlTree</a> ( s );</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        clock_t start, end;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordtype">long</span> insert_array[10], search_array[10];</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordtype">double</span> insert_array[10], search_array[10];</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 10; i++ ) {</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            generate_random();</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            start = clock();</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            start = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            insert_random();</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            end = clock();</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            end = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            insert_array[i] = end - start;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            start = clock();</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            start = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            search_random();</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            end = clock();</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            end = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            search_array[i] = end - start;</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            make_root_null();</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
@@ -429,7 +429,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 27 2012 10:34:47 for ads by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 27 2012 22:26:20 for ads by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

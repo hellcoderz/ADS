@@ -437,8 +437,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keyword">delete</span> root;</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        root = NULL;</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    }</div>
-<div class="line"><a name="l00395"></a><span class="lineno"><a class="code" href="class_btree_1_1utility.html#aaf28340f1e6f6e16e0a0cd765014b075">  395</a></span>&#160;    <span class="keywordtype">long</span> <a class="code" href="class_btree_1_1utility.html#aaf28340f1e6f6e16e0a0cd765014b075" title="function to calculate avg. of an array">avg</a> ( <span class="keywordtype">long</span> array[] ) {</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        <span class="keywordtype">long</span> sum = 0;</div>
+<div class="line"><a name="l00395"></a><span class="lineno"><a class="code" href="class_btree_1_1utility.html#a35f74d0f0bd158f023efe95e8e506947">  395</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_btree_1_1utility.html#a35f74d0f0bd158f023efe95e8e506947" title="function to calculate avg. of an array">avg</a> ( <span class="keywordtype">double</span> array[] ) {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        <span class="keywordtype">double</span> sum = 0;</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 10; i++ ) {</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            sum += array[i];</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        }</div>
@@ -450,16 +450,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        </div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        tree = <span class="keyword">new</span> <a class="code" href="class_btree_1_1btree.html" title="alias for node*">btree</a> ( order - 1 );</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        clock_t start, end;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keywordtype">long</span> insert_array[10], search_array[10];    <span class="comment">//arrays to hold time taken to finish one iteration</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keywordtype">double</span> insert_array[10], search_array[10];    <span class="comment">//arrays to hold time taken to finish one iteration</span></div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 10; i++ ) {</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            generate_random();  <span class="comment">//function to generate shuffled input</span></div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            start = clock();</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            start = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            insert_random();    </div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            end = clock();</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            end = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            insert_array[i] = end - start;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            start = clock();</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            start = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            search_random();</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            end = clock();</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            end = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            search_array[i] = end - start;</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            make_root_null();</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        }</div>
@@ -472,7 +472,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        }</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; root-&gt;<a class="code" href="class_btree_1_1node.html#ac42856b830b60d8f60d6c726964b1ec3" title="array of keys">capacity</a>; i++ ) {</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            inorder_file ( root-&gt;<a class="code" href="class_btree_1_1node.html#a289484989ca45bfb92c18040556b42f8" title="to hold # of elements in that node">nodes</a>[i] );</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            fprintf(file_sorted,<span class="stringliteral">&quot;%ld &quot;</span>,root-&gt;<a class="code" href="class_btree_1_1node.html#aa1da48fc5e2b8203ae262525c480befa">key</a>[i]);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            fprintf(file_sorted,<span class="stringliteral">&quot;%ld &quot;</span>,root-&gt;<a class="code" href="class_btree_1_1node.html#ac38e10b3743673fa9f8ff9b6551d64ba" title="pointer to point to parent node">value</a>[i]);</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <span class="keywordflow">if</span> ( i == root-&gt;<a class="code" href="class_btree_1_1node.html#ac42856b830b60d8f60d6c726964b1ec3" title="array of keys">capacity</a> - 1 )</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                inorder_file ( root-&gt;<a class="code" href="class_btree_1_1node.html#a289484989ca45bfb92c18040556b42f8" title="to hold # of elements in that node">nodes</a>[i + 1] );</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        }</div>
@@ -488,7 +488,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            temp = que.front();</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            que.pop();</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; temp-&gt;<a class="code" href="class_btree_1_1node.html#ac42856b830b60d8f60d6c726964b1ec3" title="array of keys">capacity</a>; i++ ) {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                fprintf(file_level,<span class="stringliteral">&quot;%ld &quot;</span>,temp-&gt;<a class="code" href="class_btree_1_1node.html#aa1da48fc5e2b8203ae262525c480befa">key</a>[i]);</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                fprintf(file_level,<span class="stringliteral">&quot;%ld &quot;</span>,temp-&gt;<a class="code" href="class_btree_1_1node.html#ac38e10b3743673fa9f8ff9b6551d64ba" title="pointer to point to parent node">value</a>[i]);</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            }</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt;= temp-&gt;<a class="code" href="class_btree_1_1node.html#ac42856b830b60d8f60d6c726964b1ec3" title="array of keys">capacity</a>; i++ ) {</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                <span class="keywordflow">if</span> ( temp-&gt;<a class="code" href="class_btree_1_1node.html#a289484989ca45bfb92c18040556b42f8" title="to hold # of elements in that node">nodes</a>[i] != NULL ) {</div>
@@ -556,7 +556,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 27 2012 10:34:47 for ads by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 27 2012 22:26:20 for ads by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

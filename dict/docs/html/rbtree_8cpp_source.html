@@ -158,8 +158,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="class_r_btree_1_1utility.html#a20de08af04c31bb34b49e175da906eed">   82</a></span>&#160;    <span class="keywordtype">long</span> <a class="code" href="class_r_btree_1_1utility.html#a20de08af04c31bb34b49e175da906eed" title="function to calculate average of an array">avg</a> ( <span class="keywordtype">long</span> array[] ) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">long</span> sum = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="class_r_btree_1_1utility.html#a58a75091f87f9a01f46371c5eec25622">   82</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_r_btree_1_1utility.html#a58a75091f87f9a01f46371c5eec25622" title="function to calculate average of an array">avg</a> ( <span class="keywordtype">double</span> array[] ) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">double</span> sum = 0;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 10; i++ ) {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            sum += array[i];</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
@@ -168,16 +168,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="class_r_btree_1_1utility.html#ac0c3621f49c287aa0cd9a591236f5e1e">   91</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_btree_1_1utility.html#ac0c3621f49c287aa0cd9a591236f5e1e" title="driver function to generate, insert and search rb hash tree">random_runner</a>() {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        clock_t start, end;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">long</span> insert_array[10], search_array[10];</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">double</span> insert_array[10], search_array[10];</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 10; i++ ) {</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            generate_random();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            start = clock();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            start = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            insert_random();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            end = clock();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            end = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            insert_array[i] = end - start;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            start = clock();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            start = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            search_random();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            end = clock();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            end = ((double)clock()*1000)/CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            search_array[i] = end - start;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            make_root_null();</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
@@ -220,7 +220,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 27 2012 10:34:47 for ads by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 27 2012 22:26:20 for ads by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
