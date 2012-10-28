@@ -1,0 +1,193 @@
+\hypertarget{class_r_bhash_1_1utility}{\section{R\-Bhash\-:\-:utility Class Reference}
+\label{class_r_bhash_1_1utility}\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}}
+}
+
+
+utility class to hold all functions performed on rb hash tree  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_bhash_1_1utility_ae76de95e6fb70f51fa627fb236fadd51}{utility} (int \hyperlink{class_r_bhash_1_1utility_aa3e63fea701cf99046aeab691ba4da41}{n}, int \hyperlink{class_r_bhash_1_1utility_a5674754a0754872a1c2a2931f5495a21}{s})
+\item 
+void \hyperlink{class_r_bhash_1_1utility_a8b7ff7afd8c99718648a9650b098f26a}{generate\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em function to generate shuffled values from 1 to n \end{DoxyCompactList}\item 
+void \hyperlink{class_r_bhash_1_1utility_aef5b38b496a85789fe78f40e3c0d3d3f}{insert\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em function to insert shuffled values one by one into the Map \end{DoxyCompactList}\item 
+void \hyperlink{class_r_bhash_1_1utility_aa1f8ffc0fdb60237c60c9d7bb8fb2922}{search\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em function to search all values of the array in rb hash tree \end{DoxyCompactList}\item 
+void \hyperlink{class_r_bhash_1_1utility_ade83d8589891e215e53676e746f87020}{make\-\_\-root\-\_\-null} ()
+\begin{DoxyCompactList}\small\item\em making hashtable null to be used for next iteration \end{DoxyCompactList}\item 
+long \hyperlink{class_r_bhash_1_1utility_a618e63aee8f444ec3e4af0483b590d99}{avg} (long array\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em function to calculate average of an array \end{DoxyCompactList}\item 
+void \hyperlink{class_r_bhash_1_1utility_aa978a65e2cce337f10ef6ecdb7a08ad9}{random\-\_\-runner} ()
+\begin{DoxyCompactList}\small\item\em driver function to generate, insert and search rb hash tree \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rbtree_8cpp_a4e58380df1435929cc191b5b4ba99cd5}{M\-A\-P} $\ast$ \hyperlink{class_r_bhash_1_1utility_aa57c2af866fe11f3d2b84fd5c7669d14}{hash\-Table}
+\item 
+int \hyperlink{class_r_bhash_1_1utility_a5674754a0754872a1c2a2931f5495a21}{s}
+\begin{DoxyCompactList}\small\item\em hashtable variable \end{DoxyCompactList}\item 
+long \hyperlink{class_r_bhash_1_1utility_aa3e63fea701cf99046aeab691ba4da41}{n}
+\item 
+long $\ast$ \hyperlink{class_r_bhash_1_1utility_a2d975c723f3a42aa6c174034d16544a5}{data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+utility class to hold all functions performed on rb hash tree 
+
+Definition at line 19 of file rbhash.\-cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_bhash_1_1utility_ae76de95e6fb70f51fa627fb236fadd51}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!utility@{utility}}
+\index{utility@{utility}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{utility}]{\setlength{\rightskip}{0pt plus 5cm}R\-Bhash\-::utility\-::utility (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_r_bhash_1_1utility_ae76de95e6fb70f51fa627fb236fadd51}
+
+
+Definition at line 27 of file rbhash.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_bhash_1_1utility_a618e63aee8f444ec3e4af0483b590d99}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!avg@{avg}}
+\index{avg@{avg}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{avg}]{\setlength{\rightskip}{0pt plus 5cm}long R\-Bhash\-::utility\-::avg (
+\begin{DoxyParamCaption}
+\item[{long}]{array\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_r_bhash_1_1utility_a618e63aee8f444ec3e4af0483b590d99}
+
+
+function to calculate average of an array 
+
+
+
+Definition at line 82 of file rbhash.\-cpp.
+
+\hypertarget{class_r_bhash_1_1utility_a8b7ff7afd8c99718648a9650b098f26a}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!generate\-\_\-random@{generate\-\_\-random}}
+\index{generate\-\_\-random@{generate\-\_\-random}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{generate\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void R\-Bhash\-::utility\-::generate\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_r_bhash_1_1utility_a8b7ff7afd8c99718648a9650b098f26a}
+
+
+function to generate shuffled values from 1 to n 
+
+cout $<$$<$ n $<$$<$ endl;
+
+loop to shuffle the array 
+
+Definition at line 34 of file rbhash.\-cpp.
+
+\hypertarget{class_r_bhash_1_1utility_aef5b38b496a85789fe78f40e3c0d3d3f}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!insert\-\_\-random@{insert\-\_\-random}}
+\index{insert\-\_\-random@{insert\-\_\-random}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{insert\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void R\-Bhash\-::utility\-::insert\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_r_bhash_1_1utility_aef5b38b496a85789fe78f40e3c0d3d3f}
+
+
+function to insert shuffled values one by one into the Map 
+
+
+
+Definition at line 56 of file rbhash.\-cpp.
+
+\hypertarget{class_r_bhash_1_1utility_ade83d8589891e215e53676e746f87020}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!make\-\_\-root\-\_\-null@{make\-\_\-root\-\_\-null}}
+\index{make\-\_\-root\-\_\-null@{make\-\_\-root\-\_\-null}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{make\-\_\-root\-\_\-null}]{\setlength{\rightskip}{0pt plus 5cm}void R\-Bhash\-::utility\-::make\-\_\-root\-\_\-null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_r_bhash_1_1utility_ade83d8589891e215e53676e746f87020}
+
+
+making hashtable null to be used for next iteration 
+
+
+
+Definition at line 75 of file rbhash.\-cpp.
+
+\hypertarget{class_r_bhash_1_1utility_aa978a65e2cce337f10ef6ecdb7a08ad9}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!random\-\_\-runner@{random\-\_\-runner}}
+\index{random\-\_\-runner@{random\-\_\-runner}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{random\-\_\-runner}]{\setlength{\rightskip}{0pt plus 5cm}void R\-Bhash\-::utility\-::random\-\_\-runner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_r_bhash_1_1utility_aa978a65e2cce337f10ef6ecdb7a08ad9}
+
+
+driver function to generate, insert and search rb hash tree 
+
+
+
+Definition at line 91 of file rbhash.\-cpp.
+
+\hypertarget{class_r_bhash_1_1utility_aa1f8ffc0fdb60237c60c9d7bb8fb2922}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!search\-\_\-random@{search\-\_\-random}}
+\index{search\-\_\-random@{search\-\_\-random}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{search\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void R\-Bhash\-::utility\-::search\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_r_bhash_1_1utility_aa1f8ffc0fdb60237c60c9d7bb8fb2922}
+
+
+function to search all values of the array in rb hash tree 
+
+
+
+Definition at line 64 of file rbhash.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_bhash_1_1utility_a2d975c723f3a42aa6c174034d16544a5}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!data@{data}}
+\index{data@{data}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}long$\ast$ R\-Bhash\-::utility\-::data}}\label{class_r_bhash_1_1utility_a2d975c723f3a42aa6c174034d16544a5}
+
+
+Definition at line 25 of file rbhash.\-cpp.
+
+\hypertarget{class_r_bhash_1_1utility_aa57c2af866fe11f3d2b84fd5c7669d14}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!hash\-Table@{hash\-Table}}
+\index{hash\-Table@{hash\-Table}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{hash\-Table}]{\setlength{\rightskip}{0pt plus 5cm}{\bf M\-A\-P}$\ast$ R\-Bhash\-::utility\-::hash\-Table}}\label{class_r_bhash_1_1utility_aa57c2af866fe11f3d2b84fd5c7669d14}
+
+
+Definition at line 22 of file rbhash.\-cpp.
+
+\hypertarget{class_r_bhash_1_1utility_aa3e63fea701cf99046aeab691ba4da41}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!n@{n}}
+\index{n@{n}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}long R\-Bhash\-::utility\-::n}}\label{class_r_bhash_1_1utility_aa3e63fea701cf99046aeab691ba4da41}
+
+
+Definition at line 24 of file rbhash.\-cpp.
+
+\hypertarget{class_r_bhash_1_1utility_a5674754a0754872a1c2a2931f5495a21}{\index{R\-Bhash\-::utility@{R\-Bhash\-::utility}!s@{s}}
+\index{s@{s}!RBhash::utility@{R\-Bhash\-::utility}}
+\subsubsection[{s}]{\setlength{\rightskip}{0pt plus 5cm}int R\-Bhash\-::utility\-::s}}\label{class_r_bhash_1_1utility_a5674754a0754872a1c2a2931f5495a21}
+
+
+hashtable variable 
+
+
+
+Definition at line 23 of file rbhash.\-cpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rbhash_8cpp}{rbhash.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,325 @@
+\hypertarget{class_btree_1_1utility}{\section{Btree\-:\-:utility Class Reference}
+\label{class_btree_1_1utility}\index{Btree\-::utility@{Btree\-::utility}}
+}
+
+
+utility class which holds all the driver functions  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_btree_1_1utility_aa8aade55ad53d569342491a7c7c1c0c9}{utility} ()
+\item 
+void \hyperlink{class_btree_1_1utility_a02cc6a344924615dde82089ca16150c0}{generate\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em function to generate shuffled values from 1 to n \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_ace83b2110e9982395da53ba59ee1105a}{insert\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em inserting all values of the array in the tree \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_ac28ba2fad253481db02c499762f85edc}{generate\-\_\-increasing} ()
+\begin{DoxyCompactList}\small\item\em function to generate values in increasing order \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_a21786d75160a31474dfbd93c61ed5559}{search\-\_\-random} ()
+\begin{DoxyCompactList}\small\item\em function to search all values of the array in the b+ tree \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_ab9637d54965e6847ee60ddc2dd3dce82}{inorder} ()
+\begin{DoxyCompactList}\small\item\em print inorder traversal of the tree \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_a727f33e9636c1fbd56f017fb696e9366}{preorder} ()
+\begin{DoxyCompactList}\small\item\em print preorder traversal \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_a0e324dea11da1a7506902a9b27ba5d1c}{level\-\_\-order} ()
+\begin{DoxyCompactList}\small\item\em print level order traversal \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_ab4516eb224c343ce53952c51c2257ce8}{make\-\_\-root\-\_\-null} ()
+\begin{DoxyCompactList}\small\item\em making root null to execute next iteration \end{DoxyCompactList}\item 
+long \hyperlink{class_btree_1_1utility_aaf28340f1e6f6e16e0a0cd765014b075}{avg} (long array\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em function to calculate avg. of an array \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_a3f2ae2f39c7f908ddaca9b1a45d9c3c0}{random\-\_\-runner} (long num, int order)
+\begin{DoxyCompactList}\small\item\em driver function to generate, insert and search values \end{DoxyCompactList}\item 
+int \hyperlink{class_btree_1_1utility_abfaed921f7bfa93c86bf68fd252400fc}{inorder\-\_\-file} (\hyperlink{class_btree_1_1node}{node} $\ast$\hyperlink{class_btree_1_1utility_a240cdc9a802b5d396fb15ebf2bf1e3de}{root})
+\begin{DoxyCompactList}\small\item\em print inorder traversal of the tree \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_a8388fec52c70801733166954a2d3cee0}{level\-\_\-order\-\_\-file} (\hyperlink{namespace_btree_af2177a710b4e16aaf0c14dcbbc01a9af}{btnode} \&\hyperlink{class_btree_1_1utility_a240cdc9a802b5d396fb15ebf2bf1e3de}{root})
+\begin{DoxyCompactList}\small\item\em print level order traversal of the tree \end{DoxyCompactList}\item 
+void \hyperlink{class_btree_1_1utility_a86a89ae68a8410223e7bc215749a93ab}{user\-\_\-runner} (char file\mbox{[}$\,$\mbox{]}, int order)
+\begin{DoxyCompactList}\small\item\em function to input data from user and output traversal in file \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{class_btree_1_1utility_ae9064062347c4ddf60c21243d3d6ac19}{n}
+\item 
+\hyperlink{namespace_btree_af2177a710b4e16aaf0c14dcbbc01a9af}{btnode} \hyperlink{class_btree_1_1utility_a240cdc9a802b5d396fb15ebf2bf1e3de}{root}
+\item 
+\hyperlink{class_btree_1_1btree}{btree} $\ast$ \hyperlink{class_btree_1_1utility_a3d8a863144f66d882e5c848b449a8130}{tree}
+\item 
+long $\ast$ \hyperlink{class_btree_1_1utility_a57fcae6e7697123f5ff115fb608bbf47}{data}
+\item 
+F\-I\-L\-E $\ast$ \hyperlink{class_btree_1_1utility_a80674e7b3d4c2213a869bf777c5b5786}{file\-\_\-sorted}
+\item 
+F\-I\-L\-E $\ast$ \hyperlink{class_btree_1_1utility_a3be94a3b5278c30c4efba8b91686fdbd}{file\-\_\-level}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+utility class which holds all the driver functions 
+
+Definition at line 315 of file btree.\-cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_btree_1_1utility_aa8aade55ad53d569342491a7c7c1c0c9}{\index{Btree\-::utility@{Btree\-::utility}!utility@{utility}}
+\index{utility@{utility}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{utility}]{\setlength{\rightskip}{0pt plus 5cm}Btree\-::utility\-::utility (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_aa8aade55ad53d569342491a7c7c1c0c9}
+
+
+Definition at line 324 of file btree.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_btree_1_1utility_aaf28340f1e6f6e16e0a0cd765014b075}{\index{Btree\-::utility@{Btree\-::utility}!avg@{avg}}
+\index{avg@{avg}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{avg}]{\setlength{\rightskip}{0pt plus 5cm}long Btree\-::utility\-::avg (
+\begin{DoxyParamCaption}
+\item[{long}]{array\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_aaf28340f1e6f6e16e0a0cd765014b075}
+
+
+function to calculate avg. of an array 
+
+
+
+Definition at line 395 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_ac28ba2fad253481db02c499762f85edc}{\index{Btree\-::utility@{Btree\-::utility}!generate\-\_\-increasing@{generate\-\_\-increasing}}
+\index{generate\-\_\-increasing@{generate\-\_\-increasing}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{generate\-\_\-increasing}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::generate\-\_\-increasing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_ac28ba2fad253481db02c499762f85edc}
+
+
+function to generate values in increasing order 
+
+
+
+Definition at line 362 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a02cc6a344924615dde82089ca16150c0}{\index{Btree\-::utility@{Btree\-::utility}!generate\-\_\-random@{generate\-\_\-random}}
+\index{generate\-\_\-random@{generate\-\_\-random}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{generate\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::generate\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_a02cc6a344924615dde82089ca16150c0}
+
+
+function to generate shuffled values from 1 to n 
+
+loop to generate shuffled array 
+
+Definition at line 332 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_ab9637d54965e6847ee60ddc2dd3dce82}{\index{Btree\-::utility@{Btree\-::utility}!inorder@{inorder}}
+\index{inorder@{inorder}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{inorder}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::inorder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_ab9637d54965e6847ee60ddc2dd3dce82}
+
+
+print inorder traversal of the tree 
+
+
+
+Definition at line 378 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_abfaed921f7bfa93c86bf68fd252400fc}{\index{Btree\-::utility@{Btree\-::utility}!inorder\-\_\-file@{inorder\-\_\-file}}
+\index{inorder\-\_\-file@{inorder\-\_\-file}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{inorder\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}int Btree\-::utility\-::inorder\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{{\bf node} $\ast$}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_abfaed921f7bfa93c86bf68fd252400fc}
+
+
+print inorder traversal of the tree 
+
+
+
+Definition at line 426 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_ace83b2110e9982395da53ba59ee1105a}{\index{Btree\-::utility@{Btree\-::utility}!insert\-\_\-random@{insert\-\_\-random}}
+\index{insert\-\_\-random@{insert\-\_\-random}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{insert\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::insert\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_ace83b2110e9982395da53ba59ee1105a}
+
+
+inserting all values of the array in the tree 
+
+
+
+Definition at line 353 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a0e324dea11da1a7506902a9b27ba5d1c}{\index{Btree\-::utility@{Btree\-::utility}!level\-\_\-order@{level\-\_\-order}}
+\index{level\-\_\-order@{level\-\_\-order}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{level\-\_\-order}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::level\-\_\-order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_a0e324dea11da1a7506902a9b27ba5d1c}
+
+
+print level order traversal 
+
+
+
+Definition at line 386 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a8388fec52c70801733166954a2d3cee0}{\index{Btree\-::utility@{Btree\-::utility}!level\-\_\-order\-\_\-file@{level\-\_\-order\-\_\-file}}
+\index{level\-\_\-order\-\_\-file@{level\-\_\-order\-\_\-file}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{level\-\_\-order\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::level\-\_\-order\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{{\bf btnode} \&}]{root}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_a8388fec52c70801733166954a2d3cee0}
+
+
+print level order traversal of the tree 
+
+
+
+Definition at line 440 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_ab4516eb224c343ce53952c51c2257ce8}{\index{Btree\-::utility@{Btree\-::utility}!make\-\_\-root\-\_\-null@{make\-\_\-root\-\_\-null}}
+\index{make\-\_\-root\-\_\-null@{make\-\_\-root\-\_\-null}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{make\-\_\-root\-\_\-null}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::make\-\_\-root\-\_\-null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_ab4516eb224c343ce53952c51c2257ce8}
+
+
+making root null to execute next iteration 
+
+
+
+Definition at line 390 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a727f33e9636c1fbd56f017fb696e9366}{\index{Btree\-::utility@{Btree\-::utility}!preorder@{preorder}}
+\index{preorder@{preorder}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{preorder}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::preorder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_a727f33e9636c1fbd56f017fb696e9366}
+
+
+print preorder traversal 
+
+
+
+Definition at line 382 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a3f2ae2f39c7f908ddaca9b1a45d9c3c0}{\index{Btree\-::utility@{Btree\-::utility}!random\-\_\-runner@{random\-\_\-runner}}
+\index{random\-\_\-runner@{random\-\_\-runner}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{random\-\_\-runner}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::random\-\_\-runner (
+\begin{DoxyParamCaption}
+\item[{long}]{num, }
+\item[{int}]{order}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_a3f2ae2f39c7f908ddaca9b1a45d9c3c0}
+
+
+driver function to generate, insert and search values 
+
+
+
+Definition at line 404 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a21786d75160a31474dfbd93c61ed5559}{\index{Btree\-::utility@{Btree\-::utility}!search\-\_\-random@{search\-\_\-random}}
+\index{search\-\_\-random@{search\-\_\-random}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{search\-\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::search\-\_\-random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_a21786d75160a31474dfbd93c61ed5559}
+
+
+function to search all values of the array in the b+ tree 
+
+
+
+Definition at line 370 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a86a89ae68a8410223e7bc215749a93ab}{\index{Btree\-::utility@{Btree\-::utility}!user\-\_\-runner@{user\-\_\-runner}}
+\index{user\-\_\-runner@{user\-\_\-runner}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{user\-\_\-runner}]{\setlength{\rightskip}{0pt plus 5cm}void Btree\-::utility\-::user\-\_\-runner (
+\begin{DoxyParamCaption}
+\item[{char}]{file\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{order}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_btree_1_1utility_a86a89ae68a8410223e7bc215749a93ab}
+
+
+function to input data from user and output traversal in file 
+
+
+
+Definition at line 461 of file btree.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_btree_1_1utility_a57fcae6e7697123f5ff115fb608bbf47}{\index{Btree\-::utility@{Btree\-::utility}!data@{data}}
+\index{data@{data}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}long$\ast$ Btree\-::utility\-::data}}\label{class_btree_1_1utility_a57fcae6e7697123f5ff115fb608bbf47}
+
+
+Definition at line 321 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a3be94a3b5278c30c4efba8b91686fdbd}{\index{Btree\-::utility@{Btree\-::utility}!file\-\_\-level@{file\-\_\-level}}
+\index{file\-\_\-level@{file\-\_\-level}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{file\-\_\-level}]{\setlength{\rightskip}{0pt plus 5cm}F\-I\-L\-E $\ast$ Btree\-::utility\-::file\-\_\-level}}\label{class_btree_1_1utility_a3be94a3b5278c30c4efba8b91686fdbd}
+
+
+Definition at line 322 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a80674e7b3d4c2213a869bf777c5b5786}{\index{Btree\-::utility@{Btree\-::utility}!file\-\_\-sorted@{file\-\_\-sorted}}
+\index{file\-\_\-sorted@{file\-\_\-sorted}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{file\-\_\-sorted}]{\setlength{\rightskip}{0pt plus 5cm}F\-I\-L\-E$\ast$ Btree\-::utility\-::file\-\_\-sorted}}\label{class_btree_1_1utility_a80674e7b3d4c2213a869bf777c5b5786}
+
+
+Definition at line 322 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_ae9064062347c4ddf60c21243d3d6ac19}{\index{Btree\-::utility@{Btree\-::utility}!n@{n}}
+\index{n@{n}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}long Btree\-::utility\-::n}}\label{class_btree_1_1utility_ae9064062347c4ddf60c21243d3d6ac19}
+
+
+Definition at line 318 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a240cdc9a802b5d396fb15ebf2bf1e3de}{\index{Btree\-::utility@{Btree\-::utility}!root@{root}}
+\index{root@{root}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}{\bf btnode} Btree\-::utility\-::root}}\label{class_btree_1_1utility_a240cdc9a802b5d396fb15ebf2bf1e3de}
+
+
+Definition at line 319 of file btree.\-cpp.
+
+\hypertarget{class_btree_1_1utility_a3d8a863144f66d882e5c848b449a8130}{\index{Btree\-::utility@{Btree\-::utility}!tree@{tree}}
+\index{tree@{tree}!Btree::utility@{Btree\-::utility}}
+\subsubsection[{tree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf btree}$\ast$ Btree\-::utility\-::tree}}\label{class_btree_1_1utility_a3d8a863144f66d882e5c848b449a8130}
+
+
+Definition at line 320 of file btree.\-cpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{btree_8cpp}{btree.\-cpp}\end{DoxyCompactItemize}
